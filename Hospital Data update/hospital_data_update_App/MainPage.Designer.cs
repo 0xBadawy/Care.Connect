@@ -33,11 +33,11 @@
             panel_content = new Panel();
             panel_type_ABm = new Panel();
             Lable_dec_Type_ABm = new Label();
+            label1 = new Label();
             Lable_inc_Type_ABm = new Label();
             label18 = new Label();
             pictureBox4 = new PictureBox();
             label_NumberOf_ABm = new Label();
-            label20 = new Label();
             panel_type_ABp = new Panel();
             Lable_dec_Type_ABp = new Label();
             Lable_inc_Type_ABp = new Label();
@@ -45,6 +45,38 @@
             pictureBox3 = new PictureBox();
             label_NumberOf_ABp = new Label();
             label15 = new Label();
+            panel8 = new Panel();
+            Lable_dec_Room_EOR = new Label();
+            Lable_inc_Room_EOR = new Label();
+            label32 = new Label();
+            pictureBox15 = new PictureBox();
+            Label_num_all_EOR = new Label();
+            Label_num_cur_EOR = new Label();
+            label39 = new Label();
+            panel7 = new Panel();
+            Lable_dec_Room_ICU = new Label();
+            Lable_inc_Room_ICU = new Label();
+            label22 = new Label();
+            pictureBox14 = new PictureBox();
+            Label_num_all_ICU = new Label();
+            Label_num_cur_ICU = new Label();
+            label27 = new Label();
+            panel3 = new Panel();
+            Lable_dec_Room_IS = new Label();
+            Lable_inc_Room_IR = new Label();
+            label8 = new Label();
+            pictureBox10 = new PictureBox();
+            Label_num_all_IR = new Label();
+            Label_num_cur_IR = new Label();
+            label19 = new Label();
+            panel6 = new Panel();
+            Lable_dec_Room_MED = new Label();
+            Lable_inc_Room_MED = new Label();
+            label14 = new Label();
+            pictureBox13 = new PictureBox();
+            Label_num_all_MED = new Label();
+            Label_num_cur_MED = new Label();
+            label17 = new Label();
             panel_type_Am = new Panel();
             Lable_dec_Type_Am = new Label();
             Lable_inc_Type_Am = new Label();
@@ -83,18 +115,35 @@
             panel_type_Ap = new Panel();
             Lable_dec_Type_Ap = new Label();
             Lable_inc_Type_Ap = new Label();
-            label10 = new Label();
+            label2 = new Label();
             pictureBox1 = new PictureBox();
             label_NumberOf_Ap = new Label();
             label7 = new Label();
             panel1 = new Panel();
             panel_left = new Panel();
+            panel5 = new Panel();
+            pictureBox12 = new PictureBox();
+            panel4 = new Panel();
+            pictureBox11 = new PictureBox();
+            panel2 = new Panel();
+            pictureBox9 = new PictureBox();
+            panel9 = new Panel();
+            label4 = new Label();
+            label5 = new Label();
             Pan_Main.SuspendLayout();
             panel_content.SuspendLayout();
             panel_type_ABm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel_type_ABp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             panel_type_Am.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel_type_Om.SuspendLayout();
@@ -107,6 +156,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel_type_Ap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel_left.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            panel9.SuspendLayout();
             SuspendLayout();
             // 
             // Pan_Main
@@ -117,15 +174,20 @@
             Pan_Main.Dock = DockStyle.Fill;
             Pan_Main.Location = new Point(0, 0);
             Pan_Main.Name = "Pan_Main";
-            Pan_Main.Size = new Size(1222, 696);
+            Pan_Main.Size = new Size(1243, 696);
             Pan_Main.TabIndex = 0;
             Pan_Main.Click += Pan_Main_Click;
             // 
             // panel_content
             // 
             panel_content.BackColor = SystemColors.MenuBar;
+            panel_content.Controls.Add(panel9);
             panel_content.Controls.Add(panel_type_ABm);
             panel_content.Controls.Add(panel_type_ABp);
+            panel_content.Controls.Add(panel8);
+            panel_content.Controls.Add(panel7);
+            panel_content.Controls.Add(panel3);
+            panel_content.Controls.Add(panel6);
             panel_content.Controls.Add(panel_type_Am);
             panel_content.Controls.Add(panel_type_Om);
             panel_content.Controls.Add(panel_type_Op);
@@ -135,19 +197,19 @@
             panel_content.Dock = DockStyle.Fill;
             panel_content.Location = new Point(59, 45);
             panel_content.Name = "panel_content";
-            panel_content.Size = new Size(1163, 651);
+            panel_content.Size = new Size(1184, 651);
             panel_content.TabIndex = 2;
             // 
             // panel_type_ABm
             // 
             panel_type_ABm.BackColor = SystemColors.ButtonHighlight;
             panel_type_ABm.Controls.Add(Lable_dec_Type_ABm);
+            panel_type_ABm.Controls.Add(label1);
             panel_type_ABm.Controls.Add(Lable_inc_Type_ABm);
             panel_type_ABm.Controls.Add(label18);
             panel_type_ABm.Controls.Add(pictureBox4);
             panel_type_ABm.Controls.Add(label_NumberOf_ABm);
-            panel_type_ABm.Controls.Add(label20);
-            panel_type_ABm.Location = new Point(605, 193);
+            panel_type_ABm.Location = new Point(30, 488);
             panel_type_ABm.Name = "panel_type_ABm";
             panel_type_ABm.Size = new Size(245, 143);
             panel_type_ABm.TabIndex = 5;
@@ -164,6 +226,17 @@
             Lable_dec_Type_ABm.TabIndex = 4;
             Lable_dec_Type_ABm.Text = "-";
             Lable_dec_Type_ABm.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_ABm.Click += Lable_dec_Type_ABm_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(13, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(136, 18);
+            label1.TabIndex = 4;
+            label1.Text = "Blood Type ( AB- ) ";
             // 
             // Lable_inc_Type_ABm
             // 
@@ -177,6 +250,7 @@
             Lable_inc_Type_ABm.TabIndex = 4;
             Lable_inc_Type_ABm.Text = "+";
             Lable_inc_Type_ABm.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_ABm.Click += Lable_inc_Type_ABm_Click;
             // 
             // label18
             // 
@@ -210,16 +284,6 @@
             label_NumberOf_ABm.Text = "45";
             label_NumberOf_ABm.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(9, 17);
-            label20.Name = "label20";
-            label20.Size = new Size(136, 18);
-            label20.TabIndex = 4;
-            label20.Text = "Blood Type ( AB- ) ";
-            // 
             // panel_type_ABp
             // 
             panel_type_ABp.BackColor = SystemColors.ButtonHighlight;
@@ -229,7 +293,7 @@
             panel_type_ABp.Controls.Add(pictureBox3);
             panel_type_ABp.Controls.Add(label_NumberOf_ABp);
             panel_type_ABp.Controls.Add(label15);
-            panel_type_ABp.Location = new Point(605, 17);
+            panel_type_ABp.Location = new Point(30, 331);
             panel_type_ABp.Name = "panel_type_ABp";
             panel_type_ABp.Size = new Size(245, 143);
             panel_type_ABp.TabIndex = 5;
@@ -246,6 +310,7 @@
             Lable_dec_Type_ABp.TabIndex = 4;
             Lable_dec_Type_ABp.Text = "-";
             Lable_dec_Type_ABp.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_ABp.Click += Lable_dec_Type_ABp_Click;
             // 
             // Lable_inc_Type_ABp
             // 
@@ -259,6 +324,7 @@
             Lable_inc_Type_ABp.TabIndex = 4;
             Lable_inc_Type_ABp.Text = "+";
             Lable_inc_Type_ABp.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_ABp.Click += Lable_inc_Type_ABp_Click;
             // 
             // label13
             // 
@@ -302,6 +368,394 @@
             label15.TabIndex = 4;
             label15.Text = "Blood Type ( AB+ ) ";
             // 
+            // panel8
+            // 
+            panel8.BackColor = SystemColors.ButtonHighlight;
+            panel8.Controls.Add(Lable_dec_Room_EOR);
+            panel8.Controls.Add(Lable_inc_Room_EOR);
+            panel8.Controls.Add(label32);
+            panel8.Controls.Add(pictureBox15);
+            panel8.Controls.Add(Label_num_all_EOR);
+            panel8.Controls.Add(Label_num_cur_EOR);
+            panel8.Controls.Add(label39);
+            panel8.Location = new Point(902, 176);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(266, 143);
+            panel8.TabIndex = 5;
+            // 
+            // Lable_dec_Room_EOR
+            // 
+            Lable_dec_Room_EOR.BackColor = SystemColors.Control;
+            Lable_dec_Room_EOR.Cursor = Cursors.Hand;
+            Lable_dec_Room_EOR.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_dec_Room_EOR.Location = new Point(131, 91);
+            Lable_dec_Room_EOR.Margin = new Padding(0);
+            Lable_dec_Room_EOR.Name = "Lable_dec_Room_EOR";
+            Lable_dec_Room_EOR.Size = new Size(38, 30);
+            Lable_dec_Room_EOR.TabIndex = 4;
+            Lable_dec_Room_EOR.Text = "-";
+            Lable_dec_Room_EOR.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Room_EOR.Click += Lable_dec_Room_EOR_Click;
+            // 
+            // Lable_inc_Room_EOR
+            // 
+            Lable_inc_Room_EOR.BackColor = SystemColors.Control;
+            Lable_inc_Room_EOR.Cursor = Cursors.Hand;
+            Lable_inc_Room_EOR.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_inc_Room_EOR.Location = new Point(131, 54);
+            Lable_inc_Room_EOR.Margin = new Padding(0);
+            Lable_inc_Room_EOR.Name = "Lable_inc_Room_EOR";
+            Lable_inc_Room_EOR.Size = new Size(38, 31);
+            Lable_inc_Room_EOR.TabIndex = 4;
+            Lable_inc_Room_EOR.Text = "+";
+            Lable_inc_Room_EOR.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Room_EOR.Click += Lable_inc_Room_EOR_Click;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.BackColor = Color.White;
+            label32.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.Location = new Point(9, 125);
+            label32.Name = "label32";
+            label32.Size = new Size(103, 15);
+            label32.TabIndex = 4;
+            label32.Text = "2023-3-3 23:3:32";
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
+            pictureBox15.Location = new Point(185, 54);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(78, 86);
+            pictureBox15.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox15.TabIndex = 5;
+            pictureBox15.TabStop = false;
+            // 
+            // Label_num_all_EOR
+            // 
+            Label_num_all_EOR.BackColor = Color.Transparent;
+            Label_num_all_EOR.Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_num_all_EOR.ForeColor = SystemColors.ControlDarkDark;
+            Label_num_all_EOR.Location = new Point(76, 54);
+            Label_num_all_EOR.Name = "Label_num_all_EOR";
+            Label_num_all_EOR.Size = new Size(43, 65);
+            Label_num_all_EOR.TabIndex = 4;
+            Label_num_all_EOR.Text = "/4";
+            Label_num_all_EOR.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Label_num_cur_EOR
+            // 
+            Label_num_cur_EOR.BackColor = Color.Transparent;
+            Label_num_cur_EOR.Font = new Font("Roboto", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_num_cur_EOR.Location = new Point(3, 47);
+            Label_num_cur_EOR.Name = "Label_num_cur_EOR";
+            Label_num_cur_EOR.Size = new Size(90, 65);
+            Label_num_cur_EOR.TabIndex = 4;
+            Label_num_cur_EOR.Text = "45";
+            Label_num_cur_EOR.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label39.Location = new Point(9, 17);
+            label39.Name = "label39";
+            label39.Size = new Size(198, 18);
+            label39.TabIndex = 4;
+            label39.Text = "Emergency Obstetric Rooms";
+            // 
+            // panel7
+            // 
+            panel7.BackColor = SystemColors.ButtonHighlight;
+            panel7.Controls.Add(Lable_dec_Room_ICU);
+            panel7.Controls.Add(Lable_inc_Room_ICU);
+            panel7.Controls.Add(label22);
+            panel7.Controls.Add(pictureBox14);
+            panel7.Controls.Add(Label_num_all_ICU);
+            panel7.Controls.Add(Label_num_cur_ICU);
+            panel7.Controls.Add(label27);
+            panel7.Location = new Point(622, 176);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(266, 143);
+            panel7.TabIndex = 5;
+            // 
+            // Lable_dec_Room_ICU
+            // 
+            Lable_dec_Room_ICU.BackColor = SystemColors.Control;
+            Lable_dec_Room_ICU.Cursor = Cursors.Hand;
+            Lable_dec_Room_ICU.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_dec_Room_ICU.Location = new Point(131, 91);
+            Lable_dec_Room_ICU.Margin = new Padding(0);
+            Lable_dec_Room_ICU.Name = "Lable_dec_Room_ICU";
+            Lable_dec_Room_ICU.Size = new Size(38, 30);
+            Lable_dec_Room_ICU.TabIndex = 4;
+            Lable_dec_Room_ICU.Text = "-";
+            Lable_dec_Room_ICU.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Room_ICU.Click += Lable_dec_Room_ICU_Click;
+            // 
+            // Lable_inc_Room_ICU
+            // 
+            Lable_inc_Room_ICU.BackColor = SystemColors.Control;
+            Lable_inc_Room_ICU.Cursor = Cursors.Hand;
+            Lable_inc_Room_ICU.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_inc_Room_ICU.Location = new Point(131, 54);
+            Lable_inc_Room_ICU.Margin = new Padding(0);
+            Lable_inc_Room_ICU.Name = "Lable_inc_Room_ICU";
+            Lable_inc_Room_ICU.Size = new Size(38, 31);
+            Lable_inc_Room_ICU.TabIndex = 4;
+            Lable_inc_Room_ICU.Text = "+";
+            Lable_inc_Room_ICU.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Room_ICU.Click += Lable_inc_Room_ICU_Click;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.BackColor = Color.White;
+            label22.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label22.Location = new Point(9, 125);
+            label22.Name = "label22";
+            label22.Size = new Size(103, 15);
+            label22.TabIndex = 4;
+            label22.Text = "2023-3-3 23:3:32";
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(185, 54);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(78, 86);
+            pictureBox14.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox14.TabIndex = 5;
+            pictureBox14.TabStop = false;
+            // 
+            // Label_num_all_ICU
+            // 
+            Label_num_all_ICU.BackColor = Color.Transparent;
+            Label_num_all_ICU.Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_num_all_ICU.ForeColor = SystemColors.ControlDarkDark;
+            Label_num_all_ICU.Location = new Point(76, 54);
+            Label_num_all_ICU.Name = "Label_num_all_ICU";
+            Label_num_all_ICU.Size = new Size(43, 65);
+            Label_num_all_ICU.TabIndex = 4;
+            Label_num_all_ICU.Text = "/4";
+            Label_num_all_ICU.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Label_num_cur_ICU
+            // 
+            Label_num_cur_ICU.BackColor = Color.Transparent;
+            Label_num_cur_ICU.Font = new Font("Roboto", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_num_cur_ICU.Location = new Point(3, 47);
+            Label_num_cur_ICU.Name = "Label_num_cur_ICU";
+            Label_num_cur_ICU.Size = new Size(90, 65);
+            Label_num_cur_ICU.TabIndex = 4;
+            Label_num_cur_ICU.Text = "2";
+            Label_num_cur_ICU.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label27.Location = new Point(9, 17);
+            label27.Name = "label27";
+            label27.Size = new Size(182, 18);
+            label27.TabIndex = 4;
+            label27.Text = "Intensive Care Units - ICU";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.ButtonHighlight;
+            panel3.Controls.Add(Lable_dec_Room_IS);
+            panel3.Controls.Add(Lable_inc_Room_IR);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(pictureBox10);
+            panel3.Controls.Add(Label_num_all_IR);
+            panel3.Controls.Add(Label_num_cur_IR);
+            panel3.Controls.Add(label19);
+            panel3.Location = new Point(902, 17);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(266, 143);
+            panel3.TabIndex = 5;
+            // 
+            // Lable_dec_Room_IS
+            // 
+            Lable_dec_Room_IS.BackColor = SystemColors.Control;
+            Lable_dec_Room_IS.Cursor = Cursors.Hand;
+            Lable_dec_Room_IS.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_dec_Room_IS.Location = new Point(131, 91);
+            Lable_dec_Room_IS.Margin = new Padding(0);
+            Lable_dec_Room_IS.Name = "Lable_dec_Room_IS";
+            Lable_dec_Room_IS.Size = new Size(38, 30);
+            Lable_dec_Room_IS.TabIndex = 4;
+            Lable_dec_Room_IS.Text = "-";
+            Lable_dec_Room_IS.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Room_IS.Click += Lable_dec_Room_IS_Click;
+            // 
+            // Lable_inc_Room_IR
+            // 
+            Lable_inc_Room_IR.BackColor = SystemColors.Control;
+            Lable_inc_Room_IR.Cursor = Cursors.Hand;
+            Lable_inc_Room_IR.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_inc_Room_IR.Location = new Point(131, 54);
+            Lable_inc_Room_IR.Margin = new Padding(0);
+            Lable_inc_Room_IR.Name = "Lable_inc_Room_IR";
+            Lable_inc_Room_IR.Size = new Size(38, 31);
+            Lable_inc_Room_IR.TabIndex = 4;
+            Lable_inc_Room_IR.Text = "+";
+            Lable_inc_Room_IR.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Room_IR.Click += Lable_inc_Room_IR_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.White;
+            label8.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(9, 125);
+            label8.Name = "label8";
+            label8.Size = new Size(103, 15);
+            label8.TabIndex = 4;
+            label8.Text = "2023-3-3 23:3:32";
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(185, 54);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(78, 86);
+            pictureBox10.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox10.TabIndex = 5;
+            pictureBox10.TabStop = false;
+            // 
+            // Label_num_all_IR
+            // 
+            Label_num_all_IR.BackColor = Color.Transparent;
+            Label_num_all_IR.Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_num_all_IR.ForeColor = SystemColors.ControlDarkDark;
+            Label_num_all_IR.Location = new Point(76, 54);
+            Label_num_all_IR.Name = "Label_num_all_IR";
+            Label_num_all_IR.Size = new Size(43, 65);
+            Label_num_all_IR.TabIndex = 4;
+            Label_num_all_IR.Text = "/4";
+            Label_num_all_IR.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Label_num_cur_IR
+            // 
+            Label_num_cur_IR.BackColor = Color.Transparent;
+            Label_num_cur_IR.Font = new Font("Roboto", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_num_cur_IR.Location = new Point(3, 47);
+            Label_num_cur_IR.Name = "Label_num_cur_IR";
+            Label_num_cur_IR.Size = new Size(90, 65);
+            Label_num_cur_IR.TabIndex = 4;
+            Label_num_cur_IR.Text = "45";
+            Label_num_cur_IR.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label19.Location = new Point(9, 17);
+            label19.Name = "label19";
+            label19.Size = new Size(116, 18);
+            label19.TabIndex = 4;
+            label19.Text = "Isolation Rooms";
+            // 
+            // panel6
+            // 
+            panel6.BackColor = SystemColors.ButtonHighlight;
+            panel6.Controls.Add(Lable_dec_Room_MED);
+            panel6.Controls.Add(Lable_inc_Room_MED);
+            panel6.Controls.Add(label14);
+            panel6.Controls.Add(pictureBox13);
+            panel6.Controls.Add(Label_num_all_MED);
+            panel6.Controls.Add(Label_num_cur_MED);
+            panel6.Controls.Add(label17);
+            panel6.Location = new Point(622, 17);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(266, 143);
+            panel6.TabIndex = 5;
+            // 
+            // Lable_dec_Room_MED
+            // 
+            Lable_dec_Room_MED.BackColor = SystemColors.Control;
+            Lable_dec_Room_MED.Cursor = Cursors.Hand;
+            Lable_dec_Room_MED.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_dec_Room_MED.Location = new Point(131, 91);
+            Lable_dec_Room_MED.Margin = new Padding(0);
+            Lable_dec_Room_MED.Name = "Lable_dec_Room_MED";
+            Lable_dec_Room_MED.Size = new Size(38, 30);
+            Lable_dec_Room_MED.TabIndex = 4;
+            Lable_dec_Room_MED.Text = "-";
+            Lable_dec_Room_MED.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Room_MED.Click += Lable_dec_Room_MED_Click;
+            // 
+            // Lable_inc_Room_MED
+            // 
+            Lable_inc_Room_MED.BackColor = SystemColors.Control;
+            Lable_inc_Room_MED.Cursor = Cursors.Hand;
+            Lable_inc_Room_MED.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            Lable_inc_Room_MED.Location = new Point(131, 54);
+            Lable_inc_Room_MED.Margin = new Padding(0);
+            Lable_inc_Room_MED.Name = "Lable_inc_Room_MED";
+            Lable_inc_Room_MED.Size = new Size(38, 31);
+            Lable_inc_Room_MED.TabIndex = 4;
+            Lable_inc_Room_MED.Text = "+";
+            Lable_inc_Room_MED.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Room_MED.Click += Lable_inc_Room_MED_Click;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.White;
+            label14.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(9, 125);
+            label14.Name = "label14";
+            label14.Size = new Size(103, 15);
+            label14.TabIndex = 4;
+            label14.Text = "2023-3-3 23:3:32";
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(185, 54);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(78, 86);
+            pictureBox13.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox13.TabIndex = 5;
+            pictureBox13.TabStop = false;
+            // 
+            // Label_num_all_MED
+            // 
+            Label_num_all_MED.BackColor = Color.Transparent;
+            Label_num_all_MED.Font = new Font("Roboto", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_num_all_MED.ForeColor = SystemColors.ControlDarkDark;
+            Label_num_all_MED.Location = new Point(76, 54);
+            Label_num_all_MED.Name = "Label_num_all_MED";
+            Label_num_all_MED.Size = new Size(43, 65);
+            Label_num_all_MED.TabIndex = 4;
+            Label_num_all_MED.Text = "/4";
+            Label_num_all_MED.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // Label_num_cur_MED
+            // 
+            Label_num_cur_MED.BackColor = Color.Transparent;
+            Label_num_cur_MED.Font = new Font("Roboto", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_num_cur_MED.Location = new Point(3, 47);
+            Label_num_cur_MED.Name = "Label_num_cur_MED";
+            Label_num_cur_MED.Size = new Size(90, 65);
+            Label_num_cur_MED.TabIndex = 4;
+            Label_num_cur_MED.Text = "45";
+            Label_num_cur_MED.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Roboto", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.Location = new Point(9, 17);
+            label17.Name = "label17";
+            label17.Size = new Size(206, 18);
+            label17.TabIndex = 4;
+            label17.Text = "Major Emergency Department";
+            // 
             // panel_type_Am
             // 
             panel_type_Am.BackColor = SystemColors.ButtonHighlight;
@@ -311,7 +765,7 @@
             panel_type_Am.Controls.Add(pictureBox2);
             panel_type_Am.Controls.Add(label_NumberOf_Am);
             panel_type_Am.Controls.Add(label6);
-            panel_type_Am.Location = new Point(27, 193);
+            panel_type_Am.Location = new Point(30, 174);
             panel_type_Am.Name = "panel_type_Am";
             panel_type_Am.Size = new Size(245, 143);
             panel_type_Am.TabIndex = 5;
@@ -328,6 +782,7 @@
             Lable_dec_Type_Am.TabIndex = 4;
             Lable_dec_Type_Am.Text = "-";
             Lable_dec_Type_Am.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Am.Click += Lable_dec_Type_Am_Click;
             // 
             // Lable_inc_Type_Am
             // 
@@ -341,6 +796,7 @@
             Lable_inc_Type_Am.TabIndex = 4;
             Lable_inc_Type_Am.Text = "+";
             Lable_inc_Type_Am.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Am.Click += Lable_inc_Type_Am_Click;
             // 
             // label3
             // 
@@ -393,7 +849,7 @@
             panel_type_Om.Controls.Add(pictureBox8);
             panel_type_Om.Controls.Add(label_NumberOf_Om);
             panel_type_Om.Controls.Add(label40);
-            panel_type_Om.Location = new Point(894, 193);
+            panel_type_Om.Location = new Point(296, 488);
             panel_type_Om.Name = "panel_type_Om";
             panel_type_Om.Size = new Size(245, 143);
             panel_type_Om.TabIndex = 5;
@@ -410,6 +866,7 @@
             Lable_dec_Type_Om.TabIndex = 4;
             Lable_dec_Type_Om.Text = "-";
             Lable_dec_Type_Om.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Om.Click += Lable_dec_Type_Om_Click;
             // 
             // Lable_inc_Type_Om
             // 
@@ -423,6 +880,7 @@
             Lable_inc_Type_Om.TabIndex = 4;
             Lable_inc_Type_Om.Text = "+";
             Lable_inc_Type_Om.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Om.Click += Lable_inc_Type_Om_Click;
             // 
             // label38
             // 
@@ -475,7 +933,7 @@
             panel_type_Op.Controls.Add(pictureBox7);
             panel_type_Op.Controls.Add(label_NumberOf_Op);
             panel_type_Op.Controls.Add(label35);
-            panel_type_Op.Location = new Point(894, 17);
+            panel_type_Op.Location = new Point(296, 331);
             panel_type_Op.Name = "panel_type_Op";
             panel_type_Op.Size = new Size(245, 143);
             panel_type_Op.TabIndex = 5;
@@ -492,6 +950,7 @@
             Lable_dec_Type_Op.TabIndex = 4;
             Lable_dec_Type_Op.Text = "-";
             Lable_dec_Type_Op.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Op.Click += Lable_dec_Type_Op_Click;
             // 
             // Lable_inc_Type_Op
             // 
@@ -505,6 +964,7 @@
             Lable_inc_Type_Op.TabIndex = 4;
             Lable_inc_Type_Op.Text = "+";
             Lable_inc_Type_Op.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Op.Click += Lable_inc_Type_Op_Click;
             // 
             // label33
             // 
@@ -557,7 +1017,7 @@
             panel_type_Bm.Controls.Add(pictureBox6);
             panel_type_Bm.Controls.Add(label_NumberOf_Bm);
             panel_type_Bm.Controls.Add(label30);
-            panel_type_Bm.Location = new Point(316, 193);
+            panel_type_Bm.Location = new Point(296, 174);
             panel_type_Bm.Name = "panel_type_Bm";
             panel_type_Bm.Size = new Size(245, 143);
             panel_type_Bm.TabIndex = 5;
@@ -574,6 +1034,7 @@
             Lable_dec_Type_Bm.TabIndex = 4;
             Lable_dec_Type_Bm.Text = "-";
             Lable_dec_Type_Bm.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Bm.Click += Lable_dec_Type_Bm_Click;
             // 
             // Lable_inc_Type_Bm
             // 
@@ -587,6 +1048,7 @@
             Lable_inc_Type_Bm.TabIndex = 4;
             Lable_inc_Type_Bm.Text = "+";
             Lable_inc_Type_Bm.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Bm.Click += Lable_inc_Type_Bm_Click;
             // 
             // label28
             // 
@@ -639,7 +1101,7 @@
             panel_type_Bp.Controls.Add(pictureBox5);
             panel_type_Bp.Controls.Add(label_NumberOf_Bp);
             panel_type_Bp.Controls.Add(label25);
-            panel_type_Bp.Location = new Point(316, 17);
+            panel_type_Bp.Location = new Point(296, 17);
             panel_type_Bp.Name = "panel_type_Bp";
             panel_type_Bp.Size = new Size(245, 143);
             panel_type_Bp.TabIndex = 5;
@@ -656,6 +1118,7 @@
             Lable_dec_Type_Bp.TabIndex = 4;
             Lable_dec_Type_Bp.Text = "-";
             Lable_dec_Type_Bp.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Bp.Click += Lable_dec_Type_Bp_Click;
             // 
             // Lable_inc_Type_Bp
             // 
@@ -669,6 +1132,7 @@
             Lable_inc_Type_Bp.TabIndex = 4;
             Lable_inc_Type_Bp.Text = "+";
             Lable_inc_Type_Bp.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Bp.Click += Lable_inc_Type_Bp_Click;
             // 
             // label23
             // 
@@ -717,11 +1181,11 @@
             panel_type_Ap.BackColor = SystemColors.ButtonHighlight;
             panel_type_Ap.Controls.Add(Lable_dec_Type_Ap);
             panel_type_Ap.Controls.Add(Lable_inc_Type_Ap);
-            panel_type_Ap.Controls.Add(label10);
+            panel_type_Ap.Controls.Add(label2);
             panel_type_Ap.Controls.Add(pictureBox1);
             panel_type_Ap.Controls.Add(label_NumberOf_Ap);
             panel_type_Ap.Controls.Add(label7);
-            panel_type_Ap.Location = new Point(27, 17);
+            panel_type_Ap.Location = new Point(30, 17);
             panel_type_Ap.Name = "panel_type_Ap";
             panel_type_Ap.Size = new Size(245, 143);
             panel_type_Ap.TabIndex = 5;
@@ -738,6 +1202,7 @@
             Lable_dec_Type_Ap.TabIndex = 4;
             Lable_dec_Type_Ap.Text = "-";
             Lable_dec_Type_Ap.TextAlign = ContentAlignment.MiddleCenter;
+            Lable_dec_Type_Ap.Click += Lable_dec_Type_Ap_Click;
             // 
             // Lable_inc_Type_Ap
             // 
@@ -751,17 +1216,18 @@
             Lable_inc_Type_Ap.TabIndex = 4;
             Lable_inc_Type_Ap.Text = "+";
             Lable_inc_Type_Ap.TextAlign = ContentAlignment.TopCenter;
+            Lable_inc_Type_Ap.Click += Lable_inc_Type_Ap_Click;
             // 
-            // label10
+            // label2
             // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.White;
-            label10.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(9, 125);
-            label10.Name = "label10";
-            label10.Size = new Size(103, 15);
-            label10.TabIndex = 4;
-            label10.Text = "2023-3-3 23:3:32";
+            label2.AutoSize = true;
+            label2.BackColor = Color.White;
+            label2.Font = new Font("Roboto Cn", 9.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(9, 122);
+            label2.Name = "label2";
+            label2.Size = new Size(103, 15);
+            label2.TabIndex = 4;
+            label2.Text = "2023-3-3 23:3:32";
             // 
             // pictureBox1
             // 
@@ -800,23 +1266,115 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(59, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1163, 45);
+            panel1.Size = new Size(1184, 45);
             panel1.TabIndex = 1;
             // 
             // panel_left
             // 
             panel_left.BackColor = Color.White;
+            panel_left.Controls.Add(panel5);
+            panel_left.Controls.Add(panel4);
+            panel_left.Controls.Add(panel2);
             panel_left.Dock = DockStyle.Left;
             panel_left.Location = new Point(0, 0);
             panel_left.Name = "panel_left";
             panel_left.Size = new Size(59, 696);
             panel_left.TabIndex = 0;
             // 
+            // panel5
+            // 
+            panel5.Controls.Add(pictureBox12);
+            panel5.Location = new Point(14, 312);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(32, 38);
+            panel5.TabIndex = 0;
+            // 
+            // pictureBox12
+            // 
+            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
+            pictureBox12.Location = new Point(1, 3);
+            pictureBox12.Name = "pictureBox12";
+            pictureBox12.Size = new Size(30, 35);
+            pictureBox12.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox12.TabIndex = 6;
+            pictureBox12.TabStop = false;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(pictureBox11);
+            panel4.Location = new Point(13, 255);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(32, 38);
+            panel4.TabIndex = 0;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(1, 3);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(30, 35);
+            pictureBox11.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox11.TabIndex = 6;
+            pictureBox11.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(pictureBox9);
+            panel2.Location = new Point(13, 647);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(32, 38);
+            panel2.TabIndex = 0;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1, 3);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(30, 35);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 6;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.White;
+            panel9.Controls.Add(label5);
+            panel9.Controls.Add(label4);
+            panel9.Location = new Point(622, 561);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(546, 67);
+            panel9.TabIndex = 6;
+            panel9.MouseClick += panel9_MouseClick;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label4.AutoSize = true;
+            label4.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(7, 6);
+            label4.Name = "label4";
+            label4.Size = new Size(137, 27);
+            label4.TabIndex = 4;
+            label4.Text = "Hospital ID : ";
+            label4.Click += label4_Click;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label5.AutoSize = true;
+            label5.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(9, 33);
+            label5.Name = "label5";
+            label5.Size = new Size(175, 27);
+            label5.TabIndex = 4;
+            label5.Text = "Hospital Name : ";
+            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1222, 696);
+            ClientSize = new Size(1243, 696);
             Controls.Add(Pan_Main);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainPage";
@@ -830,6 +1388,18 @@
             panel_type_ABp.ResumeLayout(false);
             panel_type_ABp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             panel_type_Am.ResumeLayout(false);
             panel_type_Am.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -848,6 +1418,15 @@
             panel_type_Ap.ResumeLayout(false);
             panel_type_Ap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel_left.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -863,7 +1442,6 @@
         private Label label18;
         private PictureBox pictureBox4;
         private Label label_NumberOf_ABm;
-        private Label label20;
         private Panel panel_type_ABp;
         private Label Lable_dec_Type_ABp;
         private Label Lable_inc_Type_ABp;
@@ -909,9 +1487,51 @@
         private Panel panel_type_Ap;
         private Label Lable_dec_Type_Ap;
         private Label Lable_inc_Type_Ap;
-        private Label label10;
         private PictureBox pictureBox1;
         private Label label_NumberOf_Ap;
         private Label label7;
+        private Panel panel2;
+        private PictureBox pictureBox9;
+        private Panel panel5;
+        private PictureBox pictureBox12;
+        private Panel panel4;
+        private PictureBox pictureBox11;
+        private Label label1;
+        private Label label2;
+        private Panel panel6;
+        private Label Lable_dec_Room_MED;
+        private Label Lable_inc_Room_MED;
+        private Label label14;
+        private PictureBox pictureBox13;
+        private Label Label_num_cur_MED;
+        private Label label17;
+        private Label Label_num_all_MED;
+        private Panel panel8;
+        private Label Lable_dec_Room_EOR;
+        private Label Lable_inc_Room_EOR;
+        private Label label32;
+        private PictureBox pictureBox15;
+        private Label Label_num_all_EOR;
+        private Label Label_num_cur_EOR;
+        private Label label39;
+        private Panel panel7;
+        private Label Lable_dec_Room_ICU;
+        private Label Lable_inc_Room_ICU;
+        private Label label22;
+        private PictureBox pictureBox14;
+        private Label Label_num_all_ICU;
+        private Label Label_num_cur_ICU;
+        private Label label27;
+        private Panel panel3;
+        private Label Lable_dec_Room_IS;
+        private Label Lable_inc_Room_IR;
+        private Label label8;
+        private PictureBox pictureBox10;
+        private Label Label_num_all_IR;
+        private Label Label_num_cur_IR;
+        private Label label19;
+        private Panel panel9;
+        private Label label5;
+        private Label label4;
     }
 }

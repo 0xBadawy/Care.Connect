@@ -10,6 +10,7 @@ namespace hospital_data_update_App
     {
 
         public ClassRound() { }
+        public string HospitalID = "";
 
     }
 }

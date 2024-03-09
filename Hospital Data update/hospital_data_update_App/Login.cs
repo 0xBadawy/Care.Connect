@@ -124,8 +124,16 @@ namespace hospital_data_update_App
             }
             else
             {
-                // this.Hide();
-                //  new Dashboard().Show();
+                 this.Hide();
+                MainPage mainPage = new MainPage();
+                mainPage.Show();
+
+                ClassRound o = new ClassRound();
+                o.HospitalID= Input_HospitalID.Text;
+
+
+
+
             }
         }
         public void RoundPanelBorder(Panel panel, int cornerRadius)

@@ -23,7 +23,9 @@ namespace hospital_data_update_App
             RoundPanelBorder(Pan_Main, CornerRadius);
             RoundMainBloodPanel();
             RoundLables();
-            updateLabel();
+            updateLabelBlood();
+            updateLabelRoom();
+            //  panel4.BackColor = Color.Red;
         }
 
         private int Blood_Type_APlus = 23;
@@ -34,6 +36,20 @@ namespace hospital_data_update_App
         private int Blood_Type_ABMinus = 0;
         private int Blood_Type_OPlus = 0;
         private int Blood_Type_OMinus = 21;
+
+
+
+        private int Room_MaxSize_MED = 4;
+        private int Room_MaxSize_IR = 7;
+        private int Room_MaxSize_ICU = 6;
+        private int Room_MaxSize_EOR = 2;
+
+        private int Room_CurSize_MED = 3;
+        private int Room_CurSize_IR = 2;
+        private int Room_CurSize_ICU = 9;
+        private int Room_CurSize_EOR = 8;
+
+
 
 
 
@@ -137,6 +153,12 @@ namespace hospital_data_update_App
             RoundPanelBorder(panel_type_ABm, 35);
             RoundPanelBorder(panel_type_Op, 35);
             RoundPanelBorder(panel_type_Om, 35);
+
+            RoundPanelBorder(panel3, 35);
+            RoundPanelBorder(panel6, 35);
+            RoundPanelBorder(panel7, 35);
+            RoundPanelBorder(panel8, 35);
+
         }
 
         private void RoundLables()
@@ -159,6 +181,17 @@ namespace hospital_data_update_App
             RoundLabelBorder(Lable_dec_Type_Om, 20);
             RoundLabelBorder(Lable_dec_Type_Op, 20);
 
+            RoundLabelBorder(Lable_dec_Room_EOR, 20);
+            RoundLabelBorder(Lable_dec_Room_ICU, 20);
+            RoundLabelBorder(Lable_dec_Room_IS, 20);
+            RoundLabelBorder(Lable_dec_Room_MED, 20);
+
+            RoundLabelBorder(Lable_inc_Room_EOR, 20);
+            RoundLabelBorder(Lable_inc_Room_ICU, 20);
+            RoundLabelBorder(Lable_inc_Room_IR, 20);
+            RoundLabelBorder(Lable_inc_Room_MED, 20);
+
+
 
 
 
@@ -166,7 +199,7 @@ namespace hospital_data_update_App
         }
 
 
-        private void updateLabel()
+        private void updateLabelBlood()
         {
             label_NumberOf_Ap.Text = Convert.ToString(Blood_Type_APlus);
             label_NumberOf_Am.Text = Convert.ToString(Blood_Type_AMinus);
@@ -176,13 +209,305 @@ namespace hospital_data_update_App
             label_NumberOf_ABm.Text = Convert.ToString(Blood_Type_ABMinus);
             label_NumberOf_Op.Text = Convert.ToString(Blood_Type_OPlus);
             label_NumberOf_Om.Text = Convert.ToString(Blood_Type_OMinus);
+        }
 
+        private void updateLabelRoom()
+        {
+            Label_num_cur_MED.Text = Convert.ToString(Room_CurSize_MED);
+            Label_num_cur_IR.Text = Convert.ToString(Room_CurSize_IR);
+            Label_num_cur_ICU.Text = Convert.ToString(Room_CurSize_ICU);
+            Label_num_cur_EOR.Text = Convert.ToString(Room_CurSize_EOR);
 
+            Label_num_all_MED.Text = "/" + Convert.ToString(Room_MaxSize_MED);
+            Label_num_all_IR.Text = "/" + Convert.ToString(Room_MaxSize_IR);
+            Label_num_all_ICU.Text = "/" + Convert.ToString(Room_MaxSize_ICU);
+            Label_num_all_EOR.Text = "/" + Convert.ToString(Room_MaxSize_EOR);
 
         }
 
+        private bool CheckIfMin(int Type)
+        {
+            if (Type <= 0)
+            {
+                MessageBox.Show("Blood Type is Zero");
+                return false;
+            }
+            return true;
 
+        }
 
+        private bool CheckIfMax(int Type)
+        {
+            return true;
+        }
+        private void Lable_inc_Type_Ap_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_APlus))
+            {
+                Blood_Type_APlus++;
+                updateLabelBlood();
+                label2.Text = Convert.ToString(DateTime.Now);
+            }
 
+        }
+
+        private void Lable_dec_Type_Ap_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_APlus))
+            {
+                Blood_Type_APlus--;
+                updateLabelBlood();
+                label2.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_Bp_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_BPlus))
+            {
+                Blood_Type_BPlus++;
+                updateLabelBlood();
+                label23.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_Bp_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_BPlus))
+            {
+                Blood_Type_BPlus--;
+                updateLabelBlood();
+                label23.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_ABp_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_ABPlus))
+            {
+                Blood_Type_ABPlus++;
+                updateLabelBlood();
+                label13.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_ABp_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_ABPlus))
+            {
+                Blood_Type_ABPlus--;
+                updateLabelBlood();
+                label13.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_Op_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_OPlus))
+            {
+                Blood_Type_OPlus++;
+                updateLabelBlood();
+                label33.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_Op_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_OPlus))
+            {
+                Blood_Type_OPlus--;
+                updateLabelBlood();
+                label33.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_Am_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_AMinus))
+            {
+                Blood_Type_AMinus++;
+                updateLabelBlood();
+                label3.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_Am_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_AMinus))
+            {
+                Blood_Type_AMinus--;
+                updateLabelBlood();
+                label3.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_Bm_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_BMinus))
+            {
+                Blood_Type_BMinus++;
+                updateLabelBlood();
+                label28.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_Bm_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_BMinus))
+            {
+                Blood_Type_BMinus--;
+                updateLabelBlood();
+                label28.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_ABm_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_ABMinus))
+            {
+                Blood_Type_ABMinus++;
+                updateLabelBlood();
+                label18.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_ABm_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_ABMinus))
+            {
+                Blood_Type_ABMinus--;
+                updateLabelBlood();
+                label18.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Type_Om_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMax(Blood_Type_OMinus))
+            {
+                Blood_Type_OMinus++;
+                updateLabelBlood();
+                label38.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_dec_Type_Om_Click(object sender, EventArgs e)
+        {
+            if (CheckIfMin(Blood_Type_OMinus))
+            {
+                Blood_Type_OMinus--;
+                updateLabelBlood();
+                label38.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private bool NotOverMax(int curr, int Max)
+        {
+            if (curr < Max)
+                return true;
+            return false;
+        }
+        private void Lable_inc_Room_MED_Click(object sender, EventArgs e)
+        {
+            if (NotOverMax(Room_CurSize_MED, Room_MaxSize_MED))
+            {
+                Room_CurSize_MED++;
+                updateLabelRoom();
+                label14.Text = Convert.ToString(DateTime.Now);
+            }
+        }
+
+        private void Lable_inc_Room_IR_Click(object sender, EventArgs e)
+        {
+            if (NotOverMax(Room_CurSize_IR, Room_MaxSize_IR))
+            {
+                Room_CurSize_IR++;
+                updateLabelRoom();
+                label8.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_inc_Room_ICU_Click(object sender, EventArgs e)
+        {
+            if (NotOverMax(Room_CurSize_ICU, Room_MaxSize_ICU))
+            {
+                Room_CurSize_ICU++;
+                updateLabelRoom();
+                label22.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_inc_Room_EOR_Click(object sender, EventArgs e)
+        {
+            if (NotOverMax(Room_CurSize_EOR, Room_MaxSize_EOR))
+            {
+                Room_CurSize_EOR++;
+                updateLabelRoom();
+                label32.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_dec_Room_MED_Click(object sender, EventArgs e)
+        {
+            if (Room_CurSize_MED > 0)
+            {
+                Room_CurSize_MED--;
+                updateLabelRoom();
+                label14.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_dec_Room_IS_Click(object sender, EventArgs e)
+        {
+            if (Room_CurSize_IR > 0)
+            {
+                Room_CurSize_IR--;
+                updateLabelRoom();
+                label8.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_dec_Room_ICU_Click(object sender, EventArgs e)
+        {
+            if (Room_CurSize_ICU > 0)
+            {
+                Room_CurSize_ICU--;
+                updateLabelRoom();
+                label22.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void Lable_dec_Room_EOR_Click(object sender, EventArgs e)
+        {
+            if (Room_CurSize_EOR > 0)
+            {
+                Room_CurSize_EOR--;
+                updateLabelRoom();
+                label32.Text = Convert.ToString(DateTime.Now);
+
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel9_MouseClick(object sender, MouseEventArgs e)
+        {
+            ClassRound classRound = new ClassRound(); 
+            label4.Text= classRound.HospitalID;
+        }
     }
 }
