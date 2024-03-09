@@ -17,3 +17,4 @@ D:\Arduino\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\
 D:\Arduino\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.Login.resources
 D:\Arduino\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.Properties.Resources.resources
 D:\Arduino\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.Message.resources
+D:\Arduino\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.MainPage.resources

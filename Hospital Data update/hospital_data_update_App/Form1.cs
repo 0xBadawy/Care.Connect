@@ -62,5 +62,7 @@ namespace hospital_data_update_App
             label10.Text = Convert.ToString(DateTime.Now);
 
         }
+
+        
     }
 }
