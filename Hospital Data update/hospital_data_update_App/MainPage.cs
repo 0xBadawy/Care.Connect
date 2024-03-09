@@ -28,6 +28,8 @@ namespace hospital_data_update_App
             //  panel4.BackColor = Color.Red;
         }
 
+        public int HospitalID = 0;
+
         private int Blood_Type_APlus = 23;
         private int Blood_Type_AMinus = 3;
         private int Blood_Type_BPlus = 32;
@@ -36,8 +38,6 @@ namespace hospital_data_update_App
         private int Blood_Type_ABMinus = 0;
         private int Blood_Type_OPlus = 0;
         private int Blood_Type_OMinus = 21;
-
-
 
         private int Room_MaxSize_MED = 4;
         private int Room_MaxSize_IR = 7;
@@ -48,6 +48,8 @@ namespace hospital_data_update_App
         private int Room_CurSize_IR = 2;
         private int Room_CurSize_ICU = 9;
         private int Room_CurSize_EOR = 8;
+
+
 
 
 
@@ -506,8 +508,6 @@ namespace hospital_data_update_App
 
         private void panel9_MouseClick(object sender, MouseEventArgs e)
         {
-            ClassRound classRound = new ClassRound(); 
-            label4.Text= classRound.HospitalID;
         }
     }
 }

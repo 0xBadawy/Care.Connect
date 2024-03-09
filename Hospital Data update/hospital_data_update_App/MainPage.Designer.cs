@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             Pan_Main = new Panel();
             panel_content = new Panel();
+            panel9 = new Panel();
+            label5 = new Label();
+            label4 = new Label();
             panel_type_ABm = new Panel();
             Lable_dec_Type_ABm = new Label();
             label1 = new Label();
@@ -120,6 +123,9 @@
             label_NumberOf_Ap = new Label();
             label7 = new Label();
             panel1 = new Panel();
+            label9 = new Label();
+            pictureBox16 = new PictureBox();
+            pictureBox17 = new PictureBox();
             panel_left = new Panel();
             panel5 = new Panel();
             pictureBox12 = new PictureBox();
@@ -127,11 +133,9 @@
             pictureBox11 = new PictureBox();
             panel2 = new Panel();
             pictureBox9 = new PictureBox();
-            panel9 = new Panel();
-            label4 = new Label();
-            label5 = new Label();
             Pan_Main.SuspendLayout();
             panel_content.SuspendLayout();
+            panel9.SuspendLayout();
             panel_type_ABm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel_type_ABp.SuspendLayout();
@@ -156,6 +160,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel_type_Ap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             panel_left.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -163,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            panel9.SuspendLayout();
             SuspendLayout();
             // 
             // Pan_Main
@@ -199,6 +205,40 @@
             panel_content.Name = "panel_content";
             panel_content.Size = new Size(1184, 651);
             panel_content.TabIndex = 2;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.White;
+            panel9.Controls.Add(label5);
+            panel9.Controls.Add(label4);
+            panel9.Location = new Point(622, 561);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(546, 67);
+            panel9.TabIndex = 6;
+            panel9.MouseClick += panel9_MouseClick;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label5.AutoSize = true;
+            label5.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(7, 33);
+            label5.Name = "label5";
+            label5.Size = new Size(175, 27);
+            label5.TabIndex = 4;
+            label5.Text = "Hospital Name : ";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label4.AutoSize = true;
+            label4.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(7, 6);
+            label4.Name = "label4";
+            label4.Size = new Size(137, 27);
+            label4.TabIndex = 4;
+            label4.Text = "Hospital ID : ";
+            label4.Click += label4_Click;
             // 
             // panel_type_ABm
             // 
@@ -1263,11 +1303,47 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(pictureBox16);
+            panel1.Controls.Add(pictureBox17);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(59, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1184, 45);
             panel1.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            label9.AutoSize = true;
+            label9.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ControlDarkDark;
+            label9.Location = new Point(6, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(139, 27);
+            label9.TabIndex = 4;
+            label9.Text = "CareConnect";
+            label9.Click += label4_Click;
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
+            pictureBox16.Location = new Point(1136, 10);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(25, 25);
+            pictureBox16.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox16.TabIndex = 5;
+            pictureBox16.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
+            pictureBox17.Location = new Point(1087, 10);
+            pictureBox17.Name = "pictureBox17";
+            pictureBox17.Size = new Size(25, 25);
+            pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox17.TabIndex = 5;
+            pictureBox17.TabStop = false;
             // 
             // panel_left
             // 
@@ -1336,40 +1412,6 @@
             pictureBox9.TabStop = false;
             pictureBox9.Click += pictureBox9_Click;
             // 
-            // panel9
-            // 
-            panel9.BackColor = Color.White;
-            panel9.Controls.Add(label5);
-            panel9.Controls.Add(label4);
-            panel9.Location = new Point(622, 561);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(546, 67);
-            panel9.TabIndex = 6;
-            panel9.MouseClick += panel9_MouseClick;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            label4.AutoSize = true;
-            label4.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(7, 6);
-            label4.Name = "label4";
-            label4.Size = new Size(137, 27);
-            label4.TabIndex = 4;
-            label4.Text = "Hospital ID : ";
-            label4.Click += label4_Click;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            label5.AutoSize = true;
-            label5.Font = new Font("Roboto", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(9, 33);
-            label5.Name = "label5";
-            label5.Size = new Size(175, 27);
-            label5.TabIndex = 4;
-            label5.Text = "Hospital Name : ";
-            // 
             // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1382,6 +1424,8 @@
             Text = "MainPage";
             Pan_Main.ResumeLayout(false);
             panel_content.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             panel_type_ABm.ResumeLayout(false);
             panel_type_ABm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -1418,6 +1462,10 @@
             panel_type_Ap.ResumeLayout(false);
             panel_type_Ap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             panel_left.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -1425,8 +1473,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            panel9.ResumeLayout(false);
-            panel9.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1533,5 +1579,8 @@
         private Panel panel9;
         private Label label5;
         private Label label4;
+        private Label label9;
+        private PictureBox pictureBox17;
+        private PictureBox pictureBox16;
     }
 }

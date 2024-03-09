@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iMCY2Wf1DwIEUrS7a85cmKGXSwTRGLWNYdSmTAKucEBMRxbC8+rlXkEf7Ow0+zzBE+B7fT0vWbNki/MAlRR4OQ==",
+  "dgSpecHash": "Ao9BtPDPsZE3J0C+7MyMQPn8FiSKejmkF83U48hMDri9vUpVCfLnhkZyjqQVbll3SqnGut718xwSamw1XcnZTg==",
   "success": true,
-  "projectFilePath": "D:\\Arduino\\Care Connect\\Hospital Data update\\hospital_data_update_App\\hospital_data_update_App.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "H:\\projects\\Care Connect\\Hospital Data update\\hospital_data_update_App\\hospital_data_update_App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.6\\guna.ui2.winforms.2.0.4.6.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.management\\6.0.0\\system.management.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
