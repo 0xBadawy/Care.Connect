@@ -23,6 +23,15 @@ namespace hospital_data_update_App
             LoginDesignB();
         }
 
+
+
+        private int HospitalID = 0;
+        private string UserName = "";
+        private string Password = "";
+        
+
+
+
         void LoginDesignB()
         {
             FormBorderStyle = FormBorderStyle.None;
@@ -136,6 +145,8 @@ namespace hospital_data_update_App
 
             }
         }
+
+        
         public void RoundPanelBorder(Panel panel, int cornerRadius)
         {
             GraphicsPath path = new GraphicsPath();

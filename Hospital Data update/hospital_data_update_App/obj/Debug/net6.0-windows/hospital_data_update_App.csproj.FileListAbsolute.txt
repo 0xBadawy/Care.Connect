@@ -43,3 +43,4 @@ H:\projects\Care Connect\Hospital Data update\hospital_data_update_App\bin\Debug
 H:\projects\Care Connect\Hospital Data update\hospital_data_update_App\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
 H:\projects\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.csproj.AssemblyReference.cache
 H:\projects\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.csproj.CopyComplete
+H:\projects\Care Connect\Hospital Data update\hospital_data_update_App\obj\Debug\net6.0-windows\hospital_data_update_App.HospitalInfo.resources

@@ -17,16 +17,6 @@ namespace hospital_data_update_App
 
         private const int CornerRadius = 50;
 
-        public MainPage()
-        {
-            InitializeComponent();
-            RoundPanelBorder(Pan_Main, CornerRadius);
-            RoundMainBloodPanel();
-            RoundLables();
-            updateLabelBlood();
-            updateLabelRoom();
-            //  panel4.BackColor = Color.Red;
-        }
 
         public int HospitalID = 0;
 
@@ -49,11 +39,32 @@ namespace hospital_data_update_App
         private int Room_CurSize_ICU = 9;
         private int Room_CurSize_EOR = 8;
 
+        private DateTime LastUpdate_Type_APlus= DateTime.Now;
+        private DateTime LastUpdate_Type_AMinus = DateTime.Now;
+        private DateTime LastUpdate_Type_BPlus = DateTime.Now;
+        private DateTime LastUpdate_Type_BMinus = DateTime.Now;
+        private DateTime LastUpdate_Type_ABPlus = DateTime.Now;
+        private DateTime LastUpdate_Type_ABMinus = DateTime.Now;
+        private DateTime LastUpdate_Type_OPlus = DateTime.Now;
+        private DateTime LastUpdate_Type_OMinus = DateTime.Now;
+
+        private DateTime LastUpdate_Room_MED = DateTime.Now;
+        private DateTime LastUpdate_Room_IR = DateTime.Now;
+        private DateTime LastUpdate_Room_ICU = DateTime.Now;
+        private DateTime LastUpdate_Room_EOR = DateTime.Now;
 
 
 
-
-
+        public MainPage()
+        {
+            InitializeComponent();
+            RoundPanelBorder(Pan_Main, CornerRadius);
+            RoundMainBloodPanel();
+            RoundLables();
+            updateLabelBlood();
+            updateLabelRoom();
+        }
+     
 
         private void Pan_Main_Click(object sender, EventArgs e)
         {
@@ -259,7 +270,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_APlus--;
                 updateLabelBlood();
-                label2.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_APlus = DateTime.Now;
+                label2.Text = Convert.ToString(LastUpdate_Type_APlus);
             }
         }
 
@@ -269,7 +281,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_BPlus++;
                 updateLabelBlood();
-                label23.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_BPlus = DateTime.Now;
+                label23.Text = Convert.ToString(LastUpdate_Type_BPlus);
             }
         }
 
@@ -279,7 +292,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_BPlus--;
                 updateLabelBlood();
-                label23.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_BPlus = DateTime.Now;
+                label23.Text = Convert.ToString(LastUpdate_Type_BPlus);
             }
         }
 
@@ -289,7 +303,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_ABPlus++;
                 updateLabelBlood();
-                label13.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_BPlus = DateTime.Now;
+                label13.Text = Convert.ToString(LastUpdate_Type_BPlus);
             }
         }
 
@@ -299,7 +314,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_ABPlus--;
                 updateLabelBlood();
-                label13.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_ABPlus = DateTime.Now;
+                label13.Text = Convert.ToString(LastUpdate_Type_ABPlus);
             }
         }
 
@@ -309,7 +325,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_OPlus++;
                 updateLabelBlood();
-                label33.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_OPlus = DateTime.Now;
+                label33.Text = Convert.ToString(LastUpdate_Type_OPlus);
             }
         }
 
@@ -319,7 +336,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_OPlus--;
                 updateLabelBlood();
-                label33.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_OPlus = DateTime.Now;
+                label33.Text = Convert.ToString(LastUpdate_Type_OPlus);
             }
         }
 
@@ -329,7 +347,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_AMinus++;
                 updateLabelBlood();
-                label3.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_AMinus = DateTime.Now;
+                label3.Text = Convert.ToString(LastUpdate_Type_AMinus);
             }
         }
 
@@ -339,7 +358,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_AMinus--;
                 updateLabelBlood();
-                label3.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_AMinus = DateTime.Now;
+                label3.Text = Convert.ToString(LastUpdate_Type_AMinus);
             }
         }
 
@@ -349,7 +369,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_BMinus++;
                 updateLabelBlood();
-                label28.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_BMinus = DateTime.Now;
+                label28.Text = Convert.ToString(LastUpdate_Type_BMinus);
             }
         }
 
@@ -359,7 +380,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_BMinus--;
                 updateLabelBlood();
-                label28.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_BMinus = DateTime.Now;
+                label28.Text = Convert.ToString(LastUpdate_Type_BMinus);
             }
         }
 
@@ -369,7 +391,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_ABMinus++;
                 updateLabelBlood();
-                label18.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_ABMinus = DateTime.Now;
+                label18.Text = Convert.ToString(LastUpdate_Type_ABMinus);
             }
         }
 
@@ -379,7 +402,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_ABMinus--;
                 updateLabelBlood();
-                label18.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_ABMinus = DateTime.Now;
+                label18.Text = Convert.ToString(LastUpdate_Type_ABMinus);
             }
         }
 
@@ -389,7 +413,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_OMinus++;
                 updateLabelBlood();
-                label38.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_OMinus = DateTime.Now;
+                label38.Text = Convert.ToString(LastUpdate_Type_OMinus);
             }
         }
 
@@ -399,7 +424,8 @@ namespace hospital_data_update_App
             {
                 Blood_Type_OMinus--;
                 updateLabelBlood();
-                label38.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Type_OMinus = DateTime.Now;
+                label38.Text = Convert.ToString(LastUpdate_Type_OMinus);
             }
         }
 
@@ -420,7 +446,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_MED++;
                 updateLabelRoom();
-                label14.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_MED = DateTime.Now;
+                label14.Text = Convert.ToString(LastUpdate_Room_MED);
             }
         }
 
@@ -430,7 +457,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_IR++;
                 updateLabelRoom();
-                label8.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_MED = DateTime.Now;
+                label8.Text = Convert.ToString(LastUpdate_Room_MED);
 
             }
         }
@@ -441,7 +469,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_ICU++;
                 updateLabelRoom();
-                label22.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_ICU = DateTime.Now;
+                label22.Text = Convert.ToString(LastUpdate_Room_ICU);
 
             }
         }
@@ -452,7 +481,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_EOR++;
                 updateLabelRoom();
-                label32.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_EOR = DateTime.Now;
+                label32.Text = Convert.ToString(LastUpdate_Room_ICU);
 
             }
         }
@@ -463,7 +493,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_MED--;
                 updateLabelRoom();
-                label14.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_MED = DateTime.Now;
+                label14.Text = Convert.ToString(LastUpdate_Room_MED);
 
             }
         }
@@ -474,7 +505,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_IR--;
                 updateLabelRoom();
-                label8.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_IR = DateTime.Now;
+                label8.Text = Convert.ToString(LastUpdate_Room_IR);
 
             }
         }
@@ -485,7 +517,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_ICU--;
                 updateLabelRoom();
-                label22.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_ICU = DateTime.Now;
+                label22.Text = Convert.ToString(LastUpdate_Room_ICU);
 
             }
         }
@@ -496,7 +529,8 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_EOR--;
                 updateLabelRoom();
-                label32.Text = Convert.ToString(DateTime.Now);
+                LastUpdate_Room_EOR = DateTime.Now;
+                label32.Text = Convert.ToString(LastUpdate_Room_EOR);
 
             }
         }
