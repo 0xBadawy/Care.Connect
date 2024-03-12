@@ -9,6 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace hospital_data_update_App
 {
@@ -17,19 +24,24 @@ namespace hospital_data_update_App
 
         private const int CornerRadius = 50;
 
+        public static IFirebaseClient client;
+        public static IFirebaseConfig connection = new FirebaseConfig
+        {
+            AuthSecret = "Ssanw9rmCXkVYABLZ9pjCX0CECOgIM3bPBCs6zv6",
+            BasePath = "https://careconnect-1c393-default-rtdb.firebaseio.com/"
+        };
+
         public Login()
         {
             InitializeComponent();
             LoginDesignB();
+            client = new FireSharp.FirebaseClient(connection);
         }
 
 
-
-        private int HospitalID = 0;
-        private string UserName = "";
+        public static int HospitalID =0 ;
+        public static string UserName = "";
         private string Password = "";
-        
-
 
 
         void LoginDesignB()
@@ -70,7 +82,7 @@ namespace hospital_data_update_App
             base.OnPaint(e);
         }
 
-       
+
         private void RoundPictureBox(PictureBox pictureBox)
         {
             int borderRadius = 52;
@@ -133,20 +145,31 @@ namespace hospital_data_update_App
             }
             else
             {
-                 this.Hide();
-                MainPage mainPage = new MainPage();
-                mainPage.Show();
+                FirebaseResponse loginResponse = client.Get("CareConnect/HDUALogin/" + Input_HospitalID.Text);
+                if (loginResponse.Body == "null")
+                    MessageBox.Show("Incorrect Hospital ID");
+                else
+                {
+                    JObject loginData = JObject.Parse(loginResponse.Body);
+                    Password = loginData["Password"].ToString();
+                    if (Input_Password.Text != Password)
+                        MessageBox.Show("Incorrect Password");
+                    else
+                    {
+                        HospitalID = Convert.ToInt32(loginData["ID"]);
+                        UserName = loginData["UserName"].ToString();
 
-                ClassRound o = new ClassRound();
-                o.HospitalID= Input_HospitalID.Text;
-
-
-
-
+                        this.Hide();
+                        MainPage mainPage = new MainPage();
+                        mainPage.Show();
+                        ClassRound o = new ClassRound();
+                        o.HospitalID = Input_HospitalID.Text;
+                    }
+                }
             }
         }
 
-        
+
         public void RoundPanelBorder(Panel panel, int cornerRadius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -158,5 +181,12 @@ namespace hospital_data_update_App
 
             panel.Region = new Region(path);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

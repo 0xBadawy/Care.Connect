@@ -8,63 +8,108 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json.Linq;
 
 
 namespace hospital_data_update_App
 {
+
     public partial class MainPage : Form
     {
 
         private const int CornerRadius = 50;
 
+        private int Blood_Type_APlus;
+        private int Blood_Type_AMinus;
+        private int Blood_Type_BPlus ;
+        private int Blood_Type_BMinus;
+        private int Blood_Type_ABPlus;
+        private int Blood_Type_ABMinus;
+        private int Blood_Type_OPlus ;
+        private int Blood_Type_OMinus ;
 
-        public int HospitalID = 0;
+        private int Room_MaxSize_MED ;
+        private int Room_MaxSize_IR ;
+        private int Room_MaxSize_ICU ;
+        private int Room_MaxSize_EOR ;
 
-        private int Blood_Type_APlus = 23;
-        private int Blood_Type_AMinus = 3;
-        private int Blood_Type_BPlus = 32;
-        private int Blood_Type_BMinus = 3;
-        private int Blood_Type_ABPlus = 34;
-        private int Blood_Type_ABMinus = 0;
-        private int Blood_Type_OPlus = 0;
-        private int Blood_Type_OMinus = 21;
+        private int Room_CurSize_MED ;
+        private int Room_CurSize_IR ;
+        private int Room_CurSize_ICU ;
+        private int Room_CurSize_EOR ;
 
-        private int Room_MaxSize_MED = 4;
-        private int Room_MaxSize_IR = 7;
-        private int Room_MaxSize_ICU = 6;
-        private int Room_MaxSize_EOR = 2;
+        private string LastUpdate_Type_APlus ;
+        private string LastUpdate_Type_AMinus ;
+        private string LastUpdate_Type_BPlus ;
+        private string LastUpdate_Type_BMinus ;
+        private string LastUpdate_Type_ABPlus ;
+        private string LastUpdate_Type_ABMinus ;
+        private string LastUpdate_Type_OPlus ;
+        private string LastUpdate_Type_OMinus ;
 
-        private int Room_CurSize_MED = 3;
-        private int Room_CurSize_IR = 2;
-        private int Room_CurSize_ICU = 9;
-        private int Room_CurSize_EOR = 8;
-
-        private DateTime LastUpdate_Type_APlus= DateTime.Now;
-        private DateTime LastUpdate_Type_AMinus = DateTime.Now;
-        private DateTime LastUpdate_Type_BPlus = DateTime.Now;
-        private DateTime LastUpdate_Type_BMinus = DateTime.Now;
-        private DateTime LastUpdate_Type_ABPlus = DateTime.Now;
-        private DateTime LastUpdate_Type_ABMinus = DateTime.Now;
-        private DateTime LastUpdate_Type_OPlus = DateTime.Now;
-        private DateTime LastUpdate_Type_OMinus = DateTime.Now;
-
-        private DateTime LastUpdate_Room_MED = DateTime.Now;
-        private DateTime LastUpdate_Room_IR = DateTime.Now;
-        private DateTime LastUpdate_Room_ICU = DateTime.Now;
-        private DateTime LastUpdate_Room_EOR = DateTime.Now;
+        private string LastUpdate_Room_MED ;
+        private string LastUpdate_Room_IR  ;
+        private string LastUpdate_Room_ICU ;
+        private string LastUpdate_Room_EOR ;
 
 
 
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();       
             RoundPanelBorder(Pan_Main, CornerRadius);
             RoundMainBloodPanel();
             RoundLables();
+            InitialValues();
             updateLabelBlood();
             updateLabelRoom();
         }
-     
+        private void InitialValues()
+        {
+            FirebaseResponse DataResponse = Login.client.Get("CareConnect/HospitalData/" + Convert.ToString(Login.HospitalID));
+            JObject HospitalData = JObject.Parse(DataResponse.Body);
+
+            Blood_Type_APlus = Convert.ToInt32(HospitalData["APlus"]);
+            Blood_Type_AMinus = Convert.ToInt32(HospitalData["AMinus"]);
+
+            Blood_Type_BPlus = Convert.ToInt32(HospitalData["BPlus"]);
+            Blood_Type_BMinus = Convert.ToInt32(HospitalData["BMinus"]);
+            Blood_Type_ABPlus = Convert.ToInt32(HospitalData["ABPlus"]);
+            Blood_Type_ABMinus = Convert.ToInt32(HospitalData["ABMinus"]);
+            Blood_Type_OPlus = Convert.ToInt32(HospitalData["OPlus"]);
+            Blood_Type_OMinus = Convert.ToInt32(HospitalData["OMinus"]);
+
+            Room_MaxSize_MED = Convert.ToInt32(HospitalData["MaxSize_MED"]);
+            Room_MaxSize_IR = Convert.ToInt32(HospitalData["MaxSize_IR"]);
+            Room_MaxSize_ICU = Convert.ToInt32(HospitalData["MaxSize_ICU"]);
+            Room_MaxSize_EOR = Convert.ToInt32(HospitalData["MaxSize_EOR"]);
+
+            Room_CurSize_MED = Convert.ToInt32(HospitalData["CurSize_MED"]);
+            Room_CurSize_IR = Convert.ToInt32(HospitalData["CurSize_IR"]); 
+            Room_CurSize_ICU = Convert.ToInt32(HospitalData["CurSize_ICU"]); 
+            Room_CurSize_EOR = Convert.ToInt32(HospitalData["CurSize_EOR"]);
+
+            label2.Text = HospitalData["APlus_LastEdit"].ToString();
+            label3.Text = HospitalData["AMinus_LastEdit"].ToString();
+            label23.Text = HospitalData["BPlus_LastEdit"].ToString();
+            label28.Text = HospitalData["BMinus_LastEdit"].ToString();
+            label13.Text = HospitalData["ABPlus_LastEdit"].ToString();
+            label18.Text = HospitalData["ABMinus_LastEdit"].ToString();
+            label33.Text = HospitalData["OPlus_LastEdit"].ToString();
+            label38.Text = HospitalData["OMinus_LastEdit"].ToString();
+
+            label14.Text = HospitalData["MED_LastEdit"].ToString();
+            label8.Text = HospitalData["IR_LastEdit"].ToString();
+            label22.Text = HospitalData["ICU_LastEdit"].ToString();
+            label32.Text = HospitalData["EOR_LastEdit"].ToString();
+
+            label10.Text = Login.UserName.ToString();
+            label11.Text = HospitalData["Name"].ToString();
+        }
 
         private void Pan_Main_Click(object sender, EventArgs e)
         {
@@ -203,17 +248,12 @@ namespace hospital_data_update_App
             RoundLabelBorder(Lable_inc_Room_ICU, 20);
             RoundLabelBorder(Lable_inc_Room_IR, 20);
             RoundLabelBorder(Lable_inc_Room_MED, 20);
-
-
-
-
-
-
         }
 
 
         private void updateLabelBlood()
         {
+           
             label_NumberOf_Ap.Text = Convert.ToString(Blood_Type_APlus);
             label_NumberOf_Am.Text = Convert.ToString(Blood_Type_AMinus);
             label_NumberOf_Bp.Text = Convert.ToString(Blood_Type_BPlus);
@@ -253,179 +293,355 @@ namespace hospital_data_update_App
         {
             return true;
         }
-        private void Lable_inc_Type_Ap_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Ap_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_APlus))
             {
                 Blood_Type_APlus++;
                 updateLabelBlood();
                 label2.Text = Convert.ToString(DateTime.Now);
-            }
 
+                var UpdateBlood = new Dictionary<string, object>
+                {
+                    { "APlus", Blood_Type_APlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateBlood);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "APlus_LastEdit" ,  label2.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
+
+            }
         }
 
-        private void Lable_dec_Type_Ap_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Ap_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_APlus))
             {
                 Blood_Type_APlus--;
                 updateLabelBlood();
-                LastUpdate_Type_APlus = DateTime.Now;
+                LastUpdate_Type_APlus = Convert.ToString(DateTime.Now);
                 label2.Text = Convert.ToString(LastUpdate_Type_APlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "APlus", Blood_Type_APlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "APlus_LastEdit" ,  label2.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_Bp_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Bp_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_BPlus))
             {
                 Blood_Type_BPlus++;
                 updateLabelBlood();
-                LastUpdate_Type_BPlus = DateTime.Now;
+                LastUpdate_Type_BPlus = Convert.ToString(DateTime.Now);
                 label23.Text = Convert.ToString(LastUpdate_Type_BPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "BPlus", Blood_Type_BPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "BPlus_LastEdit" ,  label23.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_Bp_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Bp_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_BPlus))
             {
                 Blood_Type_BPlus--;
                 updateLabelBlood();
-                LastUpdate_Type_BPlus = DateTime.Now;
+                LastUpdate_Type_BPlus = Convert.ToString(DateTime.Now);
                 label23.Text = Convert.ToString(LastUpdate_Type_BPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "BPlus", Blood_Type_BPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "BPlus_LastEdit" ,  label23.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_ABp_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_ABp_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_ABPlus))
             {
                 Blood_Type_ABPlus++;
                 updateLabelBlood();
-                LastUpdate_Type_BPlus = DateTime.Now;
+                LastUpdate_Type_BPlus = Convert.ToString(DateTime.Now);
                 label13.Text = Convert.ToString(LastUpdate_Type_BPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "ABPlus", Blood_Type_ABPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ABPlus_LastEdit" ,  label13.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_ABp_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_ABp_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_ABPlus))
             {
                 Blood_Type_ABPlus--;
                 updateLabelBlood();
-                LastUpdate_Type_ABPlus = DateTime.Now;
+                LastUpdate_Type_ABPlus = Convert.ToString(DateTime.Now);
                 label13.Text = Convert.ToString(LastUpdate_Type_ABPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "ABPlus", Blood_Type_ABPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ABPlus_LastEdit" ,  label13.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_Op_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Op_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_OPlus))
             {
                 Blood_Type_OPlus++;
                 updateLabelBlood();
-                LastUpdate_Type_OPlus = DateTime.Now;
+                LastUpdate_Type_OPlus = Convert.ToString(DateTime.Now);
                 label33.Text = Convert.ToString(LastUpdate_Type_OPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "OPlus", Blood_Type_OPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "OPlus_LastEdit" ,  label33.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_Op_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Op_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_OPlus))
             {
                 Blood_Type_OPlus--;
                 updateLabelBlood();
-                LastUpdate_Type_OPlus = DateTime.Now;
+                LastUpdate_Type_OPlus = Convert.ToString(DateTime.Now);
                 label33.Text = Convert.ToString(LastUpdate_Type_OPlus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "OPlus", Blood_Type_OPlus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "OPlus_LastEdit" ,  label33.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_Am_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Am_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_AMinus))
             {
                 Blood_Type_AMinus++;
                 updateLabelBlood();
-                LastUpdate_Type_AMinus = DateTime.Now;
+                LastUpdate_Type_AMinus = Convert.ToString(DateTime.Now);
                 label3.Text = Convert.ToString(LastUpdate_Type_AMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "AMinus", Blood_Type_AMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "AMinus_LastEdit" ,  label3.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_Am_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Am_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_AMinus))
             {
                 Blood_Type_AMinus--;
                 updateLabelBlood();
-                LastUpdate_Type_AMinus = DateTime.Now;
+                LastUpdate_Type_AMinus = Convert.ToString(DateTime.Now);
                 label3.Text = Convert.ToString(LastUpdate_Type_AMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "AMinus", Blood_Type_AMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "AMinus_LastEdit" ,  label3.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_Bm_Click(object sender, EventArgs e)
+        private  async void Lable_inc_Type_Bm_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_BMinus))
             {
                 Blood_Type_BMinus++;
                 updateLabelBlood();
-                LastUpdate_Type_BMinus = DateTime.Now;
+                LastUpdate_Type_BMinus = Convert.ToString(DateTime.Now);
                 label28.Text = Convert.ToString(LastUpdate_Type_BMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "BMinus", Blood_Type_BMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "BMinus_LastEdit" ,  label28.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_Bm_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Bm_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_BMinus))
             {
                 Blood_Type_BMinus--;
                 updateLabelBlood();
-                LastUpdate_Type_BMinus = DateTime.Now;
+                LastUpdate_Type_BMinus = Convert.ToString(DateTime.Now);
                 label28.Text = Convert.ToString(LastUpdate_Type_BMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "BMinus", Blood_Type_BMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "BMinus_LastEdit" ,  label28.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_ABm_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_ABm_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_ABMinus))
             {
                 Blood_Type_ABMinus++;
                 updateLabelBlood();
-                LastUpdate_Type_ABMinus = DateTime.Now;
+                LastUpdate_Type_ABMinus = Convert.ToString(DateTime.Now);
                 label18.Text = Convert.ToString(LastUpdate_Type_ABMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "ABMinus", Blood_Type_ABMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ABMinus_LastEdit" ,  label18.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_ABm_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_ABm_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_ABMinus))
             {
                 Blood_Type_ABMinus--;
                 updateLabelBlood();
-                LastUpdate_Type_ABMinus = DateTime.Now;
+                LastUpdate_Type_ABMinus = Convert.ToString(DateTime.Now);
                 label18.Text = Convert.ToString(LastUpdate_Type_ABMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "ABMinus", Blood_Type_ABMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ABMinus_LastEdit" ,  label18.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Type_Om_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Om_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_OMinus))
             {
                 Blood_Type_OMinus++;
                 updateLabelBlood();
-                LastUpdate_Type_OMinus = DateTime.Now;
+                LastUpdate_Type_OMinus = Convert.ToString(DateTime.Now);
                 label38.Text = Convert.ToString(LastUpdate_Type_OMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "OMinus", Blood_Type_OMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "OMinus_LastEdit" ,  label38.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Type_Om_Click(object sender, EventArgs e)
+        private async void Lable_dec_Type_Om_Click(object sender, EventArgs e)
         {
             if (CheckIfMin(Blood_Type_OMinus))
             {
                 Blood_Type_OMinus--;
                 updateLabelBlood();
-                LastUpdate_Type_OMinus = DateTime.Now;
+                LastUpdate_Type_OMinus = Convert.ToString(DateTime.Now);
                 label38.Text = Convert.ToString(LastUpdate_Type_OMinus);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "OMinus", Blood_Type_OMinus }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "OMinus_LastEdit" ,  label38.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
@@ -440,108 +656,211 @@ namespace hospital_data_update_App
                 return true;
             return false;
         }
-        private void Lable_inc_Room_MED_Click(object sender, EventArgs e)
+        private async void Lable_inc_Room_MED_Click(object sender, EventArgs e)
         {
             if (NotOverMax(Room_CurSize_MED, Room_MaxSize_MED))
             {
                 Room_CurSize_MED++;
                 updateLabelRoom();
-                LastUpdate_Room_MED = DateTime.Now;
+                LastUpdate_Room_MED = Convert.ToString(DateTime.Now);
                 label14.Text = Convert.ToString(LastUpdate_Room_MED);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_MED", Room_CurSize_MED }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "MED_LastEdit" ,  label14.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
+
             }
         }
 
-        private void Lable_inc_Room_IR_Click(object sender, EventArgs e)
+        private async void Lable_inc_Room_IR_Click(object sender, EventArgs e)
         {
             if (NotOverMax(Room_CurSize_IR, Room_MaxSize_IR))
             {
                 Room_CurSize_IR++;
                 updateLabelRoom();
-                LastUpdate_Room_MED = DateTime.Now;
+                LastUpdate_Room_MED = Convert.ToString(DateTime.Now);
                 label8.Text = Convert.ToString(LastUpdate_Room_MED);
 
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_IR", Room_CurSize_IR }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "IR_LastEdit" ,  label8.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_inc_Room_ICU_Click(object sender, EventArgs e)
+        private async void Lable_inc_Room_ICU_Click(object sender, EventArgs e)
         {
             if (NotOverMax(Room_CurSize_ICU, Room_MaxSize_ICU))
             {
                 Room_CurSize_ICU++;
                 updateLabelRoom();
-                LastUpdate_Room_ICU = DateTime.Now;
+                LastUpdate_Room_ICU = Convert.ToString(DateTime.Now);
                 label22.Text = Convert.ToString(LastUpdate_Room_ICU);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_ICU", Room_CurSize_ICU }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ICU_LastEdit" ,  label22.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
 
             }
         }
 
-        private void Lable_inc_Room_EOR_Click(object sender, EventArgs e)
+        private async void Lable_inc_Room_EOR_Click(object sender, EventArgs e)
         {
             if (NotOverMax(Room_CurSize_EOR, Room_MaxSize_EOR))
             {
                 Room_CurSize_EOR++;
                 updateLabelRoom();
-                LastUpdate_Room_EOR = DateTime.Now;
+                LastUpdate_Room_EOR = Convert.ToString(DateTime.Now);
                 label32.Text = Convert.ToString(LastUpdate_Room_ICU);
 
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_EOR", Room_CurSize_EOR }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "EOR_LastEdit" ,  label32.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
         }
 
-        private void Lable_dec_Room_MED_Click(object sender, EventArgs e)
+        private async void Lable_dec_Room_MED_Click(object sender, EventArgs e)
         {
             if (Room_CurSize_MED > 0)
             {
                 Room_CurSize_MED--;
                 updateLabelRoom();
-                LastUpdate_Room_MED = DateTime.Now;
+                LastUpdate_Room_MED = Convert.ToString(DateTime.Now)  ;
                 label14.Text = Convert.ToString(LastUpdate_Room_MED);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_MED", Room_CurSize_MED }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "MED_LastEdit" ,  label14.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
 
             }
         }
 
-        private void Lable_dec_Room_IS_Click(object sender, EventArgs e)
+        private async void Lable_dec_Room_IS_Click(object sender, EventArgs e)
         {
             if (Room_CurSize_IR > 0)
             {
                 Room_CurSize_IR--;
                 updateLabelRoom();
-                LastUpdate_Room_IR = DateTime.Now;
+                LastUpdate_Room_IR = Convert.ToString(DateTime.Now);
                 label8.Text = Convert.ToString(LastUpdate_Room_IR);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_IR", Room_CurSize_IR }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "IR_LastEdit" ,  label8.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
 
             }
         }
 
-        private void Lable_dec_Room_ICU_Click(object sender, EventArgs e)
+        private async void Lable_dec_Room_ICU_Click(object sender, EventArgs e)
         {
             if (Room_CurSize_ICU > 0)
             {
                 Room_CurSize_ICU--;
                 updateLabelRoom();
-                LastUpdate_Room_ICU = DateTime.Now;
+                
+                LastUpdate_Room_ICU = Convert.ToString(DateTime.Now);
                 label22.Text = Convert.ToString(LastUpdate_Room_ICU);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_ICU", Room_CurSize_ICU }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "ICU_LastEdit" ,  label22.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
 
             }
         }
 
-        private void Lable_dec_Room_EOR_Click(object sender, EventArgs e)
+        private async void Lable_dec_Room_EOR_Click(object sender, EventArgs e)
         {
             if (Room_CurSize_EOR > 0)
             {
                 Room_CurSize_EOR--;
                 updateLabelRoom();
-                LastUpdate_Room_EOR = DateTime.Now;
+                LastUpdate_Room_EOR = Convert.ToString(DateTime.Now);
                 label32.Text = Convert.ToString(LastUpdate_Room_EOR);
+
+                var updateData = new Dictionary<string, object>
+                {
+                    { "CurSize_EOR", Room_CurSize_EOR }
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", updateData);
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { "EOR_LastEdit" ,  label32.Text}
+                };
+                await Login.client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
 
             }
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void panel9_MouseClick(object sender, MouseEventArgs e)
         {
+        }
+
+        private void label_NumberOf_Bp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label_NumberOf_Ap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

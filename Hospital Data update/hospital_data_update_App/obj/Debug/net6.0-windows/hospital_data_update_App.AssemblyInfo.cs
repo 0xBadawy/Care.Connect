@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("hospital_data_update_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f052e976d134c22df09f405e2ae41ed413bfd9fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("hospital_data_update_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("hospital_data_update_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
