@@ -25,42 +25,42 @@ namespace hospital_data_update_App
 
         private int Blood_Type_APlus;
         private int Blood_Type_AMinus;
-        private int Blood_Type_BPlus ;
+        private int Blood_Type_BPlus;
         private int Blood_Type_BMinus;
         private int Blood_Type_ABPlus;
         private int Blood_Type_ABMinus;
-        private int Blood_Type_OPlus ;
-        private int Blood_Type_OMinus ;
+        private int Blood_Type_OPlus;
+        private int Blood_Type_OMinus;
 
-        private int Room_MaxSize_MED ;
-        private int Room_MaxSize_IR ;
-        private int Room_MaxSize_ICU ;
-        private int Room_MaxSize_EOR ;
+        private int Room_MaxSize_MED;
+        private int Room_MaxSize_IR;
+        private int Room_MaxSize_ICU;
+        private int Room_MaxSize_EOR;
 
-        private int Room_CurSize_MED ;
-        private int Room_CurSize_IR ;
-        private int Room_CurSize_ICU ;
-        private int Room_CurSize_EOR ;
+        private int Room_CurSize_MED;
+        private int Room_CurSize_IR;
+        private int Room_CurSize_ICU;
+        private int Room_CurSize_EOR;
 
-        private string LastUpdate_Type_APlus ;
-        private string LastUpdate_Type_AMinus ;
-        private string LastUpdate_Type_BPlus ;
-        private string LastUpdate_Type_BMinus ;
-        private string LastUpdate_Type_ABPlus ;
-        private string LastUpdate_Type_ABMinus ;
-        private string LastUpdate_Type_OPlus ;
-        private string LastUpdate_Type_OMinus ;
+        private string LastUpdate_Type_APlus;
+        private string LastUpdate_Type_AMinus;
+        private string LastUpdate_Type_BPlus;
+        private string LastUpdate_Type_BMinus;
+        private string LastUpdate_Type_ABPlus;
+        private string LastUpdate_Type_ABMinus;
+        private string LastUpdate_Type_OPlus;
+        private string LastUpdate_Type_OMinus;
 
-        private string LastUpdate_Room_MED ;
-        private string LastUpdate_Room_IR  ;
-        private string LastUpdate_Room_ICU ;
-        private string LastUpdate_Room_EOR ;
+        private string LastUpdate_Room_MED;
+        private string LastUpdate_Room_IR;
+        private string LastUpdate_Room_ICU;
+        private string LastUpdate_Room_EOR;
 
 
 
         public MainPage()
         {
-            InitializeComponent();       
+            InitializeComponent();
             RoundPanelBorder(Pan_Main, CornerRadius);
             RoundMainBloodPanel();
             RoundLables();
@@ -68,31 +68,34 @@ namespace hospital_data_update_App
             updateLabelBlood();
             updateLabelRoom();
         }
-        private void InitialValues()
-        {
+        private void InitialValues(){
+            // ------------- connect to firebase and get the data ----------------
             FirebaseResponse DataResponse = Login.client.Get("CareConnect/HospitalData/" + Convert.ToString(Login.HospitalID));
             JObject HospitalData = JObject.Parse(DataResponse.Body);
 
+
+
+            // ------------- update varable data ----------------
             Blood_Type_APlus = Convert.ToInt32(HospitalData["APlus"]);
             Blood_Type_AMinus = Convert.ToInt32(HospitalData["AMinus"]);
-
             Blood_Type_BPlus = Convert.ToInt32(HospitalData["BPlus"]);
             Blood_Type_BMinus = Convert.ToInt32(HospitalData["BMinus"]);
             Blood_Type_ABPlus = Convert.ToInt32(HospitalData["ABPlus"]);
             Blood_Type_ABMinus = Convert.ToInt32(HospitalData["ABMinus"]);
             Blood_Type_OPlus = Convert.ToInt32(HospitalData["OPlus"]);
             Blood_Type_OMinus = Convert.ToInt32(HospitalData["OMinus"]);
-
             Room_MaxSize_MED = Convert.ToInt32(HospitalData["MaxSize_MED"]);
             Room_MaxSize_IR = Convert.ToInt32(HospitalData["MaxSize_IR"]);
             Room_MaxSize_ICU = Convert.ToInt32(HospitalData["MaxSize_ICU"]);
             Room_MaxSize_EOR = Convert.ToInt32(HospitalData["MaxSize_EOR"]);
-
             Room_CurSize_MED = Convert.ToInt32(HospitalData["CurSize_MED"]);
-            Room_CurSize_IR = Convert.ToInt32(HospitalData["CurSize_IR"]); 
-            Room_CurSize_ICU = Convert.ToInt32(HospitalData["CurSize_ICU"]); 
+            Room_CurSize_IR = Convert.ToInt32(HospitalData["CurSize_IR"]);
+            Room_CurSize_ICU = Convert.ToInt32(HospitalData["CurSize_ICU"]);
             Room_CurSize_EOR = Convert.ToInt32(HospitalData["CurSize_EOR"]);
 
+
+
+            // ------------- update the last edit date ----------------
             label2.Text = HospitalData["APlus_LastEdit"].ToString();
             label3.Text = HospitalData["AMinus_LastEdit"].ToString();
             label23.Text = HospitalData["BPlus_LastEdit"].ToString();
@@ -101,14 +104,16 @@ namespace hospital_data_update_App
             label18.Text = HospitalData["ABMinus_LastEdit"].ToString();
             label33.Text = HospitalData["OPlus_LastEdit"].ToString();
             label38.Text = HospitalData["OMinus_LastEdit"].ToString();
-
             label14.Text = HospitalData["MED_LastEdit"].ToString();
             label8.Text = HospitalData["IR_LastEdit"].ToString();
             label22.Text = HospitalData["ICU_LastEdit"].ToString();
             label32.Text = HospitalData["EOR_LastEdit"].ToString();
 
+
+            // ------------- update the hospital name ----------------
             label10.Text = Login.UserName.ToString();
             label11.Text = HospitalData["Name"].ToString();
+
         }
 
         private void Pan_Main_Click(object sender, EventArgs e)
@@ -124,7 +129,6 @@ namespace hospital_data_update_App
             path.AddArc(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
             path.AddArc(0, panel.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
             path.CloseAllFigures();
-
             panel.Region = new Region(path);
         }
         void LoginDesignB()
@@ -169,8 +173,8 @@ namespace hospital_data_update_App
             path.AddArc(pictureBox.Width - borderRadius, pictureBox.Height - borderRadius, borderRadius, borderRadius, 0, 90);
             path.AddArc(0, pictureBox.Height - borderRadius, borderRadius, borderRadius, 90, 90);
             path.CloseAllFigures();
-
             pictureBox.Region = new Region(path);
+
         }
 
         private GraphicsPath CreateRoundRectangle(Rectangle rectangle, int cornerRadius)
@@ -253,7 +257,7 @@ namespace hospital_data_update_App
 
         private void updateLabelBlood()
         {
-           
+
             label_NumberOf_Ap.Text = Convert.ToString(Blood_Type_APlus);
             label_NumberOf_Am.Text = Convert.ToString(Blood_Type_AMinus);
             label_NumberOf_Bp.Text = Convert.ToString(Blood_Type_BPlus);
@@ -513,7 +517,7 @@ namespace hospital_data_update_App
             }
         }
 
-        private  async void Lable_inc_Type_Bm_Click(object sender, EventArgs e)
+        private async void Lable_inc_Type_Bm_Click(object sender, EventArgs e)
         {
             if (CheckIfMax(Blood_Type_BMinus))
             {
@@ -752,7 +756,7 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_MED--;
                 updateLabelRoom();
-                LastUpdate_Room_MED = Convert.ToString(DateTime.Now)  ;
+                LastUpdate_Room_MED = Convert.ToString(DateTime.Now);
                 label14.Text = Convert.ToString(LastUpdate_Room_MED);
 
                 var updateData = new Dictionary<string, object>
@@ -798,7 +802,7 @@ namespace hospital_data_update_App
             {
                 Room_CurSize_ICU--;
                 updateLabelRoom();
-                
+
                 LastUpdate_Room_ICU = Convert.ToString(DateTime.Now);
                 label22.Text = Convert.ToString(LastUpdate_Room_ICU);
 
@@ -841,7 +845,7 @@ namespace hospital_data_update_App
 
         private void label4_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel9_MouseClick(object sender, MouseEventArgs e)
