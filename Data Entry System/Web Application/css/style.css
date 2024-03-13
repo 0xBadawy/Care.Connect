@@ -1,0 +1,48 @@
+:root{
+    --primary-color: #FF6B6B;
+    --secondary-color: #FFE66D;
+    --tertiary-color: #88D8B0;
+    --quaternary-color: #4A4E69;
+    --quinary-color: #22223B;
+    --senary-color: #9A8C98;
+    --septenary-color: #C9ADA7;
+    --octonary-color: #F2E9E4;
+    --nonary-color: #F2E9E4;
+    --denary-color: #F2E9E4;
+
+
+    --navbar-color: var(#FFF);
+}
+
+*{     
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+.tab-content .tab-pane .row h3{
+    font-weight: 800;
+}
+
+.nav-item{
+    font-family: "Rubik",sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+}
+
+.navbar{
+    border-bottom: 1px solid #BDBDBD;
+}
+
+
+
+.eee{
+    /* background-color: var(--quaternary-color); */
+}
+.AllPage{
+    background-color: #f5f5f5;
+    height: 100dvh;
+}

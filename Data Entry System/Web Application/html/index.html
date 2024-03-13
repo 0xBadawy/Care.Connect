@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css.map">
+        <link rel="stylesheet" href="../css/all.min.css">
+        <link rel="stylesheet" href="../css/Fonts.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet">
+
+        <!-- cairo font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <!------------------------------------- NavBar --------------------------------------->
+        <nav class="navbar navbar-expand-lg navbar-light   "
+            style="direction: rtl;">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">
+                    CareConnect
+                    <i class="fa-solid fa-notes-medical"></i>
+                </a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0"
+                        style="direction: rtl;">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="#">الصفحة الرئيسة</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="#">الصفحة الرئيسة</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="#">الصفحة الرئيسة</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">بيانات</a>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search"
+                            placeholder="بحث" aria-label="Search">
+                        <button class="btn btn-outline-success"
+                            style="margin:0px 20px ;"
+                            type="submit">بحث</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!------------------------------------- Main Content --------------------------------------->
+        <div class="container my-5 ">
+            <nav class="nav nav-tabs justify-content-center"
+                style="direction: rtl;" id="myTab" role="tablist">
+
+                <button class="nav-link active" id="home-tab"
+                    data-bs-toggle="tab" data-bs-target="#home"
+                    type="button" role="tab" aria-controls="home"
+                    aria-selected="true">المعلومات الطبية الشخصية</button>
+
+                <button class="nav-link" id="profile-tab"
+                    data-bs-toggle="tab" data-bs-target="#profile"
+                    type="button" role="tab" aria-controls="profile"
+                    aria-selected="false">تاريخ المرض والعلاج</button>
+
+                <button class="nav-link" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact"
+                    type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">التشخيصات الطبية</button>
+
+                <button class="nav-link" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact"
+                    type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">التحاليل الطبية والنتائج</button>
+
+                <button class="nav-link" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact"
+                    type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">الأدوية والجرعات</button>
+
+                <button class="nav-link" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact"
+                    type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">المعلومات الجينية والوراثية</button>
+
+                <button class="nav-link" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact"
+                    type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">
+                    معلومات التأمين الصحي</button>
+
+            </nav>
+
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" style="direction: rtl;"
+                    id="home" role="tabpanel"
+                    aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md justify-content-center">
+                            <br>
+                            <h3>المعلومات الطبية الشخصية</h3>
+                            <p>تشمل مثل هذه البيانات الاسم، تاريخ الميلاد،
+                                الجنس، وأي معلومات شخصية أخرى ذات صلة
+                                بالمريض.</p>
+                            <br>
+
+                        </div>
+                        <div class="col-md-3"></div>
+                        <hr>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md">
+                            <br>
+                            <form class="row g-3">
+                                <div class="col-md-12">
+                                    <label for="FullName"
+                                        class="form-label">الاسم كامل</label>
+                                    <input type="text" class="form-control"
+                                        id="FullName" name="FullName">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="NationalID"
+                                        class="form-label">الرقم القومى</label>
+                                    <input type="text" class="form-control"
+                                        id="NationalID" name="NationalID">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="BirthDate"
+                                        class="form-label">تاريخ الميلاد</label>
+                                    <input type="date" class="form-control"
+                                        id="BirthDate" name="BirthDate">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="inputState"
+                                        class="form-label">المحافظة</label>
+                                    <select id="inputState" name="inputState"
+                                        class="form-select">
+                                        <option selected>اختر...</option>
+                                        <option>الاقصر</option>
+                                        <option>قنا</option>
+                                        <option>اسوان</option>
+                                        <option>القاهرة</option>
+                                        <option>اسيوط</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputCity"
+                                        class="form-label">المدينة</label>
+                                    <input type="text" class="form-control"
+                                        id="inputCity" name="City">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="inputAddress"
+                                        class="form-label">العنوان
+                                        بالتفصيل</label>
+                                    <input type="text" class="form-control"
+                                        id="inputAddress"
+                                        placeholder>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="inputPhone"
+                                        class="form-label">رقم الهاتف</label>
+                                    <input type="text" class="form-control"
+                                        id="inputPhone" name="Phone">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="inputPhoneHome"
+                                        class="form-label">رقم هاتف
+                                        المنزل</label>
+                                    <input type="text" class="form-control"
+                                        id="inputPhoneHome"
+                                        name="inputPhoneHome">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="inputGender"
+                                        class="form-label">النوع</label>
+                                    <select id="inputGender" name="inputGender"
+                                        class="form-select">
+                                        <option selected>اختر...</option>
+                                        <option>ذكر</option>
+                                        <option>انثى</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="Picture"
+                                        class="form-label"> الصورة
+                                        الشخصية</label>
+                                    <input class="form-control" type="file"
+                                        id="Picture" multiple name="Picture">
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit"
+                                        class="btn btn-primary">تسجيل</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="profile"
+                    role="tabpanel" aria-labelledby="profile-tab">
+                    <h1>Profile</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+
+                    </p>
+                </div>
+
+                <div class="tab-pane fade" id="contact"
+                    role="tabpanel" aria-labelledby="contact-tab">
+                    <h1>Contact</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+                        Quisquam, quos voluptates. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+                        Quisquam, quos voluptates. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+                        Quisquam, quos voluptates. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+                        Quisquam, quos voluptates. Quisquam, quos
+                        voluptates. Quisquam, quos voluptates.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <script src="../js/bootstrap.bundle.min.js"></script>
+        </body>
+    </html>
