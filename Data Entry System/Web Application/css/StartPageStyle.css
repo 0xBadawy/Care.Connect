@@ -1,0 +1,51 @@
+* {
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+.Main{
+    /* margin-top: 100px; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.Main h3{
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.Main p{
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+
+
+.MainContainer{
+   background-image: url(../images/bc.png);
+    }
+
+.MainContainer .Main{
+
+    color: #da2525;
+}
+.MainContainer .Main .row .col{
+    color: #ffffff;
+    background-color: #ffffff;
+}
+
+.MainContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
