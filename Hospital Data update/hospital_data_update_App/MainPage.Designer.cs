@@ -182,7 +182,7 @@
             Pan_Main.Dock = DockStyle.Fill;
             Pan_Main.Location = new Point(0, 0);
             Pan_Main.Name = "Pan_Main";
-            Pan_Main.Size = new Size(1243, 696);
+            Pan_Main.Size = new Size(1271, 739);
             Pan_Main.TabIndex = 0;
             Pan_Main.Click += Pan_Main_Click;
             // 
@@ -205,7 +205,7 @@
             panel_content.Dock = DockStyle.Fill;
             panel_content.Location = new Point(59, 45);
             panel_content.Name = "panel_content";
-            panel_content.Size = new Size(1184, 651);
+            panel_content.Size = new Size(1212, 694);
             panel_content.TabIndex = 2;
             // 
             // panel9
@@ -215,9 +215,9 @@
             panel9.Controls.Add(label10);
             panel9.Controls.Add(label5);
             panel9.Controls.Add(label4);
-            panel9.Location = new Point(622, 561);
+            panel9.Location = new Point(622, 615);
             panel9.Name = "panel9";
-            panel9.Size = new Size(546, 67);
+            panel9.Size = new Size(578, 67);
             panel9.TabIndex = 6;
             panel9.Paint += panel9_Paint;
             panel9.MouseClick += panel9_MouseClick;
@@ -225,7 +225,7 @@
             // label11
             // 
             label11.Font = new Font("Microsoft Sans Serif", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(190, 35);
+            label11.Location = new Point(205, 35);
             label11.Name = "label11";
             label11.Size = new Size(320, 24);
             label11.TabIndex = 6;
@@ -234,7 +234,7 @@
             // label10
             // 
             label10.Font = new Font("Microsoft Sans Serif", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(150, 6);
+            label10.Location = new Point(160, 6);
             label10.Name = "label10";
             label10.Size = new Size(365, 29);
             label10.TabIndex = 5;
@@ -245,7 +245,7 @@
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(7, 33);
+            label5.Location = new Point(23, 33);
             label5.Name = "label5";
             label5.Size = new Size(190, 26);
             label5.TabIndex = 4;
@@ -256,7 +256,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(7, 6);
+            label4.Location = new Point(23, 6);
             label4.Name = "label4";
             label4.Size = new Size(151, 26);
             label4.TabIndex = 4;
@@ -272,7 +272,7 @@
             panel_type_ABm.Controls.Add(label18);
             panel_type_ABm.Controls.Add(pictureBox4);
             panel_type_ABm.Controls.Add(label_NumberOf_ABm);
-            panel_type_ABm.Location = new Point(30, 488);
+            panel_type_ABm.Location = new Point(33, 530);
             panel_type_ABm.Name = "panel_type_ABm";
             panel_type_ABm.Size = new Size(245, 143);
             panel_type_ABm.TabIndex = 5;
@@ -356,7 +356,7 @@
             panel_type_ABp.Controls.Add(pictureBox3);
             panel_type_ABp.Controls.Add(label_NumberOf_ABp);
             panel_type_ABp.Controls.Add(label15);
-            panel_type_ABp.Location = new Point(30, 331);
+            panel_type_ABp.Location = new Point(30, 359);
             panel_type_ABp.Name = "panel_type_ABp";
             panel_type_ABp.Size = new Size(245, 143);
             panel_type_ABp.TabIndex = 5;
@@ -828,7 +828,7 @@
             panel_type_Am.Controls.Add(pictureBox2);
             panel_type_Am.Controls.Add(label_NumberOf_Am);
             panel_type_Am.Controls.Add(label6);
-            panel_type_Am.Location = new Point(30, 174);
+            panel_type_Am.Location = new Point(30, 188);
             panel_type_Am.Name = "panel_type_Am";
             panel_type_Am.Size = new Size(245, 143);
             panel_type_Am.TabIndex = 5;
@@ -912,7 +912,7 @@
             panel_type_Om.Controls.Add(pictureBox8);
             panel_type_Om.Controls.Add(label_NumberOf_Om);
             panel_type_Om.Controls.Add(label40);
-            panel_type_Om.Location = new Point(296, 488);
+            panel_type_Om.Location = new Point(299, 530);
             panel_type_Om.Name = "panel_type_Om";
             panel_type_Om.Size = new Size(245, 143);
             panel_type_Om.TabIndex = 5;
@@ -996,7 +996,7 @@
             panel_type_Op.Controls.Add(pictureBox7);
             panel_type_Op.Controls.Add(label_NumberOf_Op);
             panel_type_Op.Controls.Add(label35);
-            panel_type_Op.Location = new Point(296, 331);
+            panel_type_Op.Location = new Point(296, 359);
             panel_type_Op.Name = "panel_type_Op";
             panel_type_Op.Size = new Size(245, 143);
             panel_type_Op.TabIndex = 5;
@@ -1080,7 +1080,7 @@
             panel_type_Bm.Controls.Add(pictureBox6);
             panel_type_Bm.Controls.Add(label_NumberOf_Bm);
             panel_type_Bm.Controls.Add(label30);
-            panel_type_Bm.Location = new Point(296, 174);
+            panel_type_Bm.Location = new Point(296, 188);
             panel_type_Bm.Name = "panel_type_Bm";
             panel_type_Bm.Size = new Size(245, 143);
             panel_type_Bm.TabIndex = 5;
@@ -1334,7 +1334,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(59, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1184, 45);
+            panel1.Size = new Size(1212, 45);
             panel1.TabIndex = 1;
             // 
             // label9
@@ -1343,7 +1343,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(7, 9);
+            label9.Location = new Point(21, 9);
             label9.Name = "label9";
             label9.Size = new Size(151, 26);
             label9.TabIndex = 4;
@@ -1379,7 +1379,7 @@
             panel_left.Dock = DockStyle.Left;
             panel_left.Location = new Point(0, 0);
             panel_left.Name = "panel_left";
-            panel_left.Size = new Size(59, 696);
+            panel_left.Size = new Size(59, 739);
             panel_left.TabIndex = 0;
             // 
             // panel5
@@ -1441,7 +1441,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1243, 696);
+            ClientSize = new Size(1271, 739);
             Controls.Add(Pan_Main);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainPage";

@@ -31,8 +31,10 @@
 
 
 .MainContainer{
-   background-image: url(../images/bc.png);
-    }
+       background-image: url(../images/bc.png);
+    background-size: cover;
+
+}
 
 .MainContainer .Main{
 

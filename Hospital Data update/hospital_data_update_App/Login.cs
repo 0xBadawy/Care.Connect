@@ -39,7 +39,7 @@ namespace hospital_data_update_App
         }
 
 
-        public static int HospitalID =0 ;
+        public static int HospitalID = 0;
         public static string UserName = "";
         private string Password = "";
 
@@ -187,6 +187,9 @@ namespace hospital_data_update_App
 
         }
 
-       
+        private void Input_Password_DragEnter(object sender, DragEventArgs e)
+        {
+            MessageBox.Show("Please enter Password");
+        }
     }
 }

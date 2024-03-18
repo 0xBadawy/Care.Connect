@@ -68,7 +68,8 @@ namespace hospital_data_update_App
             updateLabelBlood();
             updateLabelRoom();
         }
-        private void InitialValues(){
+        private void InitialValues()
+        {
             // ------------- connect to firebase and get the data ----------------
             FirebaseResponse DataResponse = Login.client.Get("CareConnect/HospitalData/" + Convert.ToString(Login.HospitalID));
             JObject HospitalData = JObject.Parse(DataResponse.Body);
