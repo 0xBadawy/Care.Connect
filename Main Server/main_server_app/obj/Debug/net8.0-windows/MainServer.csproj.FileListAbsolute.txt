@@ -1,0 +1,47 @@
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\MainServer.exe
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\MainServer.deps.json
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\MainServer.runtimeconfig.json
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\MainServer.dll
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\MainServer.pdb
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.csproj.GenerateResource.cache
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.AssemblyInfoInputs.cache
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.AssemblyInfo.cs
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.csproj.CoreCompileInputs.cache
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.dll
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\refint\MainServer.dll
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.pdb
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.genruntimeconfig.cache
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\ref\MainServer.dll
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.csproj.AssemblyReference.cache
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.csproj.CopyComplete
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\Firebase.dll
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\LiteDB.dll
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\System.Reactive.dll
+E:\Desktop\MainServer\bin\Debug\net8.0-windows\System.Runtime.InteropServices.WindowsRuntime.dll
+E:\Desktop\MainServer\obj\Debug\net8.0-windows\MainServer.Form1.resources
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\MainServer.exe
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\MainServer.deps.json
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\MainServer.runtimeconfig.json
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\MainServer.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\MainServer.pdb
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\Firebase.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\LiteDB.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\System.Reactive.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\bin\Debug\net8.0-windows\System.Runtime.InteropServices.WindowsRuntime.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.csproj.AssemblyReference.cache
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.Form1.resources
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.csproj.GenerateResource.cache
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.AssemblyInfoInputs.cache
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.AssemblyInfo.cs
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.csproj.CoreCompileInputs.cache
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.sourcelink.json
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.csproj.CopyComplete
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\refint\MainServer.dll
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.pdb
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\MainServer.genruntimeconfig.cache
+E:\Desktop\Care.Connect\Main Server\main_server_app\obj\Debug\net8.0-windows\ref\MainServer.dll
