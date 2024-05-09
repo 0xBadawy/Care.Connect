@@ -21,21 +21,13 @@ namespace hospital_data_update_App
 {
     public partial class Login : Form
     {
-
+        IFirebaseClient client = FirebaseConnection.GetFirebaseConnection();
         private const int CornerRadius = 50;
-
-        public static IFirebaseClient client;
-        public static IFirebaseConfig connection = new FirebaseConfig
-        {
-            AuthSecret = "Ssanw9rmCXkVYABLZ9pjCX0CECOgIM3bPBCs6zv6",
-            BasePath = "https://careconnect-1c393-default-rtdb.firebaseio.com/"
-        };
-
+        
         public Login()
         {
             InitializeComponent();
             LoginDesignB();
-            client = new FireSharp.FirebaseClient(connection);
         }
 
 
@@ -135,38 +127,46 @@ namespace hospital_data_update_App
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            if (Input_HospitalID.Text == "")
+            try
             {
-                MessageBox.Show("Please enter Hospital ID");
-            }
-            else if (Input_Password.Text == "")
-            {
-                MessageBox.Show("Please enter Password");
-            }
-            else
-            {
-                FirebaseResponse loginResponse = client.Get("CareConnect/HDUALogin/" + Input_HospitalID.Text);
-                if (loginResponse.Body == "null")
-                    MessageBox.Show("Incorrect Hospital ID");
+                if (Input_HospitalID.Text == "")
+                {
+                    MessageBox.Show("Please enter Hospital ID");
+                }
+                else if (Input_Password.Text == "")
+                {
+                    MessageBox.Show("Please enter Password");
+                }
                 else
                 {
-                    JObject loginData = JObject.Parse(loginResponse.Body);
-                    Password = loginData["Password"].ToString();
-                    if (Input_Password.Text != Password)
-                        MessageBox.Show("Incorrect Password");
+                    FirebaseResponse loginResponse = client.Get("CareConnect/HDUALogin/" + Input_HospitalID.Text);
+                    if (loginResponse.Body == "null")
+                        MessageBox.Show("Incorrect Hospital ID");
                     else
                     {
-                        HospitalID = Convert.ToInt32(loginData["ID"]);
-                        UserName = loginData["UserName"].ToString();
+                        JObject loginData = JObject.Parse(loginResponse.Body);
+                        Password = loginData["Password"].ToString();
+                        if (Input_Password.Text != Password)
+                            MessageBox.Show("Incorrect Password");
+                        else
+                        {
+                            HospitalID = Convert.ToInt32(loginData["ID"]);
+                            UserName = loginData["UserName"].ToString();
 
-                        this.Hide();
-                        MainPage mainPage = new MainPage();
-                        mainPage.Show();
-                        ClassRound o = new ClassRound();
-                        o.HospitalID = Input_HospitalID.Text;
+                            this.Hide();
+                            MainPage mainPage = new MainPage();
+                            mainPage.Show();
+                            ClassRound o = new ClassRound();
+                            o.HospitalID = Input_HospitalID.Text;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to connect, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
 
@@ -191,5 +191,6 @@ namespace hospital_data_update_App
         {
             MessageBox.Show("Please enter Password");
         }
+
     }
 }
