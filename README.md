@@ -1,7 +1,6 @@
 <div align="center">
-    <img src=""></img>
+    <img src="Assets/images/logo/logo (4).png" width="100%"></img>
     <h1>CareConnect</h1>
-
     <p align="center">Intelligent Medical Solutions For Emergency Medical Services </p>
 </div>
 
