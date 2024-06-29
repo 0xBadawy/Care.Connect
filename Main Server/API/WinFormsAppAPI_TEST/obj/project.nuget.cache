@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ySkdLAbFRNaa2Y6gK0EIcy5k9TqdRMgi9BSRyJgVJI/8SCQ3n6pMwVmvk6TbOTElsce5SDNBjMMAOCJcC0RgWw==",
+  "dgSpecHash": "caqmTRSsrWVETONJyQvYnLNgj1Tmq/f48LNBzs1n4RpGCFfs4YKOnbZDqz5vJc7YFEQcagSuQN4cjiAsKu9qHw==",
   "success": true,
-  "projectFilePath": "H:\\projects\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
+  "projectFilePath": "H:\\projects\\Care.Connect\\Main Server\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnet.webapi.client\\6.0.0\\microsoft.aspnet.webapi.client.6.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",

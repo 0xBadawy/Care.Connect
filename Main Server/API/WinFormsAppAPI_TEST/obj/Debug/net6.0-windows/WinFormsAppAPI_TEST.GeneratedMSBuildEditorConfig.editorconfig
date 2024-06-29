@@ -14,4 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WinFormsAppAPI_TEST
-build_property.ProjectDir = H:\projects\API\WinFormsAppAPI_TEST\
+build_property.ProjectDir = H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\

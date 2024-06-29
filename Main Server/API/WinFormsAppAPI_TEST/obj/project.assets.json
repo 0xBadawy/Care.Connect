@@ -211,11 +211,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\projects\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
+      "projectUniqueName": "H:\\projects\\Care.Connect\\Main Server\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
       "projectName": "WinFormsAppAPI_TEST",
-      "projectPath": "H:\\projects\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
+      "projectPath": "H:\\projects\\Care.Connect\\Main Server\\API\\WinFormsAppAPI_TEST\\WinFormsAppAPI_TEST.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "H:\\projects\\API\\WinFormsAppAPI_TEST\\obj\\",
+      "outputPath": "H:\\projects\\Care.Connect\\Main Server\\API\\WinFormsAppAPI_TEST\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages"

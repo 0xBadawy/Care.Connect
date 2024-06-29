@@ -19,3 +19,25 @@ H:\projects\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\refint\WinFormsAppA
 H:\projects\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.pdb
 H:\projects\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.genruntimeconfig.cache
 H:\projects\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\ref\WinFormsAppAPI_TEST.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\WinFormsAppAPI_TEST.exe
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\WinFormsAppAPI_TEST.deps.json
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\WinFormsAppAPI_TEST.runtimeconfig.json
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\WinFormsAppAPI_TEST.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\WinFormsAppAPI_TEST.pdb
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\System.Net.Http.Formatting.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.csproj.AssemblyReference.cache
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.Form1.resources
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.csproj.GenerateResource.cache
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.GeneratedMSBuildEditorConfig.editorconfig
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.AssemblyInfoInputs.cache
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.AssemblyInfo.cs
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.csproj.CoreCompileInputs.cache
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.csproj.CopyComplete
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\refint\WinFormsAppAPI_TEST.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.pdb
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.genruntimeconfig.cache
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\ref\WinFormsAppAPI_TEST.dll
+H:\projects\Care.Connect\Main Server\API\WinFormsAppAPI_TEST\obj\Debug\net6.0-windows\WinFormsAppAPI_TEST.Search.resources
