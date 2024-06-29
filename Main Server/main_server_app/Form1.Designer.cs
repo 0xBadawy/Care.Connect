@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBox1.Location = new Point(56, 60);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(271, 390);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(717, 504);
+            Controls.Add(richTextBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -42,5 +54,7 @@
         }
 
         #endregion
+
+        private RichTextBox richTextBox1;
     }
 }

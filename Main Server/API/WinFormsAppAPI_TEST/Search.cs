@@ -107,7 +107,6 @@ namespace WinFormsAppAPI_TEST
             Dictionary<string, double> Distance = diatace;
             Distance = Distance.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-
             return Distance;
         }
 
