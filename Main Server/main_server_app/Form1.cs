@@ -52,12 +52,28 @@ namespace MainServer
 
                     MessageBox.Show(emegency.ToString());
 
-                   // CalculateDistance(emegency.Location);
+                    // CalculateDistance(emegency.Location);
 
+                    // Call the delete function after displaying the record
+                    await DeleteRecord(CollectionName);
                 }
             });
-
         }
+
+        // Function to delete a record from the Firebase database
+        private async Task DeleteRecord(string collectionName)
+        {
+            try
+            {
+                await FireClient.Child($"CareConnect/Emergency/{collectionName}").DeleteAsync();
+                MessageBox.Show($"Record {collectionName} deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting record {collectionName}: {ex.Message}");
+            }
+        }
+
 
 
 
@@ -66,17 +82,18 @@ namespace MainServer
 
         public void CalculateDistance(string location)
         {
-            string x= "", y= "";
+            string x = "", y = "";
             try
             {
-                  x = location.Split(',')[0];
-                  y = location.Split(',')[1];
+                x = location.Split(',')[0];
+                y = location.Split(',')[1];
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
+
             Dictionary<string, Tuple<double, double>> Data = new Dictionary<string, Tuple<double, double>>();
             Tuple<double, double> MyLocation = Tuple.Create(double.Parse(x), double.Parse(y));
 
@@ -137,15 +154,15 @@ namespace MainServer
             Dictionary<string, double> Distance = CalculateDistance(Data, MyLocation);
 
             string result = "";
-            
+
             foreach (var item in Distance)
             {
-             
+
                 string Hospitallocation = Data[item.Key].Item1 + "," + Data[item.Key].Item2;
 
                 //double Res= APIDataDistance(location, Hospitallocation);
 
-       //         result += (item.Key + " : " + Res + "" + "\n");
+                //         result += (item.Key + " : " + Res + "" + "\n");
             }
             richTextBox1.Text = result;
 
