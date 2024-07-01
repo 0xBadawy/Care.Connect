@@ -41,7 +41,7 @@
             // 
             // Btn_Add
             // 
-            Btn_Add.Location = new Point(489, 222);
+            Btn_Add.Location = new Point(438, 224);
             Btn_Add.Name = "Btn_Add";
             Btn_Add.Size = new Size(219, 30);
             Btn_Add.TabIndex = 0;

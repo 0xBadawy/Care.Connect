@@ -43,3 +43,4 @@ H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\ru
 H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\runtimes\win-x64\native\k5sprt64.dll
 H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\runtimes\win-x64\native\krb5_64.dll
 H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\runtimes\win-x64\native\krbcc64.dll
+H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\MainServer.dll.config

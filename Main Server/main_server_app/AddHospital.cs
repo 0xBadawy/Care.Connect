@@ -25,6 +25,8 @@ namespace MainServer
             BasePath = "https://careconnect-1c393-default-rtdb.firebaseio.com/"
         };
         IFirebaseClient client;
+
+
         public AddHospital()
         {
             InitializeComponent();
@@ -33,14 +35,35 @@ namespace MainServer
         }
         private void AddHospital_Load(object sender, EventArgs e)
         {
+            LoadInfo();
 
         }
+
+
+
+        private async void LoadInfo()
+        {
+            // Call LoadDataFromDatabaseAsync and await its completion
+            Dictionary<string, string> data = await LoadDataFromDatabaseAsync();
+
+            // Example: Display loaded data
+            foreach (var entry in data)
+            {
+                MessageBox.Show($"Hospital ID: {entry.Key}, Address: {entry.Value}");
+            }
+        }
+
+
+
         private async void Btn_Add_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-        // create a void function to disply data in datagridview database 
+        
+
+
+
         private async void DisplayData()
         {
             // Make sure to replace 'client' with your Firebase client instance
@@ -84,6 +107,43 @@ namespace MainServer
                 MessageBox.Show("Failed to add hospital.");
             }
         }
+
+
+
+        // create a function to load the data form dataBAse from "/CareConnect/HospitalLocation" to a dectionary the key is the ID and the value is the Address 
+
+
+
+
+        public async Task<Dictionary<string, string>> LoadDataFromDatabaseAsync()
+        {
+            Dictionary<string, string> dataDictionary = new Dictionary<string, string>();
+
+            try
+            {
+                FirebaseResponse response = await client.GetAsync("CareConnect/HospitalLocation");
+                var data = response.ResultAs<Dictionary<string, HospitalData>>();
+
+                if (data != null)
+                {
+                    foreach (var item in data)
+                    {
+                        // Add ID and Address to the dictionary
+                        dataDictionary.Add(item.Value.ID, item.Value.Address);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataDictionary;
+        }
+
+
+
+
     }
 
 }
