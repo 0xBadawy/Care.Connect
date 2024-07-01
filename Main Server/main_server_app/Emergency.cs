@@ -12,10 +12,9 @@ namespace MainServer
         private string ambulance;
         private string finger_print;
         private string location;
-        public string Ambulance 
-        { get  => ambulance ; set => ambulance = value; }
-        public string FingerPrint {  get=> finger_print; set => finger_print = value; }
-        public string Location { get=> location; set => location = value; }
+        public string Ambulance { get; set; }
+        public string FingerPrint {  get; set; }
+        public string Location { get; set; }
 
         public override string ToString() => $"Ambulance ID: {ambulance}\nFinger Print: {finger_print}\nLocation: {location}";
         
