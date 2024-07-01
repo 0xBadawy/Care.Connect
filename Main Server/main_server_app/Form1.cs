@@ -29,7 +29,7 @@ namespace MainServer
     public partial class Form1 : Form
     {
         Firebase.Database.FirebaseClient FireClient;
-        string StatusText = "";
+     //   string StatusText = "";
 
 
         IFirebaseConfig config = new FirebaseConfig
@@ -80,15 +80,18 @@ namespace MainServer
         private void EmergencyFunctions(Emergency emergency)
         {
 
-            StatusText += "New Request for Ambulance : " + emegency.FingerPrint + "\n";
-            StatusText += "Patient ID : " + emegency.Ambulance + "\n";
-            StatusText += "Patient Name : " + patientInfo.UserNameInfo(emegency.Ambulance) + "\n";
-            StatusText += "Blood Type : " + patientInfo.BloodInfo(emegency.Ambulance) + "\n";
-            StatusText += "***************************************\n\n";
-            ConfigurationManager.AppSettings["StatusText"] = StatusText;
+            ConfigurationManager.AppSettings["StatusText"] += "New Request for Ambulance : " + emegency.FingerPrint + "\n";
+            UpdateStatusTextBox();
+            ConfigurationManager.AppSettings["StatusText"] += "Patient ID : " + emegency.Ambulance + "\n";
+            ConfigurationManager.AppSettings["StatusText"] += "Patient Name : " + patientInfo.UserNameInfo(emegency.Ambulance) + "\n";
+            ConfigurationManager.AppSettings["StatusText"] += "Blood Type : " + patientInfo.BloodInfo(emegency.Ambulance) + "\n";
+            ConfigurationManager.AppSettings["StatusText"] += "***************************************\n\n";
+            UpdateStatusTextBox();
             distanceService.LoadDataFromDatabase();
+            UpdateStatusTextBox();
             distanceService.CalculateDistance(emegency.Location);
-  //          distanceService.CalculateDistanceAPI(emegency.Location);
+            UpdateStatusTextBox();
+            distanceService.CalculateDistanceAPI(emegency.Location);
 
         }
 
@@ -112,7 +115,7 @@ namespace MainServer
         private void UpdateStatusTextBox()
         {
             string text = ConfigurationManager.AppSettings["StatusText"];
-
+            Thread.Sleep(1000);
             if (StatusTextBox.InvokeRequired)
             {
                 StatusTextBox.Invoke(new Action(() => StatusTextBox.Text = text));
@@ -127,7 +130,7 @@ namespace MainServer
 
         private void ClearBtn_Click(object sender, EventArgs e)
         {
-            StatusText = "";
+            ConfigurationManager.AppSettings["StatusText"] = "";
             UpdateStatusTextBox();
         }
 
