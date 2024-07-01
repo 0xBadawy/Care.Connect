@@ -41,6 +41,7 @@ namespace MainServer
 
 
         private DistanceService distanceService;
+        private PatientInfo patientInfo;
         Emergency emegency;
 
 
@@ -50,6 +51,8 @@ namespace MainServer
             InitializeComponent();
             FireClient = new Firebase.Database.FirebaseClient("https://careconnect-1c393-default-rtdb.firebaseio.com/");
             distanceService = new DistanceService();
+            patientInfo = new PatientInfo();
+            patientInfo.LoadData();
 
         }
 
@@ -78,22 +81,19 @@ namespace MainServer
         {
 
             StatusText += "New Request for Ambulance : " + emegency.FingerPrint + "\n";
+            StatusText += "Patient ID : " + emegency.Ambulance + "\n";
+            StatusText += "Patient Name : " + patientInfo.UserNameInfo(emegency.Ambulance) + "\n";
+            StatusText += "Blood Type : " + patientInfo.BloodInfo(emegency.Ambulance) + "\n";
             StatusText += "***************************************\n\n";
             ConfigurationManager.AppSettings["StatusText"] = StatusText;
-
             distanceService.LoadDataFromDatabase();
             distanceService.CalculateDistance(emegency.Location);
-            distanceService.CalculateDistanceAPI(emegency.Location);
+  //          distanceService.CalculateDistanceAPI(emegency.Location);
 
         }
 
 
 
-
-
-
-
-        // Function to delete a record from the Firebase database
         private async Task DeleteRecord(string collectionName)
         {
             try
@@ -108,29 +108,6 @@ namespace MainServer
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // --------------------------- Distance API ------------------------------------------------------
-
-
-
-
-
-
-
-        // --------------------------- End Distance API ------------------------------------------------------
 
         private void UpdateStatusTextBox()
         {
