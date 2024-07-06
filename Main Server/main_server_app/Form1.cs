@@ -75,7 +75,7 @@ namespace MainServer
                     {
                         MessageBox.Show(emergency.ToString());
 
-                        //EmergencyFunctions(emergency);
+                       EmergencyFunctions(emergency);
 
                         DeleteRecord(CollectionName);
                     }
