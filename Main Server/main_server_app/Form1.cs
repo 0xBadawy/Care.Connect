@@ -157,188 +157,252 @@ namespace MainServer
         }
 
 
-        private bool Check_blood_availability( string Hospital_Collection_Id , ref Dictionary<string, int> dic, string Blood_Type)
+
+        private bool Check_Rooms_availability(string Hospital_Key)
+        {
+            // ------------- connect to firebase and get the data ----------------
+            FirebaseResponse DataResponse = client.Get("CareConnect/HospitalData/" + Convert.ToString(Hospital_Key));
+            JObject HospitalData = JObject.Parse(DataResponse.Body);
+
+            // ----------- get info about number of max and current available rooms in this hospital -----------
+            int Room_MaxSize_MED = Convert.ToInt32(HospitalData["MaxSize_MED"]);
+            int Room_MaxSize_IR = Convert.ToInt32(HospitalData["MaxSize_IR"]);
+            int Room_MaxSize_ICU = Convert.ToInt32(HospitalData["MaxSize_ICU"]);
+            int Room_MaxSize_EOR = Convert.ToInt32(HospitalData["MaxSize_EOR"]);
+            int Room_CurSize_MED = Convert.ToInt32(HospitalData["CurSize_MED"]);
+            int Room_CurSize_IR = Convert.ToInt32(HospitalData["CurSize_IR"]);
+            int Room_CurSize_ICU = Convert.ToInt32(HospitalData["CurSize_ICU"]);
+            int Room_CurSize_EOR = Convert.ToInt32(HospitalData["CurSize_EOR"]);
+
+            if (Room_MaxSize_MED - Room_CurSize_MED > 0)
+            {
+                Update_Rooms_Values(Hospital_Key, "CurSize_MED", "MED", Room_CurSize_MED - 1);
+                return true;
+            }
+            else if (Room_MaxSize_ICU - Room_CurSize_ICU > 0)
+            {
+                Update_Rooms_Values(Hospital_Key, "CurSize_ICU", "ICU", Room_CurSize_ICU - 1);
+                return true;
+            }
+            else if (Room_MaxSize_EOR - Room_CurSize_EOR > 0)
+            {
+                Update_Rooms_Values(Hospital_Key, "CurSize_EOR", "EOR", Room_CurSize_EOR - 1);
+                return true;
+            }
+            else if (Room_MaxSize_IR - Room_CurSize_IR > 0)
+            {
+                Update_Rooms_Values(Hospital_Key, "CurSize_IR", "IR", Room_CurSize_IR - 1);
+                return true;
+            }
+            else
+                return false;
+        }
+        private async void Update_Rooms_Values(string Hospital_Key, string Room_Name, string Room_Name_In_Date_Category, int New_Value)
+        {
+            try
+            {
+                var UpdateData = new Dictionary<string, object>
+                {
+                    { Room_Name , New_Value }
+                };
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Key}/", UpdateData);
+
+
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { Room_Name_In_Date_Category+"_LastEdit" ,  DateTime.Now}
+                };
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Key}/", UpdateDate);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // ----------- The following 10 functions are resposible for checking blood availablility and decreasing its amount if found ----------
+        private bool Check_blood_availability(string Hospital_Key, ref Dictionary<string, int> dic, string Blood_Type)
         {
             bool Isfound = false;
             if (Blood_Type == "ABPlus")
-                Check_ABPlus(Hospital_Collection_Id , ref dic, ref Isfound);
-            else if(Blood_Type == "ABMinus")
-                Check_ABMinus(Hospital_Collection_Id, ref dic, ref Isfound);
-            else if(Blood_Type == "APlus")
-                Check_APlus(Hospital_Collection_Id, ref dic, ref Isfound);
-            else if(Blood_Type == "AMinus")
-                Check_AMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+                Check_ABPlus(Hospital_Key, ref dic, ref Isfound);
+            else if (Blood_Type == "ABMinus")
+                Check_ABMinus(Hospital_Key, ref dic, ref Isfound);
+            else if (Blood_Type == "APlus")
+                Check_APlus(Hospital_Key, ref dic, ref Isfound);
+            else if (Blood_Type == "AMinus")
+                Check_AMinus(Hospital_Key, ref dic, ref Isfound);
             else if (Blood_Type == "BPlus")
-                Check_BPlus(Hospital_Collection_Id, ref dic, ref Isfound);
-            else if(Blood_Type == "BMinus")
-                Check_BMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+                Check_BPlus(Hospital_Key, ref dic, ref Isfound);
+            else if (Blood_Type == "BMinus")
+                Check_BMinus(Hospital_Key, ref dic, ref Isfound);
             else if (Blood_Type == "OPlus")
-                Check_OPlus(Hospital_Collection_Id, ref dic, ref Isfound);
-            else 
-                Check_OMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+                Check_OPlus(Hospital_Key, ref dic, ref Isfound);
+            else
+                Check_OMinus(Hospital_Key, ref dic, ref Isfound);
             return Isfound;
         }
-        private void Check_ABPlus( string Hospital_Collection_Id , ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_ABPlus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
-            if ( !Isfound && dic["ABPlus"] >= 2)
+            if (!Isfound && dic["ABPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "ABPlus" , dic["ABPlus"]-2);
-                Isfound = true;   
+                Update_Blood_Values(Hospital_Key, "ABPlus", dic["ABPlus"] - 2);
+                Isfound = true;
             }
             if (!Isfound && dic["OPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OPlus", dic["OPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["APlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "APlus", dic["APlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "APlus", dic["APlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["BPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BPlus", dic["BPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BPlus", dic["BPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["AMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "AMinus", dic["AMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["BMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BMinus", dic["BMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["ABMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "ABMinus", dic["ABMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "ABMinus", dic["ABMinus"] - 2);
                 Isfound = true;
             }
 
         }
-        private void Check_ABMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_ABMinus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["ABMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "ABMinus", dic["ABMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "ABMinus", dic["ABMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["AMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "AMinus", dic["AMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["BMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BMinus", dic["BMinus"] - 2);
                 Isfound = true;
             }
         }
-        private void Check_APlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_APlus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["APlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "APlus", dic["APlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "APlus", dic["APlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OPlus", dic["OPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["AMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "AMinus", dic["AMinus"] - 2);
                 Isfound = true;
             }
         }
-        private void Check_AMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_AMinus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["AMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "AMinus", dic["AMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
         }
-        private void Check_BPlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_BPlus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["BPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BPlus", dic["BPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BPlus", dic["BPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OPlus", dic["OPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["BMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BMinus", dic["BMinus"] - 2);
                 Isfound = true;
-            }         
+            }
         }
-        private void Check_BMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_BMinus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["BMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "BMinus", dic["BMinus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
         }
-        private void Check_OPlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_OPlus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["OPlus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OPlus", dic["OPlus"] - 2);
                 Isfound = true;
             }
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
         }
-        private void Check_OMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        private void Check_OMinus(string Hospital_Key, ref Dictionary<string, int> dic, ref bool Isfound)
         {
             if (!Isfound && dic["OMinus"] >= 2)
             {
-                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Update_Blood_Values(Hospital_Key, "OMinus", dic["OMinus"] - 2);
                 Isfound = true;
             }
         }
-        private async void Update_Blood_Values(string Hospital_Collection_Id, string Blood_type , int New_Value)
+        private async void Update_Blood_Values(string Hospital_Key, string Blood_type, int New_Value)
         {
             try
             {
@@ -346,20 +410,21 @@ namespace MainServer
                 {
                     { Blood_type , New_Value }
                 };
-                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Collection_Id}/", UpdateData);
-               
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Key}/", UpdateData);
+
 
                 var UpdateDate = new Dictionary<string, object>
                 {
                     { Blood_type+"_LastEdit" ,  DateTime.Now}
                 };
-                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Collection_Id}/", UpdateDate);
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Key}/", UpdateDate);
             }
             catch (Exception)
             {
                 MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } 
+        }
+      
    
     }
 }
