@@ -22,6 +22,7 @@ using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 using MySqlX.XDevAPI.Common;
 using System.Configuration;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MainServer
 {
@@ -29,7 +30,7 @@ namespace MainServer
     public partial class Form1 : Form
     {
         Firebase.Database.FirebaseClient FireClient;
-     //   string StatusText = "";
+        //   string StatusText = "";
 
 
         IFirebaseConfig config = new FirebaseConfig
@@ -75,9 +76,9 @@ namespace MainServer
                     {
                         MessageBox.Show(emergency.ToString());
 
-                       EmergencyFunctions(emergency);
+                        //EmergencyFunctions(emergency);
 
-                        DeleteRecord(CollectionName);
+                       //  DeleteRecord(CollectionName);
                     }
 
                 }
@@ -153,6 +154,212 @@ namespace MainServer
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateStatusTextBox();
+        }
+
+
+        private bool Check_blood_availability( string Hospital_Collection_Id , ref Dictionary<string, int> dic, string Blood_Type)
+        {
+            bool Isfound = false;
+            if (Blood_Type == "ABPlus")
+                Check_ABPlus(Hospital_Collection_Id , ref dic, ref Isfound);
+            else if(Blood_Type == "ABMinus")
+                Check_ABMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else if(Blood_Type == "APlus")
+                Check_APlus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else if(Blood_Type == "AMinus")
+                Check_AMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else if (Blood_Type == "BPlus")
+                Check_BPlus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else if(Blood_Type == "BMinus")
+                Check_BMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else if (Blood_Type == "OPlus")
+                Check_OPlus(Hospital_Collection_Id, ref dic, ref Isfound);
+            else 
+                Check_OMinus(Hospital_Collection_Id, ref dic, ref Isfound);
+            return Isfound;
+        }
+        private void Check_ABPlus( string Hospital_Collection_Id , ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if ( !Isfound && dic["ABPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "ABPlus" , dic["ABPlus"]-2);
+                Isfound = true;   
+            }
+            if (!Isfound && dic["OPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["APlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "APlus", dic["APlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["BPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BPlus", dic["BPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["AMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["BMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["ABMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "ABMinus", dic["ABMinus"] - 2);
+                Isfound = true;
+            }
+
+        }
+        private void Check_ABMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["ABMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "ABMinus", dic["ABMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["AMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["BMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Isfound = true;
+            }
+        }
+        private void Check_APlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["APlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "APlus", dic["APlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["AMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Isfound = true;
+            }
+        }
+        private void Check_AMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["AMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "AMinus", dic["AMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+        }
+        private void Check_BPlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["BPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BPlus", dic["BPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["BMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Isfound = true;
+            }         
+        }
+        private void Check_BMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["BMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "BMinus", dic["BMinus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+        }
+        private void Check_OPlus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["OPlus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OPlus", dic["OPlus"] - 2);
+                Isfound = true;
+            }
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+        }
+        private void Check_OMinus(string Hospital_Collection_Id, ref Dictionary<string, int> dic, ref bool Isfound)
+        {
+            if (!Isfound && dic["OMinus"] >= 2)
+            {
+                Update_Blood_Values(Hospital_Collection_Id, "OMinus", dic["OMinus"] - 2);
+                Isfound = true;
+            }
+        }
+
+        private async void Update_Blood_Values(string Hospital_Collection_Id, string Blood_type , int New_Value)
+        {
+            try
+            {
+                var UpdateData = new Dictionary<string, object>
+                {
+                    { Blood_type , New_Value }
+                };
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Collection_Id}/", UpdateData);
+               
+
+                var UpdateDate = new Dictionary<string, object>
+                {
+                    { Blood_type+"_LastEdit" ,  DateTime.Now}
+                };
+                await client.UpdateAsync($"CareConnect/HospitalData/{Hospital_Collection_Id}/", UpdateDate);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
