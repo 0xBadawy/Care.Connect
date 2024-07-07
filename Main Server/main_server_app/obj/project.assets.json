@@ -2484,11 +2484,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Pictures\\Care.Connect\\Main Server\\main_server_app\\MainServer.csproj",
+      "projectUniqueName": "E:\\Desktop\\Care.Connect\\Main Server\\main_server_app\\MainServer.csproj",
       "projectName": "MainServer",
-      "projectPath": "E:\\Pictures\\Care.Connect\\Main Server\\main_server_app\\MainServer.csproj",
+      "projectPath": "E:\\Desktop\\Care.Connect\\Main Server\\main_server_app\\MainServer.csproj",
       "packagesPath": "C:\\Users\\City Tech\\.nuget\\packages\\",
-      "outputPath": "E:\\Pictures\\Care.Connect\\Main Server\\main_server_app\\obj\\",
+      "outputPath": "E:\\Desktop\\Care.Connect\\Main Server\\main_server_app\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\City Tech\\AppData\\Roaming\\NuGet\\NuGet.Config",
