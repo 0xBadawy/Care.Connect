@@ -76,7 +76,7 @@ namespace MainServer
                     {
                         MessageBox.Show(emergency.ToString());
 
-                        //EmergencyFunctions(emergency);
+                        EmergencyFunctions(emergency);
 
                        //  DeleteRecord(CollectionName);
                     }
@@ -338,7 +338,6 @@ namespace MainServer
                 Isfound = true;
             }
         }
-
         private async void Update_Blood_Values(string Hospital_Collection_Id, string Blood_type , int New_Value)
         {
             try
@@ -360,6 +359,7 @@ namespace MainServer
             {
                 MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+        } 
+   
     }
 }
