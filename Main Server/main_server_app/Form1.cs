@@ -92,19 +92,22 @@ namespace MainServer
             UpdateStatusTextBox();
             distanceService.CalculateDistance(this.emergency.Location);
             UpdateStatusTextBox();
-            DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
 
-            MessageBox.Show("Distance Calculated");
-            string DistanceValuesAPIString = "";
-            foreach (var item in DistanceValuesAPI)
-            {
-                DistanceValuesAPIString += item.Key + " : " + item.Value + "\n";
-            }
-            MessageBox.Show(DistanceValuesAPIString);
+            //  DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
+         //   CheckFreeBed();
+
+
 
 
         }
 
+        private void CheckFreeBed()
+        {
+            if (Check_Rooms_availability("2222"))
+            {
+                MessageBox.Show("Room Found");
+            }
+        }
 
 
 
@@ -119,11 +122,6 @@ namespace MainServer
             UpdateStatusTextBox();
         }
 
-
-
-
-
-
         private async Task DeleteRecord(string collectionName)
         {
             try
@@ -136,8 +134,6 @@ namespace MainServer
                 MessageBox.Show($"Error deleting record {collectionName}: {ex.Message}");
             }
         }
-
-
 
         private void UpdateStatusTextBox()
         {
@@ -154,7 +150,6 @@ namespace MainServer
             }
 
         }
-
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             ConfigurationManager.AppSettings["StatusText"] = "";
@@ -165,7 +160,6 @@ namespace MainServer
             AddHospital addHospitalForm = new AddHospital();
             addHospitalForm.Show();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateStatusTextBox();
