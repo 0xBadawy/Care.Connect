@@ -75,9 +75,7 @@ namespace MainServer
                     if (emergency.Ambulance != null)
                     {
                         MessageBox.Show(emergency.ToString());
-
                         EmergencyFunctions(emergency);
-
                        //  DeleteRecord(CollectionName);
                     }
 
@@ -141,10 +139,6 @@ namespace MainServer
             ConfigurationManager.AppSettings["StatusText"] = "";
             UpdateStatusTextBox();
         }
-
-
-
-
         private void AddNewHospital_Click(object sender, EventArgs e)
         {
             AddHospital addHospitalForm = new AddHospital();
