@@ -30,6 +30,8 @@ namespace MainServer
     public partial class Form1 : Form
     {
         Firebase.Database.FirebaseClient FireClient;
+        Dictionary<string, double> DistanceValuesAPI = new Dictionary<string, double>();
+
         //   string StatusText = "";
 
 
@@ -85,7 +87,29 @@ namespace MainServer
 
         private void EmergencyFunctions(Emergency emergency)
         {
+            GetingStart();
+            distanceService.LoadDataFromDatabase();
+            UpdateStatusTextBox();
+            distanceService.CalculateDistance(this.emergency.Location);
+            UpdateStatusTextBox();
+            DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
 
+            MessageBox.Show("Distance Calculated");
+            string DistanceValuesAPIString = "";
+            foreach (var item in DistanceValuesAPI)
+            {
+                DistanceValuesAPIString += item.Key + " : " + item.Value + "\n";
+            }
+            MessageBox.Show(DistanceValuesAPIString);
+
+
+        }
+
+
+
+
+        private void GetingStart()
+        {
             ConfigurationManager.AppSettings["StatusText"] += "New Request for Ambulance : " + this.emergency.FingerPrint + "\n";
             UpdateStatusTextBox();
             ConfigurationManager.AppSettings["StatusText"] += "Patient ID : " + this.emergency.Ambulance + "\n";
@@ -93,13 +117,10 @@ namespace MainServer
             ConfigurationManager.AppSettings["StatusText"] += "Blood Type : " + patientInfo.BloodInfo(this.emergency.Ambulance) + "\n";
             ConfigurationManager.AppSettings["StatusText"] += "***************************************\n\n";
             UpdateStatusTextBox();
-            distanceService.LoadDataFromDatabase();
-            UpdateStatusTextBox();
-            distanceService.CalculateDistance(this.emergency.Location);
-            UpdateStatusTextBox();
-            distanceService.CalculateDistanceAPI(this.emergency.Location);
-
         }
+
+
+
 
 
 

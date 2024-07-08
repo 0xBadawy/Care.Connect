@@ -104,34 +104,28 @@ namespace MainServer
 
         }
 
-        public void CalculateDistanceAPI(string location)
+        public Dictionary<string, double> CalculateDistanceAPI(string location)
         {
             string x = "", y = "";
             try
             {
                 x = location.Split(',')[0];
                 y = location.Split(',')[1];
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return new Dictionary<string, double>(); // Return an empty dictionary in case of an error
             }
 
             Tuple<double, double> MyLocation = Tuple.Create(double.Parse(x), double.Parse(y));
 
             Dictionary<string, double> Distance = CalculateDistance(HospitalDataDictionary, MyLocation);
 
-            string result = "";
-
-            result += "The closest and best route : \n";
-            result += "------------------------\n";
-
-
-            //-----------------------
 
             List<Tuple<string, double, double>> results = new List<Tuple<string, double, double>>();
 
+            string result = "";
             foreach (var item in Distance)
             {
                 string Hospitallocation = HospitalDataDictionary[item.Key];
@@ -143,6 +137,7 @@ namespace MainServer
 
             results.Sort((x, y) => x.Item2.CompareTo(y.Item2));
 
+            Dictionary<string, double> DistanceValuesAPI = new Dictionary<string, double>();
 
             foreach (var item in results)
             {
@@ -155,14 +150,19 @@ namespace MainServer
                 if (duration.Length > 5)
                     duration = duration.Substring(0, 5);
 
+                // Update result string for demonstration purposes
                 result += $"Hospital {item.Item1} : {distance} KM - Time {duration} Minutes\n";
+                // Console.WriteLine(result); // Replace this with whatever you want to do with the result string
+                DistanceValuesAPI.Add(item.Item1, item.Item2);
             }
-
-
             ConfigurationManager.AppSettings["StatusText"] += result + "\n\n\n";
 
-
+            return DistanceValuesAPI;
         }
+
+
+
+
 
 
         public Dictionary<string, string> APIData(string origin, string destination)
@@ -214,10 +214,6 @@ namespace MainServer
 
             return dataDict;
         }
-
-
-
-
         private float APIDataDistance(string Strat, string End)
         {
             try
@@ -233,7 +229,6 @@ namespace MainServer
             }
 
         }
-
         private float APIDataDuration(string Strat, string End)
         {
             try
@@ -249,21 +244,14 @@ namespace MainServer
                 return 0;
             }
         }
-
-
         private string APIDataDestination(string Strat, string End)
         {
             return APIData(Strat, End)["Destination"];
         }
-
         private string APIDataOrigin(string Strat, string End)
         {
             return APIData(Strat, End)["Origin"];
         }
-
-
-
-
 
         public Dictionary<string, double> CalculateDistance(Dictionary<string, string> data, Tuple<double, double> MyLocation)
         {
@@ -287,8 +275,6 @@ namespace MainServer
 
             return Distance.Take(5).ToDictionary(x => x.Key, x => x.Value);
         }
-
-
 
         public static float ConvertToKilometers(double distanceInDegrees)
         {
