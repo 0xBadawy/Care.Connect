@@ -37,14 +37,24 @@ namespace MainServer
             {
                 client = new FireSharp.FirebaseClient(config);
 
-                FirebaseResponse response = client.Get("CareConnect/HospitalLocation");
+                FirebaseResponse response = client.Get("CareConnect/HospitalData");
                 var data = response.ResultAs<Dictionary<string, HospitalData>>();
+
+                // print data 
+
+                string dataString = "Data \n\n";
+                foreach (var item in data)
+                {
+                    dataString += item.Key + " : " + item.Value.Address + "\n";
+                    string primartKey = item.Key;
+                }
+                MessageBox.Show(dataString);
 
                 if (data != null)
                 {
                     foreach (var item in data)
                     {
-                       HospitalDataDictionaryTemp.Add(item.Value.ID, item.Value.Address);
+                       HospitalDataDictionaryTemp.Add(item.Key, item.Value.Address);
                     }
                     HospitalDataDictionary = HospitalDataDictionaryTemp;
                 }
@@ -58,6 +68,7 @@ namespace MainServer
                 MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         
         public void CalculateDistance(string location)
         {

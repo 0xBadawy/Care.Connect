@@ -12,9 +12,9 @@ using System.Linq.Expressions;
 using System.Globalization;
 using System.Net.Http;
 using System.Net;
+using System.Web;
 using System.IO;
 using static System.Windows.Forms.AxHost;
-
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -31,17 +31,16 @@ namespace MainServer
     {
         Firebase.Database.FirebaseClient FireClient;
         Dictionary<string, double> DistanceValuesAPI = new Dictionary<string, double>();
+        string smsMessage = "";
 
-        //   string StatusText = "";
 
 
-        IFirebaseConfig config = new FirebaseConfig
+        static IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "Ssanw9rmCXkVYABLZ9pjCX0CECOgIM3bPBCs6zv6",
             BasePath = "https://careconnect-1c393-default-rtdb.firebaseio.com/"
         };
-        IFirebaseClient client;
-
+        IFirebaseClient client = new FireSharp.FirebaseClient(config);
 
         private DistanceService distanceService;
         private PatientInfo patientInfo;
@@ -56,6 +55,10 @@ namespace MainServer
             distanceService = new DistanceService();
             patientInfo = new PatientInfo();
             patientInfo.LoadData();
+
+            MessageBox.Show("ds");
+
+            MessageBox.Show(GoogleTranslate("Moahmed Badawy Sayed"));
 
         }
 
@@ -86,16 +89,18 @@ namespace MainServer
         }
 
         private void EmergencyFunctions(Emergency emergency)
-        {
+        {/*
             GetingStart();
             distanceService.LoadDataFromDatabase();
             UpdateStatusTextBox();
             distanceService.CalculateDistance(this.emergency.Location);
             UpdateStatusTextBox();
+            DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
+            UpdateStatusTextBox();
+            CheckFreeBed();
+*/
 
-            //  DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
-         //   CheckFreeBed();
-
+        
 
 
 
@@ -103,12 +108,64 @@ namespace MainServer
 
         private void CheckFreeBed()
         {
-            if (Check_Rooms_availability("2222"))
+
+            foreach(var hospital in DistanceValuesAPI)
             {
-                MessageBox.Show("Room Found");
+                MessageBox.Show(hospital.Key + "  "+ hospital.Value);
+                if (Check_Rooms_availability(hospital.Key))
+                {
+                    
+                    ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName( hospital.Key )+ "\n";
+                    smsMessage+= "the patient has been transferred to : " + GetHospitalName(hospital.Key) + "\n";
+                    smsMessage += "Hospital location : " + GetGoogleMapsUrl(GetHospitalAddress(hospital.Key)) + "\n";
+
+                    MessageBox.Show("Message : \n" + smsMessage);
+
+                    UpdateStatusTextBox();
+                    break;
+                }
+                else
+                {
+                    ConfigurationManager.AppSettings["StatusText"] += "No free bed was found in : " + GetHospitalName(hospital.Key) + "\n";
+                }
             }
+
         }
 
+        public string GoogleTranslate(string text)
+        {
+            string from="en";
+            string to="ar";
+            string url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&dt=t&q={text}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+            string result = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+            return result;
+        }
+
+        public static string GetGoogleMapsUrl(string location)
+        {
+            string latitude = location.Split(',')[0];
+            string longitude = location.Split(',')[1];
+            return $"https://www.google.com/maps?q={latitude},{longitude}";
+        }
+
+        private string GetHospitalName(string hospitalKey)
+        {
+            FirebaseResponse DataResponse = client.Get("CareConnect/HospitalData/" + Convert.ToString(hospitalKey));
+            JObject HospitalData = JObject.Parse(DataResponse.Body);
+            return HospitalData["Name"].ToString();
+        }
+
+        private string GetHospitalAddress(string hospitalKey)
+        {
+            FirebaseResponse DataResponse = client.Get("CareConnect/HospitalData/" + Convert.ToString(hospitalKey));
+            JObject HospitalData = JObject.Parse(DataResponse.Body);
+            return HospitalData["Address"].ToString();
+        }
 
 
         private void GetingStart()
