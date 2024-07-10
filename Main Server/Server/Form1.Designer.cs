@@ -33,14 +33,14 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.Porgress1 = new CircularProgressBar.CircularProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -55,6 +55,7 @@
             this.StatusTextBox.ForeColor = System.Drawing.Color.White;
             this.StatusTextBox.Location = new System.Drawing.Point(0, 44);
             this.StatusTextBox.Name = "StatusTextBox";
+            this.StatusTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.StatusTextBox.Size = new System.Drawing.Size(384, 608);
             this.StatusTextBox.TabIndex = 0;
             this.StatusTextBox.Text = "";
@@ -97,6 +98,38 @@
             this.panel5.Size = new System.Drawing.Size(1526, 47);
             this.panel5.TabIndex = 3;
             // 
+            // panel9
+            // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel9.Location = new System.Drawing.Point(0, 45);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1526, 2);
+            this.panel9.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(1484, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 39);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "×";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(575, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(361, 39);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Main Server Dashboard";
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
@@ -109,14 +142,6 @@
             this.panel6.Size = new System.Drawing.Size(384, 711);
             this.panel6.TabIndex = 4;
             // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(384, 44);
-            this.panel7.TabIndex = 0;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btnClear);
@@ -126,6 +151,14 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(384, 59);
             this.panel8.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(384, 44);
+            this.panel7.TabIndex = 0;
             // 
             // Porgress1
             // 
@@ -165,38 +198,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(575, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(361, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Main Server Dashboard";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(1484, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 39);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "×";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // panel9
-            // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 45);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1526, 2);
-            this.panel9.TabIndex = 2;
             // 
             // Form1
             // 

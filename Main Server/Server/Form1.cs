@@ -69,7 +69,7 @@ namespace Server
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            LoadDataDatabase("1111");
+        //    LoadDataDatabase("1111");
 
 
             var obserable = FireClient.Child("CareConnect/Emergency").AsObservable<object>();
@@ -86,7 +86,7 @@ namespace Server
                     if (emergency.Ambulance != null)
                     {
                         smsMessage += "تعرض " + GoogleTranslate(patientInfo.UserNameInfo(emergency.FingerPrint)) + " لحادث " +"\n";
-       //                 EmergencyFunctions(emergency);
+                        EmergencyFunctions(emergency);
                         //  DeleteRecord(CollectionName);
                     }
 
@@ -109,7 +109,9 @@ namespace Server
             DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
             UpdateStatusTextBox();
             CheckFreeBed();
-         //   CheckBloodAvailability(emergency.);
+            CheckBloodAvailability(emergency.FingerPrint);
+            SendSMS(smsMessage);
+            SendResquest
 
 
 
@@ -117,15 +119,42 @@ namespace Server
 
         }
 
-        private void CheckBloodAvailability()
+        private void SendSMS( string smsMessage)
         {
-           // if(Check_blood_availability(Hospital_Selected_Key,))
+
+            ConfigurationManager.AppSettings["StatusText"]+= "SMS message was sent successfully!\n\n";
+
+        }
+
+        private void CheckBloodAvailability(string fingerprintID)
+        {
+            Dictionary<string, int> Data = new Dictionary<string, int>();
+            Data = LoadBloodTypes(Hospital_Selected_Key);
+
+            ConfigurationManager.AppSettings["StatusText"]+= "Checking Blood Availability for : " + patientInfo.UserNameInfo(fingerprintID) + "\n\n";
+            UpdateStatusTextBox();
+            ConfigurationManager.AppSettings["StatusText"]+= "Blood Type : " + patientInfo.BloodInfo(fingerprintID) + "\n";
+            ConfigurationManager.AppSettings["StatusText"] += " - - - - - - - - - - -\n\n";
+            UpdateStatusTextBox();
+
+            if (Check_blood_availability(Hospital_Selected_Key, ref Data, patientInfo.BloodInfo(fingerprintID)))
+            {
+                ConfigurationManager.AppSettings["StatusText"]+= "Blood was found in : " + GetHospitalName(Hospital_Selected_Key) + "\n";
+                UpdateStatusTextBox();
+
+            }
+            else
+            {
+                ConfigurationManager.AppSettings["StatusText"]+= "Blood was not found in : " + GetHospitalName(Hospital_Selected_Key) + "\n";
+                ConfigurationManager.AppSettings["StatusText"]+= "Searching for another hospital ..." + "\n";
+                UpdateStatusTextBox();
+            }
         }
 
 
 
 
-        public void LoadDataDatabase(string hospitalKey)
+        public Dictionary<string, int> LoadBloodTypes(string hospitalKey)
         {
             Dictionary<string, int> HospitalDataDictionaryTemp = new Dictionary<string, int>();
             client = new FireSharp.FirebaseClient(config);
@@ -151,6 +180,7 @@ namespace Server
             }
             MessageBox.Show(allData);
 
+            return HospitalDataDictionaryTemp;
         }
 
 
@@ -170,6 +200,7 @@ namespace Server
                     smsMessage+= "نظرا لتعرضة لحالة طارئة فى تمام الساعة " + DateTime.Now.ToString("h:mm tt") + "\n";
                     smsMessage += "برجاء الذهاب الى المستشفي فى اسرع وقت" + "\n";
                     smsMessage += "عنوان المستشفي : "+"\n" + GetGoogleMapsUrl(GetHospitalAddress(hospital.Key)) + "\n";
+
                     Hospital_Selected_Key= hospital.Key;
                     MessageBox.Show( smsMessage);
                     UpdateStatusTextBox();
@@ -177,7 +208,7 @@ namespace Server
                 }
                 else
                 {
-                    ConfigurationManager.AppSettings["StatusText"] += "No free bed was found in : " + GetHospitalName(hospital.Key) + "\n";
+                    ConfigurationManager.AppSettings["StatusText"] += "No free bed was found in : " + GetHospitalName(hospital.Key) + "\n\n";
                 }
             }
 
@@ -251,6 +282,7 @@ namespace Server
                 StatusTextBox.Text = text;
 
             }
+            ScrollControlIntoView(StatusTextBox);
 
         }
         private void AddNewHospital_Click(object sender, EventArgs e)
