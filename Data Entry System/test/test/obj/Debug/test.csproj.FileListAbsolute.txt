@@ -1,0 +1,91 @@
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.csproj.AssemblyReference.cache
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.Form1.resources
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.Form2.resources
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.csproj.GenerateResource.cache
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\city tech\Desktop\test\test\bin\Debug\test.exe.config
+C:\Users\city tech\Desktop\test\test\bin\Debug\test.exe
+C:\Users\city tech\Desktop\test\test\bin\Debug\test.pdb
+C:\Users\city tech\Desktop\test\test\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\Google.Protobuf.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\MySql.Data.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Buffers.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.IO.Pipelines.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Memory.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\ZstdSharp.dll
+C:\Users\city tech\Desktop\test\test\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\Google.Protobuf.pdb
+C:\Users\city tech\Desktop\test\test\bin\Debug\Google.Protobuf.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\MySql.Data.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Buffers.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.IO.Pipelines.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Memory.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\city tech\Desktop\test\test\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.csproj.CopyComplete
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.exe
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.pdb
+C:\Users\city tech\Desktop\test\test\obj\Debug\test.Form3.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\test.exe.config
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\test.exe
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\test.pdb
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\Google.Protobuf.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\MySql.Data.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Buffers.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.IO.Pipelines.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Memory.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\ZstdSharp.dll
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\Google.Protobuf.pdb
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\Google.Protobuf.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\MySql.Data.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Buffers.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.IO.Pipelines.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Memory.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.csproj.AssemblyReference.cache
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.Form1.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.Form2.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.Form3.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.Form4.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.csproj.GenerateResource.cache
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.csproj.CopyComplete
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.exe
+C:\Users\city tech\Desktop\Care.Connect\Data Entry System\test\test\obj\Debug\test.pdb
