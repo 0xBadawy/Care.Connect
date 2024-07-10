@@ -12,6 +12,7 @@ using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using CircularProgressBar; // Ensure you have the correct namespace
 
 
 
@@ -32,10 +33,16 @@ namespace MainServer
             InitializeComponent();
             client = new FireSharp.FirebaseClient(config);
             DisplayData();
-        }
+
+         }
         private void AddHospital_Load(object sender, EventArgs e)
         {
             LoadInfo();
+            CircularProgressBar.CircularProgressBar progressBar = new CircularProgressBar.CircularProgressBar();
+            progressBar.Location = new Point(50, 50); // Set desired location
+            progressBar.Size = new Size(100, 100); // Set desired size
+            this.Controls.Add(progressBar);
+
 
         }
 
@@ -141,7 +148,7 @@ namespace MainServer
             return dataDictionary;
         }
 
-
+        
 
 
     }

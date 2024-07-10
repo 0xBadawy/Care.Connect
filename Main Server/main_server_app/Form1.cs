@@ -56,9 +56,9 @@ namespace MainServer
             patientInfo = new PatientInfo();
             patientInfo.LoadData();
 
-            MessageBox.Show("ds");
+            //   MessageBox.Show("ds");
 
-            MessageBox.Show(GoogleTranslate("Moahmed Badawy Sayed"));
+            //        MessageBox.Show(GoogleTranslate("Moahmed Badawy Sayed"));
 
         }
 
@@ -66,6 +66,7 @@ namespace MainServer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*
             var obserable = FireClient.Child("CareConnect/Emergency").AsObservable<object>();
             var Subscription = obserable.Subscribe(async snapshot =>
             {
@@ -81,11 +82,11 @@ namespace MainServer
                     {
                         MessageBox.Show(emergency.ToString());
                         EmergencyFunctions(emergency);
-                       //  DeleteRecord(CollectionName);
+                        //  DeleteRecord(CollectionName);
                     }
 
                 }
-            });
+            });*/
         }
 
         private void EmergencyFunctions(Emergency emergency)
@@ -100,7 +101,7 @@ namespace MainServer
             CheckFreeBed();
 */
 
-        
+
 
 
 
@@ -109,14 +110,14 @@ namespace MainServer
         private void CheckFreeBed()
         {
 
-            foreach(var hospital in DistanceValuesAPI)
+            foreach (var hospital in DistanceValuesAPI)
             {
-                MessageBox.Show(hospital.Key + "  "+ hospital.Value);
+                MessageBox.Show(hospital.Key + "  " + hospital.Value);
                 if (Check_Rooms_availability(hospital.Key))
                 {
-                    
-                    ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName( hospital.Key )+ "\n";
-                    smsMessage+= "the patient has been transferred to : " + GetHospitalName(hospital.Key) + "\n";
+
+                    ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName(hospital.Key) + "\n";
+                    smsMessage += "the patient has been transferred to : " + GetHospitalName(hospital.Key) + "\n";
                     smsMessage += "Hospital location : " + GetGoogleMapsUrl(GetHospitalAddress(hospital.Key)) + "\n";
 
                     MessageBox.Show("Message : \n" + smsMessage);
@@ -134,8 +135,8 @@ namespace MainServer
 
         public string GoogleTranslate(string text)
         {
-            string from="en";
-            string to="ar";
+            string from = "en";
+            string to = "ar";
             string url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&dt=t&q={text}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -490,7 +491,10 @@ namespace MainServer
                 MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-      
-   
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

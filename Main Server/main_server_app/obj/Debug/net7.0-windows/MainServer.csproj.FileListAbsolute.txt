@@ -185,3 +185,5 @@ E:\Music\Care.Connect\Main Server\main_server_app\obj\Debug\net7.0-windows\refin
 E:\Music\Care.Connect\Main Server\main_server_app\obj\Debug\net7.0-windows\MainServer.pdb
 E:\Music\Care.Connect\Main Server\main_server_app\obj\Debug\net7.0-windows\MainServer.genruntimeconfig.cache
 E:\Music\Care.Connect\Main Server\main_server_app\obj\Debug\net7.0-windows\ref\MainServer.dll
+H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\CircularProgressBar.dll
+H:\projects\Care.Connect\Main Server\main_server_app\bin\Debug\net7.0-windows\WinFormAnimation.dll
