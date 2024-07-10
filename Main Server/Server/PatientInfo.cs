@@ -35,6 +35,7 @@ namespace Server
             AddPatient("2", "Ahmed ", "B+");
             AddPatient("3", "Yasser", "O+");
             AddPatient("4", "Tamer", "AB+");
+            AddPatient("2024", "Ahmed mohamed Hassan", "A+");
 
         }
 

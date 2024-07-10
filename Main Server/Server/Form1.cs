@@ -16,6 +16,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using Firebase.Database.Streaming;
+using RestSharp.Contrib;
 
 namespace Server
 {
@@ -24,8 +25,9 @@ namespace Server
         Firebase.Database.FirebaseClient FireClient;
         Dictionary<string, double> DistanceValuesAPI = new Dictionary<string, double>();
         string smsMessage = "";
+        int Hospital_number = 342, Hospital_number2 = 0;
 
-
+        string Hospital_Selected_Key = ""; 
 
         static IFirebaseConfig config = new FirebaseConfig
         {
@@ -43,22 +45,32 @@ namespace Server
         public Form1()
         {
             InitializeComponent();
+            ProgressBars();
             FireClient = new Firebase.Database.FirebaseClient("https://careconnect-1c393-default-rtdb.firebaseio.com/");
             distanceService = new DistanceService();
             patientInfo = new PatientInfo();
             patientInfo.LoadData();
 
-               MessageBox.Show("ds");
+          //     MessageBox.Show("ds");
 
-            //        MessageBox.Show(GoogleTranslate("Moahmed Badawy Sayed"));
+
+        }
+
+
+        private void ProgressBars()
+        {
+            
+            Porgress1.Value = 0;
 
         }
 
 
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            LoadDataDatabase("1111");
+
 
             var obserable = FireClient.Child("CareConnect/Emergency").AsObservable<object>();
             var Subscription = obserable.Subscribe(async snapshot =>
@@ -73,8 +85,8 @@ namespace Server
 
                     if (emergency.Ambulance != null)
                     {
-                        MessageBox.Show(emergency.ToString());
-                        EmergencyFunctions(emergency);
+                        smsMessage += "تعرض " + GoogleTranslate(patientInfo.UserNameInfo(emergency.FingerPrint)) + " لحادث " +"\n";
+       //                 EmergencyFunctions(emergency);
                         //  DeleteRecord(CollectionName);
                     }
 
@@ -97,13 +109,51 @@ namespace Server
             DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
             UpdateStatusTextBox();
             CheckFreeBed();
-
+         //   CheckBloodAvailability(emergency.);
 
 
 
 
 
         }
+
+        private void CheckBloodAvailability()
+        {
+           // if(Check_blood_availability(Hospital_Selected_Key,))
+        }
+
+
+
+
+        public void LoadDataDatabase(string hospitalKey)
+        {
+            Dictionary<string, int> HospitalDataDictionaryTemp = new Dictionary<string, int>();
+            client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("CareConnect/HospitalData/" + hospitalKey);
+            dynamic data = JObject.Parse(response.Body);
+
+            HospitalDataDictionaryTemp.Add("ABPlus", Convert.ToInt32(data["ABPlus"]));
+            HospitalDataDictionaryTemp.Add("ABMinus", Convert.ToInt32(data["ABMinus"]));
+            HospitalDataDictionaryTemp.Add("APlus", Convert.ToInt32(data["APlus"]));
+            HospitalDataDictionaryTemp.Add("AMinus", Convert.ToInt32(data["AMinus"]));
+            HospitalDataDictionaryTemp.Add("BPlus", Convert.ToInt32(data["BPlus"]));
+            HospitalDataDictionaryTemp.Add("BMinus", Convert.ToInt32(data["BMinus"]));
+            HospitalDataDictionaryTemp.Add("OPlus", Convert.ToInt32(data["OPlus"]));
+            HospitalDataDictionaryTemp.Add("OMinus", Convert.ToInt32(data["OMinus"]));
+
+
+           
+
+            string allData= "";
+            foreach (var item in HospitalDataDictionaryTemp)
+            {
+                allData += item.Key + " : " + item.Value + "\n";
+            }
+            MessageBox.Show(allData);
+
+        }
+
+
 
         private void CheckFreeBed()
         {
@@ -115,11 +165,13 @@ namespace Server
                 {
 
                     ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName(hospital.Key) + "\n";
-                    smsMessage += "the patient has been transferred to : " + GetHospitalName(hospital.Key) + "\n";
-                    smsMessage += "Hospital location : " + GetGoogleMapsUrl(GetHospitalAddress(hospital.Key)) + "\n";
 
-                    MessageBox.Show("Message : \n" + smsMessage);
-
+                    smsMessage += " وتم نقلة الى  " + GoogleTranslate(GetHospitalName(hospital.Key)) + "\n";
+                    smsMessage+= "نظرا لتعرضة لحالة طارئة فى تمام الساعة " + DateTime.Now.ToString("h:mm tt") + "\n";
+                    smsMessage += "برجاء الذهاب الى المستشفي فى اسرع وقت" + "\n";
+                    smsMessage += "عنوان المستشفي : "+"\n" + GetGoogleMapsUrl(GetHospitalAddress(hospital.Key)) + "\n";
+                    Hospital_Selected_Key= hospital.Key;
+                    MessageBox.Show( smsMessage);
                     UpdateStatusTextBox();
                     break;
                 }
@@ -135,38 +187,35 @@ namespace Server
         {
             string from = "en";
             string to = "ar";
-            string url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&dt=t&q={text}";
+            string url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&dt=t&q={HttpUtility.UrlEncode(text)}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string result = reader.ReadToEnd();
             reader.Close();
             response.Close();
-            return result;
+            JArray jsonData = JArray.Parse(result);
+            string translatedText = jsonData[0][0][0].ToString();
+            return translatedText;
         }
-
         public static string GetGoogleMapsUrl(string location)
         {
             string latitude = location.Split(',')[0];
             string longitude = location.Split(',')[1];
             return $"https://www.google.com/maps?q={latitude},{longitude}";
         }
-
         private string GetHospitalName(string hospitalKey)
         {
             FirebaseResponse DataResponse = client.Get("CareConnect/HospitalData/" + Convert.ToString(hospitalKey));
             JObject HospitalData = JObject.Parse(DataResponse.Body);
             return HospitalData["Name"].ToString();
         }
-
         private string GetHospitalAddress(string hospitalKey)
         {
             FirebaseResponse DataResponse = client.Get("CareConnect/HospitalData/" + Convert.ToString(hospitalKey));
             JObject HospitalData = JObject.Parse(DataResponse.Body);
             return HospitalData["Address"].ToString();
         }
-
-
         private void GetingStart()
         {
             ConfigurationManager.AppSettings["StatusText"] += "New Request for Ambulance : " + this.emergency.FingerPrint + "\n";
@@ -177,7 +226,6 @@ namespace Server
             ConfigurationManager.AppSettings["StatusText"] += "***************************************\n\n";
             UpdateStatusTextBox();
         }
-
         private async Task DeleteRecord(string collectionName)
         {
             try
@@ -190,7 +238,6 @@ namespace Server
                 MessageBox.Show($"Error deleting record {collectionName}: {ex.Message}");
             }
         }
-
         private void UpdateStatusTextBox()
         {
             string text = ConfigurationManager.AppSettings["StatusText"];
@@ -206,16 +253,11 @@ namespace Server
             }
 
         }
-
         private void AddNewHospital_Click(object sender, EventArgs e)
         {
           //  AddHospital addHospitalForm = new AddHospital();
         //    addHospitalForm.Show();
         }
-  
-
-
-
         private bool Check_Rooms_availability(string Hospital_Key)
         {
             // ------------- connect to firebase and get the data ----------------
@@ -277,6 +319,9 @@ namespace Server
                 MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+
 
         // ----------- The following 10 functions are resposible for checking blood availablility and decreasing its amount if found ----------
         private bool Check_blood_availability(string Hospital_Key, ref Dictionary<string, int> dic, string Blood_Type)
@@ -497,7 +542,34 @@ namespace Server
 
         }
 
-    
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Hospital_number2 <= Hospital_number)
+            {
+                Porgress1.Enabled = false;
+                Hospital_number2 += 10;
+                int val = (Hospital_number2 * 100) / Hospital_number;
+                if (val < 100) Porgress1.Value = 73;
+
+                Porgress1.Text = Hospital_number2.ToString();
+            }
+           
+           
+
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+           this.Close();
+        }
+
+        private void Porgress1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
 
     }
 }

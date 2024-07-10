@@ -46,7 +46,6 @@ namespace Server
                 FirebaseResponse response = client.Get("CareConnect/HospitalData");
                 var data = response.ResultAs<Dictionary<string, HospitalData>>();
 
-                // print data 
 
                 string dataString = "Data \n\n";
                 foreach (var item in data)
