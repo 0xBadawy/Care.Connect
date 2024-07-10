@@ -186,3 +186,12 @@ H:\projects\Care.Connect\Main Server\Server\obj\Debug\Server.csproj.CoreCompileI
 H:\projects\Care.Connect\Main Server\Server\obj\Debug\Server.csproj.CopyComplete
 H:\projects\Care.Connect\Main Server\Server\obj\Debug\Server.exe
 H:\projects\Care.Connect\Main Server\Server\obj\Debug\Server.pdb
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.dll
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.WinForms.dll
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.Wpf.dll
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.pdb
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.xml
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.WinForms.pdb
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.WinForms.xml
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.Wpf.pdb
+H:\projects\Care.Connect\Main Server\Server\bin\Debug\LiveCharts.Wpf.xml

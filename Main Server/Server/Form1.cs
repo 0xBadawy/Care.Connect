@@ -71,7 +71,7 @@ namespace Server
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        //    LoadDataDatabase("1111");
+            //    LoadDataDatabase("1111");
 
 
             var obserable = FireClient.Child("CareConnect/Emergency").AsObservable<object>();
@@ -90,10 +90,13 @@ namespace Server
                         smsMessage += "تعرض " + GoogleTranslate(patientInfo.UserNameInfo(emergency.FingerPrint)) + " لحادث " +"\n";
                         EmergencyFunctions(emergency);
                         //  DeleteRecord(CollectionName);
+
                     }
 
                 }
             });
+
+
         }
 
 
@@ -103,19 +106,21 @@ namespace Server
 
         private void EmergencyFunctions(Emergency emergency)
         {
-            GetingStart();
+           GetingStart();
             distanceService.LoadDataFromDatabase();
             UpdateStatusTextBox();
             distanceService.CalculateDistance(this.emergency.Location);
             UpdateStatusTextBox();
-            DistanceValuesAPI = distanceService.CalculateDistanceAPI(this.emergency.Location);
-            UpdateStatusTextBox();
-            CheckFreeBed();
-            CheckBloodAvailability(emergency.FingerPrint);
-            SendSMS(smsMessage);
-            RequestBloodFromHospital();
-            RequestToHospitalReception();
-            RequestLocationToMobile();
+            DistanceValuesAPI = distanceService.CalculateDistanceAPI(emergency.Location);
+            bloodTypeNumber();
+
+              UpdateStatusTextBox();
+               CheckFreeBed();
+               CheckBloodAvailability(emergency.FingerPrint);
+               SendSMS(smsMessage);
+               RequestBloodFromHospital();
+               RequestToHospitalReception();
+               RequestLocationToMobile();
 
         }
 
@@ -228,7 +233,7 @@ namespace Server
             {
                 allData += item.Key + " : " + item.Value + "\n";
             }
-            MessageBox.Show(allData);
+        //    MessageBox.Show(allData);
 
             return HospitalDataDictionaryTemp;
         }
@@ -664,6 +669,11 @@ namespace Server
          
         }
 
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -681,6 +691,60 @@ namespace Server
             this.Region = new Region(path);
         }
 
+
+        public void bloodTypeNumber()
+        {
+            int ABPlus = 0, ABMinus = 0, APlus = 0, AMinus = 0, BPlus = 0, BMinus = 0, OPlus = 0, OMinus = 0;
+            Dictionary<string, int> Data = new Dictionary<string, int>();
+        //    Data = LoadBloodTypes();
+            MessageBox.Show(DistanceValuesAPI.Count().ToString());
+            foreach (var hospital in DistanceValuesAPI)
+            {
+                Data = LoadBloodTypes(hospital.Key);
+                ABPlus += Data["ABPlus"];
+                ABMinus += Data["ABMinus"];
+                APlus += Data["APlus"];
+                AMinus += Data["AMinus"];
+                BPlus += Data["BPlus"];
+                BMinus += Data["BMinus"];
+                OPlus += Data["OPlus"];
+                OMinus += Data["OMinus"];
+            }
+          //  MessageBox.Show( "ABPlus :" + ABPlus+"\nABMinus :"+ ABMinus + "\nAPlus :"+ APlus + "\nAMinus :"+ AMinus + "\nBPlus :"+ BPlus + "\nBMinus :"+ BMinus + "\nOPlus :"+ OPlus + "\nOMinus :"+ OMinus);
+
+            
+            int total = ABPlus + ABMinus + APlus + AMinus + BPlus + BMinus + OPlus + OMinus;
+
+            APlus_ProgressBar.Value = (ABPlus * 100) / total;
+            APlus_ProgressBar.Text = ((ABPlus * 100) / total).ToString() + "%";
+
+            AMinus_ProgressBar.Value = (ABMinus * 100) / total;
+            AMinus_ProgressBar.Text = ((ABMinus * 100) / total).ToString() + "%";
+
+            BPlus_ProgressBar.Value = (APlus * 100) / total;
+            BPlus_ProgressBar.Text = ((APlus * 100) / total).ToString() + "%";
+
+            BMinus_ProgressBar.Value = (AMinus * 100) / total;
+            BMinus_ProgressBar.Text = ((AMinus * 100) / total).ToString() + "%";
+
+            ABPlus_ProgressBar.Value = (BPlus * 100) / total;
+            ABPlus_ProgressBar.Text = ((BPlus * 100) / total).ToString() + "%";
+
+            ABMinus_ProgressBar.Value = (BMinus * 100) / total;
+            ABMinus_ProgressBar.Text = ((BMinus * 100) / total).ToString() + "%";
+
+            OPlus_ProgressBar.Value = (OPlus * 100) / total;
+            OPlus_ProgressBar.Text = ((OPlus * 100) / total).ToString() + "%";
+
+            OMinus_ProgressBar.Value = (OMinus * 100) / total;
+            OMinus_ProgressBar.Text = ((OMinus * 100) / total).ToString() + "%";
+            label11.Text = "Total Number : "+ total.ToString();
+
+
+            
+
+
+        }
 
     }
 }
