@@ -17,6 +17,7 @@ using System.Net;
 using System.Threading;
 using Firebase.Database.Streaming;
 using RestSharp.Contrib;
+using System.Drawing.Drawing2D;
 
 namespace Server
 {
@@ -26,8 +27,9 @@ namespace Server
         Dictionary<string, double> DistanceValuesAPI = new Dictionary<string, double>();
         string smsMessage = "";
         int Hospital_number = 342, Hospital_number2 = 0;
-
+        private int borderRadius = 25;
         string Hospital_Selected_Key = ""; 
+        string Blood_Request_Hospital = "";
 
         static IFirebaseConfig config = new FirebaseConfig
         {
@@ -50,7 +52,7 @@ namespace Server
             distanceService = new DistanceService();
             patientInfo = new PatientInfo();
             patientInfo.LoadData();
-
+            RadForm();
           //     MessageBox.Show("ds");
 
 
@@ -111,24 +113,46 @@ namespace Server
             CheckFreeBed();
             CheckBloodAvailability(emergency.FingerPrint);
             SendSMS(smsMessage);
-            SendResquest
+            RequestBloodFromHospital();
+            RequestToHospitalReception();
+            RequestLocationToMobile();
 
+        }
 
+        private void RequestLocationToMobile()
+        {
+            ConfigurationManager.AppSettings["StatusText"]+= "5) Requesting Location to Mobile App\n\n";
+            UpdateStatusTextBox();
 
+        }
 
+        private void RequestToHospitalReception()
+        {
+            ConfigurationManager.AppSettings["StatusText"]+= "4) The hospital was notified to receive the person : " + GetHospitalName(Hospital_Selected_Key) + "\n\n";
+            UpdateStatusTextBox();
+
+        }
+
+        private void RequestBloodFromHospital()
+        {
+            ConfigurationManager.AppSettings["StatusText"]+= "3) Requesting Blood from : " + GetHospitalName(Hospital_Selected_Key) + "\n\n";
+            UpdateStatusTextBox();
 
         }
 
         private void SendSMS( string smsMessage)
         {
 
-            ConfigurationManager.AppSettings["StatusText"]+= "SMS message was sent successfully!\n\n";
+            ConfigurationManager.AppSettings["StatusText"]+= "2) SMS message was sent successfully!\n\n";
+            UpdateStatusTextBox();
 
         }
+
 
         private void CheckBloodAvailability(string fingerprintID)
         {
             Dictionary<string, int> Data = new Dictionary<string, int>();
+
             Data = LoadBloodTypes(Hospital_Selected_Key);
 
             ConfigurationManager.AppSettings["StatusText"]+= "Checking Blood Availability for : " + patientInfo.UserNameInfo(fingerprintID) + "\n\n";
@@ -139,7 +163,8 @@ namespace Server
 
             if (Check_blood_availability(Hospital_Selected_Key, ref Data, patientInfo.BloodInfo(fingerprintID)))
             {
-                ConfigurationManager.AppSettings["StatusText"]+= "Blood was found in : " + GetHospitalName(Hospital_Selected_Key) + "\n";
+                ConfigurationManager.AppSettings["StatusText"]+= "1) Blood was found in : " + GetHospitalName(Hospital_Selected_Key) + "\n";
+                Blood_Request_Hospital= Hospital_Selected_Key;
                 UpdateStatusTextBox();
 
             }
@@ -148,7 +173,32 @@ namespace Server
                 ConfigurationManager.AppSettings["StatusText"]+= "Blood was not found in : " + GetHospitalName(Hospital_Selected_Key) + "\n";
                 ConfigurationManager.AppSettings["StatusText"]+= "Searching for another hospital ..." + "\n";
                 UpdateStatusTextBox();
+                SearchBloodInHospitl(ref Data, patientInfo.BloodInfo(fingerprintID));
+                
             }
+        }
+
+        private void SearchBloodInHospitl(ref Dictionary<string, int> Data, string Blood_Type)
+        {
+
+            foreach (var hospital in DistanceValuesAPI)
+            {
+                if (Check_blood_availability(hospital.Key, ref Data, Blood_Type))
+                {
+                    ConfigurationManager.AppSettings["StatusText"]+= "Blood was found in : " + GetHospitalName(hospital.Key) + "\n\n";
+                    Blood_Request_Hospital = Hospital_Selected_Key;
+                    UpdateStatusTextBox();
+                    break;
+                }
+                else
+                {
+                    ConfigurationManager.AppSettings["StatusText"]+= "Blood was not found in : " + GetHospitalName(hospital.Key) + "\n";
+                    ConfigurationManager.AppSettings["StatusText"]+= "Searching for another hospital ..." + "\n\n";
+                    UpdateStatusTextBox();
+                }
+            }
+            
+
         }
 
 
@@ -194,7 +244,7 @@ namespace Server
                 if (Check_Rooms_availability(hospital.Key))
                 {
 
-                    ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName(hospital.Key) + "\n";
+                    ConfigurationManager.AppSettings["StatusText"] += "A free bed was found in : " + GetHospitalName(hospital.Key) + "\n\n";
 
                     smsMessage += " وتم نقلة الى  " + GoogleTranslate(GetHospitalName(hospital.Key)) + "\n";
                     smsMessage+= "نظرا لتعرضة لحالة طارئة فى تمام الساعة " + DateTime.Now.ToString("h:mm tt") + "\n";
@@ -254,7 +304,7 @@ namespace Server
             ConfigurationManager.AppSettings["StatusText"] += "Patient ID : " + this.emergency.Ambulance + "\n";
             ConfigurationManager.AppSettings["StatusText"] += "Patient Name : " + patientInfo.UserNameInfo(this.emergency.Ambulance) + "\n";
             ConfigurationManager.AppSettings["StatusText"] += "Blood Type : " + patientInfo.BloodInfo(this.emergency.Ambulance) + "\n";
-            ConfigurationManager.AppSettings["StatusText"] += "***************************************\n\n";
+            ConfigurationManager.AppSettings["StatusText"] += "**********************************\n\n";
             UpdateStatusTextBox();
         }
         private async Task DeleteRecord(string collectionName)
@@ -272,7 +322,7 @@ namespace Server
         private void UpdateStatusTextBox()
         {
             string text = ConfigurationManager.AppSettings["StatusText"];
-            Thread.Sleep(1000);
+            Thread.Sleep(200);
             if (StatusTextBox.InvokeRequired)
             {
                 StatusTextBox.Invoke(new Action(() => StatusTextBox.Text = text));
@@ -601,6 +651,35 @@ namespace Server
 
         }
 
+
+
+
+        public void RadForm()
+        {
+            // Form properties
+            this.FormBorderStyle = FormBorderStyle.None; // Hide the default border
+      //      this.BackColor = Color.White; // Set the form background color
+            this.StartPosition = FormStartPosition.CenterScreen; // Center the form on the screen
+
+         
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            // Create a path with rounded corners
+            GraphicsPath path = new GraphicsPath();
+            int arcWidth = borderRadius * 2;
+            path.AddArc(0, 0, arcWidth, arcWidth, 180, 90);
+            path.AddArc(this.Width - arcWidth, 0, arcWidth, arcWidth, 270, 90);
+            path.AddArc(this.Width - arcWidth, this.Height - arcWidth, arcWidth, arcWidth, 0, 90);
+            path.AddArc(0, this.Height - arcWidth, arcWidth, arcWidth, 90, 90);
+            path.CloseAllFigures();
+
+            // Set the form region to the path
+            this.Region = new Region(path);
+        }
 
 
     }

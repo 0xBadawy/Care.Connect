@@ -55,8 +55,8 @@
             this.StatusTextBox.ForeColor = System.Drawing.Color.White;
             this.StatusTextBox.Location = new System.Drawing.Point(0, 44);
             this.StatusTextBox.Name = "StatusTextBox";
-            this.StatusTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.StatusTextBox.Size = new System.Drawing.Size(384, 608);
+            this.StatusTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.StatusTextBox.Size = new System.Drawing.Size(384, 684);
             this.StatusTextBox.TabIndex = 0;
             this.StatusTextBox.Text = "";
             // 
@@ -139,7 +139,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1142, 47);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(384, 711);
+            this.panel6.Size = new System.Drawing.Size(384, 787);
             this.panel6.TabIndex = 4;
             // 
             // panel8
@@ -147,7 +147,7 @@
             this.panel8.Controls.Add(this.btnClear);
             this.panel8.Controls.Add(this.BtnUpdate);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 652);
+            this.panel8.Location = new System.Drawing.Point(0, 728);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(384, 59);
             this.panel8.TabIndex = 1;
@@ -170,7 +170,7 @@
             this.Porgress1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.Porgress1.InnerMargin = 2;
             this.Porgress1.InnerWidth = -1;
-            this.Porgress1.Location = new System.Drawing.Point(12, 566);
+            this.Porgress1.Location = new System.Drawing.Point(12, 645);
             this.Porgress1.MarqueeAnimationSpeed = 2000;
             this.Porgress1.Name = "Porgress1";
             this.Porgress1.OuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(32)))), ((int)(((byte)(54)))));
@@ -202,7 +202,7 @@
             // Form1
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1526, 758);
+            this.ClientSize = new System.Drawing.Size(1526, 834);
             this.Controls.Add(this.Porgress1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
