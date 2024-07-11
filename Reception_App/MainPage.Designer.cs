@@ -36,18 +36,18 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(303, 0);
+            this.panel1.Location = new System.Drawing.Point(473, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(617, 559);
+            this.panel1.Size = new System.Drawing.Size(911, 758);
             this.panel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(96, 484);
+            this.button1.Location = new System.Drawing.Point(167, 135);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(114, 53);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -55,10 +55,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 559);
+            this.ClientSize = new System.Drawing.Size(1384, 758);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Name = "MainPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainPage";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.ResumeLayout(false);

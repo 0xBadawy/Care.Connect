@@ -17,3 +17,4 @@ E:\Desktop\Reception_App\obj\Debug\Reception_App.csproj.CoreCompileInputs.cache
 E:\Desktop\Reception_App\obj\Debug\Reception_App.csproj.CopyComplete
 E:\Desktop\Reception_App\obj\Debug\Reception_App.exe
 E:\Desktop\Reception_App\obj\Debug\Reception_App.pdb
+E:\Desktop\Reception_App\obj\Debug\Reception_App.Patient_Detailed_Info.resources
