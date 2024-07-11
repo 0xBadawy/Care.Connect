@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -40,14 +42,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(911, 758);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(167, 135);
+            this.button1.Location = new System.Drawing.Point(152, 444);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 53);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Test";
+            this.button1.Size = new System.Drawing.Size(136, 58);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -69,6 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
     }
 }

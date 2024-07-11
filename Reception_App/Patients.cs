@@ -15,6 +15,7 @@ namespace Reception_App
         public Patients()
         {
             InitializeComponent();
+            btn_Delete.Click += btn_Delete_Click_1;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -35,7 +36,13 @@ namespace Reception_App
 
         private void btn_Delete_Click_1(object sender, EventArgs e)
         {
-            
+            if (this.Parent is Panel ParnetPanel)
+            {
+                ParnetPanel.Controls.Remove(this);
+                MainPage.instance.PatientsInPanel.Remove(this);
+                MainPage.instance.UpdateUserControlPositions();
+            }
+        
 
         }
     }
