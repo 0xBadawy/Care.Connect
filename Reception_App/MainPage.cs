@@ -1,4 +1,8 @@
-﻿using FireSharp.Interfaces;
+﻿using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Mysqlx;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +12,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Firebase.Database.Streaming;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Newtonsoft.Json.Linq;
 
 namespace Reception_App
 {
@@ -19,14 +26,39 @@ namespace Reception_App
         List<string> PatientList = new List<string>();
         Dictionary<string, Dictionary<string, string>> patientData;
 
+        public static MainPage instance;
         public MainPage()
         {
             InitializeComponent();
-            patientData= getSQLdata.GetPatientData();
+            patientData = getSQLdata.GetPatientData();
             addPatientToHospital("123");
             addPatientToHospital("33222");
+            instance = this;
         }
 
+        private void StartListeningForNewRecords()
+        {
+            try
+            {
+                FirebaseResponse response = client.Get($"CareConnect/MainServer_Returned_Info/{Login.HospitalID}");
+                if( response.Body != "null" && response.Body != null) 
+                {
+                    Patients patient = new Patients();
+                    JObject loginData = JObject.Parse(response.Body);
+                    string SSN = loginData["SSN"].ToString();
+                    // here we should call the function of MySql to get rest data
+
+                    Add_New_Patient(patient);
+                    client.DeleteTaskAsync($"CareConnect/MainServer_Returned_Info/{Login.HospitalID}");
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
 
         private void addPatientToHospital(string patientID)
         {
@@ -44,23 +76,15 @@ namespace Reception_App
         }
 
         private int yOffset = 10; // Initial vertical offset for the first button
-        private List<Patients> PatientsInPanel = new List<Patients>(); // List to keep track of the buttons in the panel
+        public List<Patients> PatientsInPanel = new List<Patients>(); // List to keep track of the buttons in the panel
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Add_New_Patient(Patients patient)
         {
-            Patients patient = new Patients();
             PatientsInPanel.Insert(0, patient);
             panel1.Controls.Add(patient);
             UpdateUserControlPositions();
         }
 
-
-        private void UserControl_DeleteButtonClicked(object sender, Patients userControl)
-        {
-            // Remove the user control from the list
-            PatientsInPanel.Remove(userControl);
-            UpdateUserControlPositions();
-        }
         public void UpdateUserControlPositions()
         {
             int y = 10;
@@ -82,19 +106,27 @@ namespace Reception_App
                 patient.Lbl_Blood.Text = patientData[patientID]["BloodType"];
                 patient.Lbl_Gender.Text = patientData[patientID]["Gender"];
                 patient.Lbl_Parent_Phone.Text = patientData[patientID]["ParentPhoneNum"];
-           //     patient.Lbl_SSN.Text = patientData["SSN"];
-                
+                //     patient.Lbl_SSN.Text = patientData["SSN"];
 
+                Add_New_Patient(patient);
 
-                int x = 10;
-                int y = PatientsInPanel.Count > 0 ? PatientsInPanel.Last().Location.Y + PatientsInPanel.Last().Size.Height + yOffset : yOffset;
-                patient.Location = new Point(x, y);
-
-                panel1.Controls.Add(patient);
-                PatientsInPanel.Add(patient);
             }
 
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            StartListeningForNewRecords();
+        }
+
+        public void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
