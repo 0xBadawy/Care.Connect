@@ -49,15 +49,27 @@ namespace Reception_App
         private void button1_Click(object sender, EventArgs e)
         {
             Patients patient = new Patients();
-
-            int x = 10;
-            int y = PatientsInPanel.Count > 0 ? PatientsInPanel.Last().Location.Y + PatientsInPanel.Last().Size.Height + yOffset : yOffset;
-            patient.Location = new Point(x, y);
-
+            PatientsInPanel.Insert(0, patient);
             panel1.Controls.Add(patient);
-            PatientsInPanel.Add(patient);
+            UpdateUserControlPositions();
         }
-        
+
+
+        private void UserControl_DeleteButtonClicked(object sender, Patients userControl)
+        {
+            // Remove the user control from the list
+            PatientsInPanel.Remove(userControl);
+            UpdateUserControlPositions();
+        }
+        public void UpdateUserControlPositions()
+        {
+            int y = 10;
+            foreach (var control in PatientsInPanel)
+            {
+                control.Location = new Point(10, y);
+                y += control.Height+10;
+            }
+        }
 
         private void loadHospitalPatient()
         {
