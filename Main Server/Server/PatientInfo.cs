@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Server.PatientInfo;
 
 namespace Server
 {
     internal class PatientInfo
     {
+        getSQLdata getSQLdata = new getSQLdata();
+        Dictionary<string, Patient> PatientData = new Dictionary<string, Patient>();
+        Dictionary<string, Dictionary<string, string>> patientData;
+
+        
         public class Patient
         {
             public string Id { get; set; }
@@ -22,7 +28,6 @@ namespace Server
             }
         }
 
-        Dictionary<string, Patient> PatientData = new Dictionary<string, Patient>();
 
         public void AddPatient(string id, string name, string blood)
         {
@@ -31,12 +36,13 @@ namespace Server
 
         public void LoadData()
         {
-            AddPatient("89", "Mohamed Badawy", "A+");
+            patientData = getSQLdata.GetPatientData();
+         /*   AddPatient("89", "Mohamed Badawy", "A+");
             AddPatient("2", "Ahmed ", "B+");
             AddPatient("3", "Yasser", "O+");
             AddPatient("4", "Tamer", "AB+");
             AddPatient("2024", "Ahmed mohamed Hassan", "A+");
-
+*/
         }
 
         public string UserNameInfo(string id)
@@ -44,18 +50,29 @@ namespace Server
 
             if (PatientData.ContainsKey(id))
             {
-                return PatientData[id].Name;
+                return patientData[id]["Name"];
+
             }
             return "Not Found";
         }
 
         public string BloodInfo(string id)
         {
+           
             if (PatientData.ContainsKey(id))
             {
-                return PatientData[id].BloodType;
+                return patientData[id]["BloodType"];
             }
             return "Not Found";
+        }
+
+        public string PatientPhome(string id)
+        {
+            if (PatientData.ContainsKey(id))
+            {
+                return patientData[id]["ParentPhoneNum"];
+            }
+            return "01095529897";
         }
 
     }

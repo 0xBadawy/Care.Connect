@@ -198,7 +198,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="getSQLdata.cs" />
     <Compile Include="HospitalData.cs" />
+    <Compile Include="myconnection.cs" />
     <Compile Include="PatientInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,6 +30,8 @@ namespace Server
         private int borderRadius = 25;
         string Hospital_Selected_Key = ""; 
         string Blood_Request_Hospital = "";
+        int MED = 0, IR = 0, ICU = 0, EOR = 0;
+        int total_MED = 0, total_IR = 0, total_ICU = 0, total_EOR = 0;
 
         static IFirebaseConfig config = new FirebaseConfig
         {
@@ -113,6 +115,7 @@ namespace Server
             UpdateStatusTextBox();
             DistanceValuesAPI = distanceService.CalculateDistanceAPI(emergency.Location);
             bloodTypeNumber();
+            LoadBedData();
 
               UpdateStatusTextBox();
                CheckFreeBed();
@@ -206,6 +209,25 @@ namespace Server
 
         }
 
+        public Dictionary<string, int>LoadBedDada(string hospitalKey)
+        {
+            Dictionary<string, int> HospitalDataDictionaryTemp = new Dictionary<string, int>();
+            client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("CareConnect/HospitalData/" + hospitalKey);
+            dynamic data = JObject.Parse(response.Body);
+
+            HospitalDataDictionaryTemp.Add("CurSize_MED", Convert.ToInt32(data["CurSize_MED"]));
+            HospitalDataDictionaryTemp.Add("CurSize_IR", Convert.ToInt32(data["CurSize_IR"]));
+            HospitalDataDictionaryTemp.Add("CurSize_ICU", Convert.ToInt32(data["CurSize_ICU"]));
+            HospitalDataDictionaryTemp.Add("CurSize_EOR", Convert.ToInt32(data["CurSize_EOR"]));
+            HospitalDataDictionaryTemp.Add("MaxSize_MED", Convert.ToInt32(data["MaxSize_MED"]));
+            HospitalDataDictionaryTemp.Add("MaxSize_IR", Convert.ToInt32(data["MaxSize_IR"]));
+            HospitalDataDictionaryTemp.Add("MaxSize_ICU", Convert.ToInt32(data["MaxSize_ICU"]));
+            HospitalDataDictionaryTemp.Add("MaxSize_EOR", Convert.ToInt32(data["MaxSize_EOR"]));
+
+           
+            return HospitalDataDictionaryTemp;
+        }
 
 
 
@@ -743,6 +765,39 @@ namespace Server
 
             
 
+
+        }
+
+        private void LoadBedData()
+        {
+           
+            Dictionary<string, int> Data = new Dictionary<string, int>();
+
+            foreach (var hospital in DistanceValuesAPI)
+            {
+                Data = LoadBedDada(hospital.Key);
+                MED += Data["CurSize_MED"];
+                IR += Data["CurSize_IR"];
+                ICU += Data["CurSize_ICU"];
+                EOR += Data["CurSize_EOR"];
+
+                total_MED += Data["MaxSize_MED"];
+                total_IR += Data["MaxSize_IR"];
+                total_ICU += Data["MaxSize_ICU"];
+                total_EOR += Data["MaxSize_EOR"];
+            }
+
+            MEDProgressBar.Value = (MED * 100) / total_MED;
+            MEDProgressBar.Text = ((MED * 100) / total_MED).ToString() + "%";
+
+            IRProgressBar.Value = (IR * 100) / total_IR;
+            IRProgressBar.Text = ((IR * 100) / total_IR).ToString() + "%";
+
+            ICUProgressBar.Value = (ICU * 100) / total_ICU;
+            ICUProgressBar.Text = ((ICU * 100) / total_ICU).ToString() + "%";
+
+            EORProgressBar.Value = (EOR * 100) / total_EOR;
+            EORProgressBar.Text = ((EOR * 100) / total_EOR).ToString() + "%";
 
         }
 
