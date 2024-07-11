@@ -14,15 +14,28 @@ namespace Reception_App
     public partial class MainPage : Form
     {
         IFirebaseClient client = FirebaseConnection.GetFirebaseConnection();
+        getSQLdata getSQLdata = new getSQLdata();
+
+        List<string> PatientList = new List<string>();
+        Dictionary<string, Dictionary<string, string>> patientData;
+
         public MainPage()
         {
             InitializeComponent();
+            patientData= getSQLdata.GetPatientData();
+            addPatientToHospital("123");
+            addPatientToHospital("33222");
         }
 
+
+        private void addPatientToHospital(string patientID)
+        {
+            PatientList.Add(patientID);
+        }
         
         private void MainPage_Load(object sender, EventArgs e)
         {
-
+            loadHospitalPatient();
         }
 
         private void patients1_Load(object sender, EventArgs e)
@@ -44,5 +57,32 @@ namespace Reception_App
             panel1.Controls.Add(patient);
             PatientsInPanel.Add(patient);
         }
+        
+
+        private void loadHospitalPatient()
+        {
+           foreach (string patientID in PatientList)
+            {
+                Patients patient = new Patients();
+
+                patient.Lbl_Name.Text = patientData[patientID]["Name"];
+       //         patient.Lbl_Age.Text = patientData[patientID]["Age"];
+                patient.Lbl_Blood.Text = patientData[patientID]["BloodType"];
+                patient.Lbl_Gender.Text = patientData[patientID]["Gender"];
+                patient.Lbl_Parent_Phone.Text = patientData[patientID]["ParentPhoneNum"];
+           //     patient.Lbl_SSN.Text = patientData["SSN"];
+                
+
+
+                int x = 10;
+                int y = PatientsInPanel.Count > 0 ? PatientsInPanel.Last().Location.Y + PatientsInPanel.Last().Size.Height + yOffset : yOffset;
+                patient.Location = new Point(x, y);
+
+                panel1.Controls.Add(patient);
+                PatientsInPanel.Add(patient);
+            }
+
+        }
+
     }
 }
