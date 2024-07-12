@@ -318,12 +318,12 @@ namespace hospital_data_update_App
                 await client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateData);
 
                 var UpdateDate = new Dictionary<string, object>
-                { 
+                {
                     { Date ,  LableText}
                 };
                 await client.UpdateTaskAsync($"CareConnect/HospitalData/{Convert.ToString(Login.HospitalID)}/", UpdateDate);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Failed to Update Data, Please check your internet connection", "Connection Failure", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -336,8 +336,8 @@ namespace hospital_data_update_App
                 Blood_Type_APlus++;
                 updateLabelBlood();
                 label2.Text = Convert.ToString(DateTime.Now);
-                UpdateData("APlus", Blood_Type_APlus , "APlus_LastEdit" , label2.Text);
-               
+                UpdateData("APlus", Blood_Type_APlus, "APlus_LastEdit", label2.Text);
+
             }
         }
 
@@ -396,7 +396,7 @@ namespace hospital_data_update_App
                 UpdateData("ABPlus", Blood_Type_ABPlus, "ABPlus_LastEdit", label13.Text);
             }
         }
-        
+
 
         private void Lable_inc_Type_Op_Click(object sender, EventArgs e)
         {
@@ -629,6 +629,14 @@ namespace hospital_data_update_App
         private void label_NumberOf_Ap_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            InitialValues();
+            updateLabelRoom();
+            updateLabelBlood();
+           // MessageBox.Show("Ojskdfhsdf");
         }
     }
 }
