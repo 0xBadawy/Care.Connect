@@ -30,6 +30,7 @@ namespace Server
         private int borderRadius = 25;
         string Hospital_Selected_Key = ""; 
         string Blood_Request_Hospital = "";
+        string patientSSN = "";
         int MED = 0, IR = 0, ICU = 0, EOR = 0;
         int total_MED = 0, total_IR = 0, total_ICU = 0, total_EOR = 0;
 
@@ -89,6 +90,7 @@ namespace Server
 
                     if (emergency.Ambulance != null)
                     {
+                        patientSSN = emergency.FingerPrint;
                         smsMessage += "تعرض " + GoogleTranslate(patientInfo.UserNameInfo(emergency.FingerPrint)) + " لحادث " +"\n";
                         EmergencyFunctions(emergency);
                         //  DeleteRecord(CollectionName);
@@ -150,6 +152,10 @@ namespace Server
 
         private void SendSMS( string smsMessage)
         {
+            string PhoneNumber = patientInfo.PatientPhome(patientSSN);
+
+            
+
 
             ConfigurationManager.AppSettings["StatusText"]+= "2) SMS message was sent successfully!\n\n";
             UpdateStatusTextBox();
