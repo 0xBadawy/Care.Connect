@@ -16,8 +16,12 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using Firebase.Database.Streaming;
-using RestSharp.Contrib;
+//using RestSharp.Contrib;
 using System.Drawing.Drawing2D;
+using RestSharp;
+using System.Web;
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
+using static Server.PatientInfo;
 
 namespace Server
 {
@@ -154,11 +158,42 @@ namespace Server
 
         }
 
-        private void SendSMS( string smsMessage)
+        private async void SendSMS( string smsMessage)
         {
             string PhoneNumber = patientInfo.PatientPhome(patientSSN);
 
-            
+            var options = new RestClientOptions("https://rgd8mp.api.infobip.com")
+            {
+                MaxTimeout = -1,
+            };
+            var client = new RestClient(options);
+            var request = new RestRequest("/sms/2/text/advanced", Method.Post);
+            request.AddHeader("Authorization", "App d968341f13394393a53d661413ed89a7-7e2402ef-644a-4bbe-b628-189eb1e82bbb");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+
+            // Create the JSON payload dynamically
+            var payload = new
+            {
+                messages = new[]
+                {
+                    new
+                    {
+                        destinations = new[] { new { to = PhoneNumber } },
+                        from = "CareConnect",
+                        text = smsMessage
+                    }
+                }
+            };
+
+            request.AddJsonBody(payload);
+            RestResponse response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful)
+                MessageBox.Show(response.Content);
+
+            else
+                MessageBox.Show($"Error sending message: {response.StatusCode} - {response.Content}");
 
 
             ConfigurationManager.AppSettings["StatusText"]+= "2) SMS message was sent successfully!\n\n";
