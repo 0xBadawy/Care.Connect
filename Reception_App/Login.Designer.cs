@@ -37,41 +37,48 @@
             // 
             // Input_HospitalID
             // 
-            this.Input_HospitalID.Location = new System.Drawing.Point(530, 83);
+            this.Input_HospitalID.Location = new System.Drawing.Point(398, 67);
+            this.Input_HospitalID.Margin = new System.Windows.Forms.Padding(2);
             this.Input_HospitalID.Name = "Input_HospitalID";
-            this.Input_HospitalID.Size = new System.Drawing.Size(100, 22);
+            this.Input_HospitalID.Size = new System.Drawing.Size(76, 20);
             this.Input_HospitalID.TabIndex = 0;
+            this.Input_HospitalID.Text = "Hospital1";
             // 
             // Input_Password
             // 
-            this.Input_Password.Location = new System.Drawing.Point(530, 188);
+            this.Input_Password.Location = new System.Drawing.Point(398, 153);
+            this.Input_Password.Margin = new System.Windows.Forms.Padding(2);
             this.Input_Password.Name = "Input_Password";
-            this.Input_Password.Size = new System.Drawing.Size(100, 22);
+            this.Input_Password.Size = new System.Drawing.Size(76, 20);
             this.Input_Password.TabIndex = 1;
+            this.Input_Password.Text = "R1111";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(441, 86);
+            this.label1.Location = new System.Drawing.Point(331, 70);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Hospital ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(441, 191);
+            this.label2.Location = new System.Drawing.Point(331, 155);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(514, 271);
+            this.btn_Login.Location = new System.Drawing.Point(386, 220);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(75, 23);
+            this.btn_Login.Size = new System.Drawing.Size(56, 19);
             this.btn_Login.TabIndex = 4;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
@@ -79,14 +86,15 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1224, 515);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Input_Password);
             this.Controls.Add(this.Input_HospitalID);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

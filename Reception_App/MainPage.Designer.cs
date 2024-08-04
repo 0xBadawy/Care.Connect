@@ -38,9 +38,10 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(473, 0);
+            this.panel1.Location = new System.Drawing.Point(388, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(911, 758);
+            this.panel1.Size = new System.Drawing.Size(1106, 815);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -52,9 +53,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(152, 444);
+            this.button1.Location = new System.Drawing.Point(114, 361);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 58);
+            this.button1.Size = new System.Drawing.Size(102, 47);
             this.button1.TabIndex = 1;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,11 +64,14 @@
             // 
             // MainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 758);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.ClientSize = new System.Drawing.Size(1494, 815);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainPage";

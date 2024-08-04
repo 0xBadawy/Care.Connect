@@ -22,6 +22,27 @@ Time is an important factor in many sides of our life. Upon seconds many things 
 
 <img src="Assets/images/diagrams/img (1).png"></img>
 
+
+##  Mobile Application
+
+<img src="Assets/images/diagrams/Picture1.png"></img>
+
+
+##  Mobile Application
+
+<img src="Assets/images/diagrams/Picture2.png"></img>
+
+
+##  Mobile Application
+
+<img src="Assets/images/diagrams/Picture3.png"></img>
+
+
+
+## Desktop Application
+
+<img src="Assets/images/diagrams/Picture4.png"></img>
+
 ## Sub-Systems :
 
 - Main Server

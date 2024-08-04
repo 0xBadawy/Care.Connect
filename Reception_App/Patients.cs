@@ -45,5 +45,10 @@ namespace Reception_App
         
 
         }
+
+        private void Patients_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

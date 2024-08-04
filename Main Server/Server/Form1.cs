@@ -76,6 +76,7 @@ namespace Server
 
             //    LoadDataDatabase("1111");
 
+            MessageBox.Show("ds");
 
             var obserable = FireClient.Child("CareConnect/Emergency").AsObservable<object>();
             var Subscription = obserable.Subscribe(async snapshot =>
@@ -94,7 +95,10 @@ namespace Server
                         smsMessage += "تعرض " + GoogleTranslate(patientInfo.UserNameInfo(emergency.FingerPrint)) + " لحادث " +"\n";
                         EmergencyFunctions(emergency);
                         //  DeleteRecord(CollectionName);
-
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Ambulance ID found");
                     }
 
                 }
